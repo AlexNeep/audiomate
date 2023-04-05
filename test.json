@@ -1,0 +1,88 @@
+[
+  {
+    "prompt": "{{replace}}",
+    "question": "How can I help you?",
+    "information": ["Ask to buy some flowers"]
+  },
+  {
+    "prompt": "{{replace}}",
+    "question": "Tell them you have roses, daffodils, tulips and lilies",
+    "information": [
+      "Say you want some roses",
+      "Say you want some daffodils",
+      "Say you want some tulips",
+      "Say you want some lilies"
+    ]
+  },
+  {
+    "prompt": "{{replace}}",
+    "question": "Tell them the roses are £5, the daffodils are £4, the tulips are £3 and the lilies are £2",
+    "information": [
+      "Ask to buy 2 roses",
+      "Ask to buy 3 daffodils",
+      "Ask to buy 4 tulips",
+      "Ask to buy 5 lilies"
+    ]
+  },
+  {
+    "prompt": "{{replace}}",
+    "question": "Respond to them and ask who they are buying the flowers for",
+    "information": ["Brother", "Sister", "Mother", "Father", "Wife", "Husband"]
+  },
+  {
+    "prompt": "{{replace}}",
+    "question": "Ask them how they would like to pay",
+    "information": ["Card", "Cash"]
+  }
+]
+// description
+// 0
+// information
+// 0
+// "Ask what food options they have"
+// 1
+// "Ask what drink options they have"
+// prompt
+// "{{replace}}"
+// question
+// "Tell them the options you have"
+// 1
+// information
+// 0
+// "Ask what they recommend"
+// prompt
+// "{{replace}}"
+// question
+// "Tell them which option you recommend and why"
+// 2
+// ai_help
+// "Accept any order"
+// information
+// 0
+// "Order something"
+// prompt
+// "{{replace}}"
+// question
+// "Tell them the price of the item and ask how they would like to pay"
+// 3
+// information
+// 0
+// "Card"
+// 1
+// "Cash"
+// prompt
+// "{{replace}}"
+// question
+// "Say of course. Ask them what plans they have for today"
+// 4
+// information
+// 0
+// "Visit some family"
+// 1
+// "Going to work"
+// 2
+// "going to play some sport"
+// prompt
+// "{{replace}}"
+// question
+// "Tell them to have a good time"
