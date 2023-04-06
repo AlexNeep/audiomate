@@ -186,7 +186,7 @@ const Index = () => {
   return (
     <div className="m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
       <Hero trial={trial} />
-
+      ``{" "}
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">
           <div className="flex flex-col gap-4">
@@ -268,7 +268,6 @@ const Index = () => {
           ]}
         />
       </div>
-
       <section className="flex flex-col gap-8">
         <div className="mb-8 flex flex-col gap-4">
           <h2 className="m-auto max-w-xl text-center text-3xl font-bold sm:mb-16 lg:text-5xl">
@@ -284,7 +283,6 @@ const Index = () => {
 
         {trial ? <StartTrialButton /> : <StartFreeButton />}
       </section>
-
       <section className="flex flex-col gap-4">
         <h2 className="text-3xl font-bold text-blue-800">FAQs</h2>
 
@@ -317,7 +315,6 @@ const Index = () => {
           ))}
         </div>
       </section>
-
       <div className="flex flex-col items-center justify-center gap-4 py-10 ">
         {trial ? (
           <StartTrialButton />
