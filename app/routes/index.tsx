@@ -133,28 +133,6 @@ const FAQs: Faq[] = [
   },
 ];
 
-const flags = [
-  { flag: "🇬🇧", language: "English" },
-  { flag: "🇫🇷", language: "French" },
-  { flag: "🇩🇪", language: "German" },
-  { flag: "🇪🇸", language: "Spanish" },
-  { flag: "🇮🇹", language: "Italian" },
-  { flag: "🇯🇵", language: "Japanese" },
-  { flag: "🇰🇷", language: "Korean" },
-  { flag: "🇨🇳", language: "Chinese" },
-  { flag: "🇷🇺", language: "Russian" },
-  { flag: "🇵🇹", language: "Portuguese" },
-  { flag: "🇳🇱", language: "Dutch" },
-  { flag: "🇸🇪", language: "Swedish" },
-  { flag: "🇳🇴", language: "Norwegian" },
-  { flag: "🇫🇮", language: "Finnish" },
-  { flag: "🇹🇷", language: "Turkish" },
-  { language: "Romanian", flag: "🇷🇴" },
-  { language: "Polish", flag: "🇵🇱" },
-  { language: "Welsh", flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿" },
-  { language: "Arabic", flag: "🇸🇦" },
-];
-
 const StartTrialButton = () => {
   return (
     <Link to="/pricing?trial=true" className="m-auto w-full max-w-lg">
@@ -166,29 +144,29 @@ const StartTrialButton = () => {
 const StartFreeButton = () => {
   return (
     <Link to="/dashboard" className="m-auto w-full max-w-lg">
-      <Button>Start learning for free</Button>
+      <Button>Start for free</Button>
     </Link>
   );
 };
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "LanguageMate",
-  description:
-    "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  viewport: "width=device-width,initial-scale=1",
-  "og:title": "LanguageMate",
-  "og:description":
-    "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  "og:type": "website",
-  "og:url": "https://languagemate.io",
-  "og:image":
-    "https://storage.googleapis.com/languagemate-public/Facebook%20og%20image.png",
-  "twitter:title": "LanguageMate",
-  "twitter:description": "Master foreign languages through conversation",
-  "twitter:image":
-    "https://storage.googleapis.com/languagemate-public/Twitter%20card.png",
-  "twitter:card": "summary_large_image",
+  title: "EmailMate",
+  // description:
+  //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
+  // viewport: "width=device-width,initial-scale=1",
+  // "og:title": "LanguageMate",
+  // "og:description":
+  //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
+  // "og:type": "website",
+  // "og:url": "https://languagemate.io",
+  // "og:image":
+  //   "https://storage.googleapis.com/languagemate-public/Facebook%20og%20image.png",
+  // "twitter:title": "LanguageMate",
+  // "twitter:description": "Master foreign languages through conversation",
+  // "twitter:image":
+  //   "https://storage.googleapis.com/languagemate-public/Twitter%20card.png",
+  // "twitter:card": "summary_large_image",
 });
 
 type LoaderData = {
@@ -208,8 +186,6 @@ const Index = () => {
   return (
     <div className="m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
       <Hero trial={trial} />
-
-      <SupportedLanguages />
 
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">

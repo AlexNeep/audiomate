@@ -79,7 +79,7 @@ __export(root_exports, {
 var import_node2 = require("@remix-run/node"), import_react12 = require("@remix-run/react"), import_react13 = require("react");
 
 // app/index.css
-var app_default = "/build/_assets/index-4HMEDLFF.css";
+var app_default = "/build/_assets/index-WQTP3PJ5.css";
 
 // app/components/core/Buttons.tsx
 var import_react2 = require("@remix-run/react"), import_react3 = require("react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
@@ -2933,56 +2933,25 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
       }
     ]
   }
-], flags = [
-  { flag: "\u{1F1EC}\u{1F1E7}", language: "English" },
-  { flag: "\u{1F1EB}\u{1F1F7}", language: "French" },
-  { flag: "\u{1F1E9}\u{1F1EA}", language: "German" },
-  { flag: "\u{1F1EA}\u{1F1F8}", language: "Spanish" },
-  { flag: "\u{1F1EE}\u{1F1F9}", language: "Italian" },
-  { flag: "\u{1F1EF}\u{1F1F5}", language: "Japanese" },
-  { flag: "\u{1F1F0}\u{1F1F7}", language: "Korean" },
-  { flag: "\u{1F1E8}\u{1F1F3}", language: "Chinese" },
-  { flag: "\u{1F1F7}\u{1F1FA}", language: "Russian" },
-  { flag: "\u{1F1F5}\u{1F1F9}", language: "Portuguese" },
-  { flag: "\u{1F1F3}\u{1F1F1}", language: "Dutch" },
-  { flag: "\u{1F1F8}\u{1F1EA}", language: "Swedish" },
-  { flag: "\u{1F1F3}\u{1F1F4}", language: "Norwegian" },
-  { flag: "\u{1F1EB}\u{1F1EE}", language: "Finnish" },
-  { flag: "\u{1F1F9}\u{1F1F7}", language: "Turkish" },
-  { language: "Romanian", flag: "\u{1F1F7}\u{1F1F4}" },
-  { language: "Polish", flag: "\u{1F1F5}\u{1F1F1}" },
-  { language: "Welsh", flag: "\u{1F3F4}\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}" },
-  { language: "Arabic", flag: "\u{1F1F8}\u{1F1E6}" }
 ], StartTrialButton = () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: "/pricing?trial=true", className: "m-auto w-full max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { children: "Start your free trial" }, void 0, !1, {
   fileName: "app/routes/index.tsx",
-  lineNumber: 161,
+  lineNumber: 139,
   columnNumber: 7
 }, this) }, void 0, !1, {
   fileName: "app/routes/index.tsx",
-  lineNumber: 160,
+  lineNumber: 138,
   columnNumber: 5
-}, this), StartFreeButton = () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: "/dashboard", className: "m-auto w-full max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { children: "Start learning for free" }, void 0, !1, {
+}, this), StartFreeButton = () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: "/dashboard", className: "m-auto w-full max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { children: "Start for free" }, void 0, !1, {
   fileName: "app/routes/index.tsx",
-  lineNumber: 169,
+  lineNumber: 147,
   columnNumber: 7
 }, this) }, void 0, !1, {
   fileName: "app/routes/index.tsx",
-  lineNumber: 168,
+  lineNumber: 146,
   columnNumber: 5
 }, this), meta4 = () => ({
   charset: "utf-8",
-  title: "LanguageMate",
-  description: "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  viewport: "width=device-width,initial-scale=1",
-  "og:title": "LanguageMate",
-  "og:description": "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  "og:type": "website",
-  "og:url": "https://languagemate.io",
-  "og:image": "https://storage.googleapis.com/languagemate-public/Facebook%20og%20image.png",
-  "twitter:title": "LanguageMate",
-  "twitter:description": "Master foreign languages through conversation",
-  "twitter:image": "https://storage.googleapis.com/languagemate-public/Twitter%20card.png",
-  "twitter:card": "summary_large_image"
+  title: "EmailMate"
 }), loader5 = async ({ request }) => {
   let trial = new URL(request.url).searchParams.get("trial");
   return (0, import_node11.json)({ trial: Boolean(trial) });
@@ -2991,12 +2960,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
   return /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Hero, { trial }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 210,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(SupportedLanguages, {}, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 212,
+      lineNumber: 188,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex flex-col gap-16 py-10 lg:gap-40", id: "features", children: [
@@ -3004,17 +2968,17 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex flex-col gap-4", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("p", { className: "text-lg font-bold uppercase", children: "A complete learning tool" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 217,
+            lineNumber: 193,
             columnNumber: 13
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h2", { className: "text-3xl font-bold text-blue-800", children: "Learn from the comfort of your own home" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 220,
+            lineNumber: 196,
             columnNumber: 13
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 216,
+          lineNumber: 192,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("p", { className: "flex flex-col gap-4 text-lg", children: [
@@ -3024,14 +2988,14 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
               " "
             ] }, void 0, !0, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 227,
+              lineNumber: 203,
               columnNumber: 15
             }, this),
             "Practising speaking your target language with other people triggers anxiety.",
             " "
           ] }, void 0, !0, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 226,
+            lineNumber: 202,
             columnNumber: 13
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { className: "text-left lg:text-center", children: [
@@ -3040,23 +3004,23 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
               " "
             ] }, void 0, !0, {
               fileName: "app/routes/index.tsx",
-              lineNumber: 234,
+              lineNumber: 210,
               columnNumber: 15
             }, this),
             "You feel calm speaking to LanguageMate knowing there is no judgment whilst you progress towards fluency."
           ] }, void 0, !0, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 233,
+            lineNumber: 209,
             columnNumber: 13
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 225,
+          lineNumber: 201,
           columnNumber: 11
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 215,
+        lineNumber: 191,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
@@ -3064,7 +3028,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         {
           Icon: () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_bs3.BsTranslate, { size: 30, className: "fill-blue-800" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 244,
+            lineNumber: 220,
             columnNumber: 23
           }, this),
           video: "https://storage.googleapis.com/languagemate-public/traslation.mp4",
@@ -3076,7 +3040,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 243,
+          lineNumber: 219,
           columnNumber: 9
         },
         this
@@ -3086,7 +3050,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         {
           Icon: () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_md2.MdQuiz, { size: 30, className: "fill-blue-800" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 252,
+            lineNumber: 228,
             columnNumber: 23
           }, this),
           video: "https://storage.googleapis.com/languagemate-public/Improvement%20demo.mp4",
@@ -3099,7 +3063,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 251,
+          lineNumber: 227,
           columnNumber: 9
         },
         this
@@ -3109,7 +3073,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         {
           Icon: () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_md2.MdQuiz, { size: 30, className: "fill-blue-800" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 261,
+            lineNumber: 237,
             columnNumber: 23
           }, this),
           video: "https://storage.googleapis.com/languagemate-public/speech-to-text.mp4",
@@ -3124,7 +3088,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 260,
+          lineNumber: 236,
           columnNumber: 9
         },
         this
@@ -3134,7 +3098,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         {
           Icon: () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_bi4.BiWorld, { size: 30, className: "fill-blue-800" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 272,
+            lineNumber: 248,
             columnNumber: 23
           }, this),
           video: "https://storage.googleapis.com/languagemate-public/native.mp4",
@@ -3151,7 +3115,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 271,
+          lineNumber: 247,
           columnNumber: 9
         },
         this
@@ -3161,7 +3125,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         {
           Icon: () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_io5.IoReader, { size: 30, className: "fill-blue-800" }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 285,
+            lineNumber: 261,
             columnNumber: 23
           }, this),
           title: "Go to definitions",
@@ -3176,142 +3140,142 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 284,
+          lineNumber: 260,
           columnNumber: 9
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 214,
+      lineNumber: 190,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("section", { className: "flex flex-col gap-8", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "mb-8 flex flex-col gap-4", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h2", { className: "m-auto max-w-xl text-center text-3xl font-bold sm:mb-16 lg:text-5xl", children: "Everything you need to become fluent" }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 298,
+          lineNumber: 274,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("p", { className: "text-center text-lg", children: "LanguageMate is a simple but powerful tool that supercharges you towards fluency!" }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 301,
+          lineNumber: 277,
           columnNumber: 11
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 297,
+        lineNumber: 273,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(MainFeaturesBulletPoint_default, {}, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 307,
+        lineNumber: 283,
         columnNumber: 9
       }, this),
       trial ? /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartTrialButton, {}, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 309,
+        lineNumber: 285,
         columnNumber: 18
       }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartFreeButton, {}, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 309,
+        lineNumber: 285,
         columnNumber: 41
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 296,
+      lineNumber: 272,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("section", { className: "flex flex-col gap-4", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h2", { className: "text-3xl font-bold text-blue-800", children: "FAQs" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 313,
+        lineNumber: 289,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "mx-auto flex flex-col flex-wrap gap-4 lg:grid lg:grid-cols-2", children: FAQs.map(({ question, answer }, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Card_default, { width: "full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("details", { children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("summary", { className: "text-lg font-bold text-blue-800", children: question }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 319,
+          lineNumber: 295,
           columnNumber: 17
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "mt-4 flex flex-col gap-6", children: answer.map((answerBlock, index2) => {
           let { type, content } = answerBlock;
           return type === "p" ? /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("p", { children: content }, index2, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 327,
+            lineNumber: 303,
             columnNumber: 46
           }, this) : type === "a" ? /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "m-auto w-1/2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: answerBlock.to, children: content }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 332,
+            lineNumber: 308,
             columnNumber: 29
           }, this) }, void 0, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 331,
+            lineNumber: 307,
             columnNumber: 27
           }, this) }, index2, !1, {
             fileName: "app/routes/index.tsx",
-            lineNumber: 330,
+            lineNumber: 306,
             columnNumber: 25
           }, this) : "";
         }) }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 323,
+          lineNumber: 299,
           columnNumber: 17
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 318,
+        lineNumber: 294,
         columnNumber: 15
       }, this) }, index, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 317,
+        lineNumber: 293,
         columnNumber: 13
       }, this)) }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 315,
+        lineNumber: 291,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 312,
+      lineNumber: 288,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex flex-col items-center justify-center gap-4 py-10 ", children: [
       trial ? /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartTrialButton, {}, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 347,
+        lineNumber: 323,
         columnNumber: 11
       }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: "/dashboard", className: "m-auto w-full max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { children: "Get started now for free" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 350,
+        lineNumber: 326,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 349,
+        lineNumber: 325,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { className: "text-lg", children: "Or" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 354,
+        lineNumber: 330,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: "/pricing", className: "m-auto w-full max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { variant: "transparent", children: "See our plans" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 356,
+        lineNumber: 332,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 355,
+        lineNumber: 331,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 345,
+      lineNumber: 321,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/index.tsx",
-    lineNumber: 209,
+    lineNumber: 187,
     columnNumber: 5
   }, this);
 }, Section = ({
@@ -3326,35 +3290,35 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
   /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex w-full flex-col gap-4 text-left", children: [
     Icon && /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(IconWrapper_default, { Icon: () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Icon, {}, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 384,
+      lineNumber: 360,
       columnNumber: 43
     }, this) }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 384,
+      lineNumber: 360,
       columnNumber: 18
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h1", { className: "text-xl font-bold text-blue-800", children: title }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 385,
+      lineNumber: 361,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("p", { className: "text-lg text-slate-700", children: paragrapgh }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 386,
+      lineNumber: 362,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "mt-4 flex flex-col gap-4", children: bullets == null ? void 0 : bullets.map((point, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(SubBulletPoint_default, { point }, index, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 389,
+      lineNumber: 365,
       columnNumber: 13
     }, this)) }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 387,
+      lineNumber: 363,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/index.tsx",
-    lineNumber: 383,
+    lineNumber: 359,
     columnNumber: 7
   }, this),
   imageSource && /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
@@ -3368,7 +3332,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
     !1,
     {
       fileName: "app/routes/index.tsx",
-      lineNumber: 394,
+      lineNumber: 370,
       columnNumber: 9
     },
     this
@@ -3389,14 +3353,14 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
     !1,
     {
       fileName: "app/routes/index.tsx",
-      lineNumber: 403,
+      lineNumber: 379,
       columnNumber: 9
     },
     this
   )
 ] }, void 0, !0, {
   fileName: "app/routes/index.tsx",
-  lineNumber: 382,
+  lineNumber: 358,
   columnNumber: 5
 }, this), Hero = ({ trial }) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
   "section",
@@ -3409,14 +3373,14 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         " ",
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { className: "text-bold  tracking-tighter text-red-600", children: "anxiety" }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 428,
+          lineNumber: 404,
           columnNumber: 9
         }, this),
         " ",
         "holding you back from mastering foreign languages?"
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 426,
+        lineNumber: 402,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h2", { className: "max-w-xl text-xl tracking-wide", children: [
@@ -3424,12 +3388,12 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         " ",
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { className: "font-semibold text-blue-700", children: "LanguageMate" }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 436,
+          lineNumber: 412,
           columnNumber: 9
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 434,
+        lineNumber: 410,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h3", { className: "text-lg", children: [
@@ -3437,7 +3401,7 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         " ",
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { className: "font-semibold text-blue-700", children: "anxiety-free" }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 441,
+          lineNumber: 417,
           columnNumber: 9
         }, this),
         " to the",
@@ -3447,36 +3411,36 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
           " "
         ] }, void 0, !0, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 442,
+          lineNumber: 418,
           columnNumber: 9
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 439,
+        lineNumber: 415,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "m-auto flex w-full max-w-3xl flex-col gap-6 md:flex-row md:justify-center [&>button]:h-full", children: [
         trial ? /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartTrialButton, {}, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 448,
+          lineNumber: 424,
           columnNumber: 18
         }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartFreeButton, {}, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 448,
+          lineNumber: 424,
           columnNumber: 41
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react20.Link, { to: "#features", className: "w-full font-semibold", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Buttons_default, { variant: "transparent", children: "Learn more" }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 451,
+          lineNumber: 427,
           columnNumber: 11
         }, this) }, void 0, !1, {
           fileName: "app/routes/index.tsx",
-          lineNumber: 450,
+          lineNumber: 426,
           columnNumber: 9
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 447,
+        lineNumber: 423,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
@@ -3489,22 +3453,22 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 455,
+          lineNumber: 431,
           columnNumber: 7
         },
         this
       ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "[&>button]:font-semibold", children: trial ? /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartTrialButton, {}, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 460,
+        lineNumber: 436,
         columnNumber: 18
       }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(StartFreeButton, {}, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 460,
+        lineNumber: 436,
         columnNumber: 41
       }, this) }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 459,
+        lineNumber: 435,
         columnNumber: 7
       }, this)
     ]
@@ -3513,51 +3477,12 @@ var import_io5 = require("react-icons/io5"), import_jsx_dev_runtime21 = require(
   !0,
   {
     fileName: "app/routes/index.tsx",
-    lineNumber: 422,
+    lineNumber: 398,
     columnNumber: 5
   },
   this
-), SupportedLanguages = () => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("section", { className: "text-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Card_default, { width: "full", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("h2", { className: "text-3xl", children: [
-    flags.length,
-    " Supported languages"
-  ] }, void 0, !0, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 470,
-    columnNumber: 9
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex flex-wrap items-center justify-center gap-4 text-3xl", children: flags.map(({ flag, language }) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
-    "p",
-    {
-      className: "flex items-center justify-center gap-2",
-      children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { "aria-label": language, children: flag }, void 0, !1, {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 478,
-        columnNumber: 17
-      }, this)
-    },
-    language,
-    !1,
-    {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 474,
-      columnNumber: 15
-    },
-    this
-  )) }, void 0, !1, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 471,
-    columnNumber: 9
-  }, this)
-] }, void 0, !0, {
-  fileName: "app/routes/index.tsx",
-  lineNumber: 469,
-  columnNumber: 7
-}, this) }, void 0, !1, {
-  fileName: "app/routes/index.tsx",
-  lineNumber: 468,
-  columnNumber: 5
-}, this), routes_default = Index;
+);
+var routes_default = Index;
 
 // app/routes/terms.tsx
 var terms_exports = {};
@@ -3575,7 +3500,7 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), Terms = () => /
 }, this), terms_default = Terms;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "4f0ee57b", entry: { module: "/build/entry.client-HBBHDJDT.js", imports: ["/build/_shared/chunk-GTNGNULT.js", "/build/_shared/chunk-AHL4TSUE.js", "/build/_shared/chunk-VIPVJV6J.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-CP3WJMD2.js", imports: ["/build/_shared/chunk-HSWL562X.js", "/build/_shared/chunk-BWNXRDGK.js", "/build/_shared/chunk-Q7G6OFKU.js", "/build/_shared/chunk-SNT6XHV7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-TQDAPUY2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-EQOSIBHG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-23VCAICI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-GGEXXK3X.js", imports: ["/build/_shared/chunk-KM7KXZ5X.js", "/build/_shared/chunk-WEOPVTPI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-TWJO36LG.js", imports: ["/build/_shared/chunk-HUKAUH66.js", "/build/_shared/chunk-WEOPVTPI.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-TRYUNQUS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-V4SGKC4T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-I337KZWQ.js", imports: ["/build/_shared/chunk-KM7KXZ5X.js", "/build/_shared/chunk-HUKAUH66.js", "/build/_shared/chunk-WEOPVTPI.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-B4GQQB4O.js", imports: ["/build/_shared/chunk-65B4HZGS.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-PSOWNQ44.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-4F0EE57B.js" };
+var assets_manifest_default = { version: "d09d43cb", entry: { module: "/build/entry.client-HBBHDJDT.js", imports: ["/build/_shared/chunk-GTNGNULT.js", "/build/_shared/chunk-AHL4TSUE.js", "/build/_shared/chunk-VIPVJV6J.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-QX4HJIIX.js", imports: ["/build/_shared/chunk-HSWL562X.js", "/build/_shared/chunk-BWNXRDGK.js", "/build/_shared/chunk-Q7G6OFKU.js", "/build/_shared/chunk-SNT6XHV7.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-TQDAPUY2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-EQOSIBHG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-23VCAICI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-N6GF6VKH.js", imports: ["/build/_shared/chunk-KM7KXZ5X.js", "/build/_shared/chunk-WEOPVTPI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-TWJO36LG.js", imports: ["/build/_shared/chunk-HUKAUH66.js", "/build/_shared/chunk-WEOPVTPI.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-TRYUNQUS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-V4SGKC4T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-I337KZWQ.js", imports: ["/build/_shared/chunk-KM7KXZ5X.js", "/build/_shared/chunk-HUKAUH66.js", "/build/_shared/chunk-WEOPVTPI.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-B4GQQB4O.js", imports: ["/build/_shared/chunk-65B4HZGS.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-PSOWNQ44.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-D09D43CB.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
