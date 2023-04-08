@@ -152,7 +152,7 @@ const StartFreeButton = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "EmailMate",
+  title: "AudioMate",
   // description:
   //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
   // viewport: "width=device-width,initial-scale=1",
