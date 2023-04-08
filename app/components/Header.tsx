@@ -241,7 +241,7 @@ const Home = ({
       className="flex items-center justify-center gap-2 text-2xl font-bold text-slate-800"
     >
       <img
-        src={"/logo.png"}
+        src={"/logo-blank.png"}
         loading="eager"
         className={`h-14 w-auto  rounded-xl`}
       />

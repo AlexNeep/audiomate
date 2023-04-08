@@ -420,26 +420,4 @@ const Hero = ({ trial }: { trial: boolean }) => {
   );
 };
 
-const SupportedLanguages = () => {
-  return (
-    <section className="text-center">
-      <Card width="full">
-        <h2 className="text-3xl">{flags.length} Supported languages</h2>
-        <div className="flex flex-wrap items-center justify-center gap-4 text-3xl">
-          {flags.map(({ flag, language }) => {
-            return (
-              <p
-                key={language}
-                className="flex items-center justify-center gap-2"
-              >
-                <span aria-label={language}>{flag}</span>
-              </p>
-            );
-          })}
-        </div>
-      </Card>
-    </section>
-  );
-};
-
 export default Index;
