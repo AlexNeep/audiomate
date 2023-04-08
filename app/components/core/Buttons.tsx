@@ -39,7 +39,7 @@ const Button = ({
       ? "background-animate-slow bg-gradient-to-r from-green-500 via-blue-500 to-purple-400 text-white shadow-md"
       : variant === "none"
       ? ""
-      : "bg-blue-500 text-slate-100 disabled:bg-blue-200 shadow-md";
+      : "bg-orange-500 text-stone-200 disabled:bg-orange-200 shadow-md";
 
   const transition = useTransition();
 

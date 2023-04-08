@@ -156,9 +156,19 @@ const Index = () => {
       <Header user={undefined} />
 
       <div className="m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
-        <h1 className="text-bold text-3xl text-orange-500">
-          Something amazing- coming soon!
-        </h1>
+        <section className="mx-4 flex max-w-lg flex-col gap-8">
+          <h1 className="text-center text-3xl font-bold text-orange-500">
+            Say it, Edit it, Perfect it
+          </h1>
+          <h2 className="text-center text-xl font-semibold text-slate-800">
+            Effortlessly create and edit text on the move in seconds
+          </h2>
+
+          <Link to="/app" className="mx-auto w-fit text-lg">
+            <Button>Join the waitlist</Button>
+          </Link>
+        </section>
+
         {/* <Hero trial={trial} />
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">

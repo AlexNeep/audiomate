@@ -29,7 +29,7 @@ const Header = ({ user }: { user: UserProfile | undefined }) => {
       } mb-8`}
     >
       <div
-        className={`top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-500 px-4  py-2 lg:py-5 ${
+        className={`top-0 z-30 flex w-full items-center justify-between gap-4 bg-[#05B2DC] px-4  py-2 lg:py-5 ${
           !showStreakBar && "shadow-md"
         }`}
       >
@@ -240,7 +240,11 @@ const Home = ({
       to={`${user ? "/dashboard" : "/"} `}
       className="flex items-center justify-center gap-2 text-2xl font-bold text-slate-800"
     >
-      <img src={"/logo.png"} loading="eager" className={`h-14 w-auto`} />
+      <img
+        src={"/logo.png"}
+        loading="eager"
+        className={`h-14 w-auto  rounded-xl`}
+      />
     </Link>
   );
 };
