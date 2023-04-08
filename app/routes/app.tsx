@@ -6,8 +6,7 @@ import { IoCopy } from "react-icons/io5";
 import Header from "~/components/Header";
 
 export const loader = () => {
-  const text =
-    "Here is some perfectly formatted text\n\n Hello this is a new line?";
+  const text = "";
   return json({ text });
 };
 
@@ -45,10 +44,11 @@ const App = () => {
 
       const form = new FormData();
       form.append("audio", audioBlob);
+      form.append("past_text", text);
       fetcher.submit(form, {
         method: "post",
         encType: "multipart/form-data",
-        action: "/api/tts",
+        action: "/api/generate-text",
       });
 
       cleanUp();

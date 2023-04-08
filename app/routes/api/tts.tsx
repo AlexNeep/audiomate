@@ -1,4 +1,5 @@
 import { ActionFunction, json } from "@remix-run/node";
+import { getTextFromSpeech } from "~/models";
 
 export const action: ActionFunction = async ({ request }) => {
   try {
@@ -13,45 +14,11 @@ export const action: ActionFunction = async ({ request }) => {
 
     const formData = await request.formData();
     const audio = formData.get("audio") as Blob;
-
-    const text = await transcribeAudioDirect(audio);
-    console.log({ text });
-    if (text === "")
-      return json({
-        error:
-          "We did not detect any words in that audio recording. Make sure your audio device is connected.",
-        text,
-      });
-    if (!text) return json({ error: "Something went wrong", text });
+    const text = await getTextFromSpeech(audio);
 
     return json({ text });
   } catch (e) {
     console.log(e);
-    return json({ error: "Something went wrong", text: "" });
+    return json({ error: e, text: "" });
   }
 };
-
-async function transcribeAudioDirect(audio: Blob) {
-  const formData = new FormData();
-
-  formData.append("model", "whisper-1");
-  formData.append("file", audio, "audio.mp3");
-  formData.append("language", "en");
-  const response = await fetch(
-    "https://api.openai.com/v1/audio/transcriptions",
-    {
-      body: formData,
-      method: "post",
-      headers: {
-        encType: "multipart/form-data",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-    }
-  );
-
-  const data = await response.json();
-  if (data.text) return data.text;
-
-  console.log(data);
-  return;
-}
