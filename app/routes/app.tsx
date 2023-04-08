@@ -70,7 +70,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="grid  h-screen grid-rows-8">
+    <div className="grid h-screen grid-rows-8">
       <div className="w-full">
         <Header user={undefined} />
       </div>

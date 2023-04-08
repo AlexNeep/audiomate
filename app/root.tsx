@@ -26,7 +26,7 @@ export const meta: MetaFunction = () => ({
   title: "AudioMate",
   // description:
   //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  // viewport: "width=device-width,initial-scale=1",
+  viewport: "width=device-width,initial-scale=1",
   // "og:title": "LanguageMate",
   // "og:description":
   //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
