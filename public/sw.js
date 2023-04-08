@@ -1,5 +1,5 @@
 self.addEventListener("install", (event) => {
-  const cacheKey = "LanguageMate_v1";
+  const cacheKey = "AudioMate_v1";
   const styles = require("../styles/index.css");
 
   event.waitUntil(

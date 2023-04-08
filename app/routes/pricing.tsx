@@ -26,7 +26,7 @@ import { getUserSession } from "~/utils/session.server";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "LanguageMate | Pricing",
+    title: "AudioMate | Pricing",
   };
 };
 

@@ -3,8 +3,8 @@ import { getUserProfile, updateUserProfile } from "~/utils/db.server";
 
 import { createUserSession } from "~/utils/session.server";
 import { signIn, signUp, triggerNewAccountEvents } from "~/utils/user.server";
-const newSignupRedirectAfterLoginPath = "/scenarios/welcome-to-languagemate";
-const redirectAfterLoginPath = "/dashboard";
+const newSignupRedirectAfterLoginPath = "/app";
+const redirectAfterLoginPath = "/app";
 
 export const handleLogin = async (
   email: string,

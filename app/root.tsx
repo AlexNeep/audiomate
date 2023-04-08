@@ -23,22 +23,22 @@ import { UserProfile } from "./utils/types";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "LanguageMate | the world's best language-learning chatbot",
-  description:
-    "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  viewport: "width=device-width,initial-scale=1",
-  "og:title": "LanguageMate",
-  "og:description":
-    "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  "og:type": "website",
-  "og:url": "https://languagemate.io",
-  "og:image":
-    "https://storage.googleapis.com/languagemate-public/Facebook%20og%20image.png",
-  "twitter:title": "LanguageMate",
-  "twitter:description": "Master foreign languages through conversation",
-  "twitter:image":
-    "https://storage.googleapis.com/languagemate-public/Twitter%20card.png",
-  "twitter:card": "summary_large_image",
+  title: "AudioMate",
+  // description:
+  //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
+  // viewport: "width=device-width,initial-scale=1",
+  // "og:title": "LanguageMate",
+  // "og:description":
+  //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
+  // "og:type": "website",
+  // "og:url": "https://languagemate.io",
+  // "og:image":
+  //   "https://storage.googleapis.com/languagemate-public/Facebook%20og%20image.png",
+  // "twitter:title": "LanguageMate",
+  // "twitter:description": "Master foreign languages through conversation",
+  // "twitter:image":
+  //   "https://storage.googleapis.com/languagemate-public/Twitter%20card.png",
+  // "twitter:card": "summary_large_image",
 });
 
 export function links() {
