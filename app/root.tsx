@@ -13,12 +13,11 @@ import { useEffect } from "react";
 
 import styles from "~/index.css";
 import Button from "./components/core/Buttons";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { isGuest } from "./utils";
 import GoogleTagManager from "./utils/analytics/googleTagManger";
 import { setupHotjar } from "./utils/analytics/hotjar";
-import { getUserProfile, updateUserProfile } from "./utils/db.server";
+import { getUserProfile } from "./utils/db.server";
 import { getUserSession } from "./utils/session.server";
 import { UserProfile } from "./utils/types";
 
@@ -52,14 +51,9 @@ export type RootLoaderData = {
   is_guest: boolean;
 };
 
-async function updateLastLogin(userProfile: UserProfile) {
-  const timestamp = new Date();
-  const uid = userProfile.uid;
-
-  return await updateUserProfile(uid, { last_login: timestamp });
-}
-
 export const loader: LoaderFunction = async ({ request }) => {
+  return json({});
+
   try {
     const user = await getUserSession(request);
     if (!user) throw Error();
@@ -93,6 +87,19 @@ export default function App() {
     if (env === "production") addTrackers();
   }, []);
 
+  useEffect(() => {
+    if (env === "development") return;
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then(() => {
+        console.log("Service worker registered!");
+      })
+      .catch((error) => {
+        console.warn("Error registering service worker:");
+        console.warn(error);
+      });
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -102,18 +109,15 @@ export default function App() {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="manifest" href="/manifest.json" />
         <GoogleTagManager env={env} gtmTrackingId="GTM-PXRZMNX" />
         <Meta />
         <Links />
       </head>
       <body className="bg-slate-100 ">
         <div className="min-h-screen">
-          <Header user={user} />
-          <div className="px-2">
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
-        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -159,7 +163,6 @@ export function ErrorBoundary() {
             className="mx-auto h-auto w-1/2 max-w-[300px] rounded-md shadow-md"
           />
         </div>
-        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -197,7 +200,6 @@ export function CatchBoundary() {
             className="mx-auto h-auto w-1/2 max-w-[300px] rounded-md shadow-md"
           />
         </div>
-        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAqUOhATNBI_6MTCavtjLvCecp1enuSl7g",
-  authDomain: "languagemate2.firebaseapp.com",
-  projectId: "languagemate2",
-  storageBucket: "languagemate2.appspot.com",
-  messagingSenderId: "1070506034942",
-  appId: "1:1070506034942:web:dca33ace782b1a344b07af",
-  measurementId: "G-T0VFRMLYEG",
+  apiKey: process.env.FIREBASE_KEY,
+  authDomain: "audiomate.firebaseapp.com",
+  projectId: "audiomate",
+  storageBucket: "audiomate.appspot.com",
+  messagingSenderId: "768929423248",
+  appId: "1:768929423248:web:8d0f7a3e2617c1ea62dd15",
+  measurementId: "G-046G6QMKSH",
 };
 
 const app = initializeApp(firebaseConfig);

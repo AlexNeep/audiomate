@@ -1,0 +1,25 @@
+{
+  "short_name": "AudioMate",
+  "name": "AudioMate (PWA)",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#3b82f6",
+  "display": "standalone",
+  "theme_color": "#3b82f6",
+  "scope": "/",
+  "shortcuts": [],
+  "description": "Turn your voice into polished text in seconds",
+  "screenshots": []
+}

@@ -29,7 +29,7 @@ const Header = ({ user }: { user: UserProfile | undefined }) => {
       } mb-8`}
     >
       <div
-        className={`top-0 z-30 flex w-full items-center justify-between gap-4 bg-blue-300 px-4  py-2 lg:py-5 ${
+        className={`top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-500 px-4  py-2 lg:py-5 ${
           !showStreakBar && "shadow-md"
         }`}
       >
@@ -101,8 +101,6 @@ const MainMenus = ({
             <HeaderLink to="pricing" text="Pricing" />
             <HeaderLink to="login" text="Login" />
           </div>
-
-          <GetStartedLink setMenuOpen={setMenuOpen} fullWidth />
         </>
       )}
     </div>
@@ -130,7 +128,7 @@ const BurgerMenu = ({
   return (
     <div
       ref={wrapperRef}
-      className="absolute top-0 left-0 h-screen w-1/3 min-w-[300px] bg-slate-200"
+      className="absolute left-0 top-0 h-screen w-1/3 min-w-[300px] bg-slate-200"
     >
       <div className="relative flex h-20 w-full items-center justify-between border-b border-slate-400 px-4">
         <Home onClick={closeMenu} user={user} />

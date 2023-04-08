@@ -3,3 +3,5 @@ node_modules
 public/build/
 .env
 api/
+api/index.js
+api/index.js.map
