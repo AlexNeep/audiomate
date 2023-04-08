@@ -10,6 +10,7 @@ import IconWrapper from "~/components/landing-page/IconWrapper";
 import MainFeatureBulletPoints from "~/components/landing-page/MainFeaturesBulletPoint";
 import BulletPoint from "~/components/landing-page/SubBulletPoint";
 import { IoReader } from "react-icons/io5";
+import Header from "~/components/Header";
 
 type Answer =
   | {
@@ -169,24 +170,16 @@ export const meta: MetaFunction = () => ({
   // "twitter:card": "summary_large_image",
 });
 
-type LoaderData = {
-  trial: boolean;
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const searchParams = new URL(request.url).searchParams;
-  const trial = searchParams.get("trial");
-
-  return json<LoaderData>({ trial: Boolean(trial) });
-};
-
 const Index = () => {
-  const { trial } = useLoaderData<LoaderData>();
-
   return (
-    <div className="m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
-      <Hero trial={trial} />
-      ``{" "}
+    <div>
+      <Header user={undefined} />
+
+      <div className="m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
+        <h1 className="text-bold text-3xl text-orange-500">
+          Something amazing- coming soon!
+        </h1>
+        {/* <Hero trial={trial} />
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">
           <div className="flex flex-col gap-4">
@@ -328,6 +321,7 @@ const Index = () => {
         <Link to="/pricing" className="m-auto w-full max-w-lg">
           <Button variant="transparent">See our plans</Button>
         </Link>
+      </div> */}
       </div>
     </div>
   );
