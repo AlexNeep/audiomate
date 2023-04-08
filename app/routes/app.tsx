@@ -13,9 +13,10 @@ export const loader = () => {
 
 const App = () => {
   const loaderData = useLoaderData();
-  const { text } = loaderData;
-
   const fetcher = useFetcher();
+
+  const text = fetcher?.data?.text ?? loaderData?.text;
+
   const [duration, setDuration] = useState(0);
   const [recording, setRecording] = useState(false);
   const [timer, setTimer] = useState<NodeJS.Timer | null>(null);
@@ -23,8 +24,6 @@ const App = () => {
     null
   );
   const [audioChunks, setAudioChunks] = useState<Blob[] | null>(null);
-
-  console.log(fetcher.data);
 
   function changeRecording() {
     if (recording) {
@@ -87,9 +86,9 @@ const App = () => {
         />
       </section>
 
-      <section className="row-span-1 flex w-full items-center justify-center">
+      <section className="relative row-span-1 flex w-full items-center justify-center">
         <div
-          className={`w-fit rounded-3xl p-4 shadow-lg transition-colors duration-500 ${
+          className={` w-fit rounded-3xl p-4 shadow-lg transition-colors duration-500 ${
             recording
               ? duration % 2
                 ? "bg-red-500"
@@ -103,6 +102,12 @@ const App = () => {
             className=" shrink-0  text-gray-800"
           />
         </div>
+
+        {recording && (
+          <p className="absolute right-10 top-1/2 -translate-y-1/2 transform text-lg">
+            {duration} seconds{" "}
+          </p>
+        )}
       </section>
     </div>
   );

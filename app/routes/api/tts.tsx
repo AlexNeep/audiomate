@@ -15,6 +15,7 @@ export const action: ActionFunction = async ({ request }) => {
     const audio = formData.get("audio") as Blob;
 
     const text = await transcribeAudioDirect(audio);
+    console.log({ text });
     if (text === "")
       return json({
         error:
