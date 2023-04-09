@@ -150,6 +150,10 @@ const StartFreeButton = () => {
   );
 };
 
+export const config = {
+  runtime: "edge", // this is a pre-requisite
+};
+
 const Index = () => {
   return (
     <div>
