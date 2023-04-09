@@ -14,12 +14,8 @@ import { useEffect } from "react";
 import styles from "~/index.css";
 import Button from "./components/core/Buttons";
 import Header from "./components/Header";
-import { isGuest } from "./utils";
 import GoogleTagManager from "./utils/analytics/googleTagManger";
 import { setupHotjar } from "./utils/analytics/hotjar";
-import { getUserProfile } from "./utils/db.server";
-import { getUserSession } from "./utils/session.server";
-import { UserProfile } from "./utils/types";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -46,34 +42,11 @@ export function links() {
 }
 
 export type RootLoaderData = {
-  user?: UserProfile;
   env: "development" | "test" | "production";
-  is_guest: boolean;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
-  return json({});
-
-  try {
-    const user = await getUserSession(request);
-    if (!user) throw Error();
-
-    const userProfile = await getUserProfile(user.uid);
-
-    if (!userProfile) throw Error();
-
-    return json<RootLoaderData>({
-      user: userProfile,
-      env: process.env.NODE_ENV,
-      is_guest: isGuest(userProfile),
-    });
-  } catch (e) {
-    return json<RootLoaderData>({
-      user: undefined,
-      env: process.env.NODE_ENV,
-      is_guest: false,
-    });
-  }
+  return json({ env: process.env.NODE_ENV });
 };
 
 function addTrackers() {
@@ -81,7 +54,7 @@ function addTrackers() {
 }
 
 export default function App() {
-  const { user, env } = useLoaderData<RootLoaderData>() as RootLoaderData;
+  const { env } = useLoaderData<RootLoaderData>() as RootLoaderData;
 
   useEffect(() => {
     if (env === "production") addTrackers();

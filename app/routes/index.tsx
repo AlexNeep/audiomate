@@ -1,16 +1,8 @@
-import { json, LoaderFunction, MetaFunction } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
-import { BiWorld } from "react-icons/bi";
-import { BsTranslate } from "react-icons/bs";
-import { MdQuiz } from "react-icons/md";
+import { Link } from "@remix-run/react";
 import Button from "~/components/core/Buttons";
-import Card from "~/components/core/Card";
-import H1 from "~/components/core/H1";
-import IconWrapper from "~/components/landing-page/IconWrapper";
-import MainFeatureBulletPoints from "~/components/landing-page/MainFeaturesBulletPoint";
-import BulletPoint from "~/components/landing-page/SubBulletPoint";
-import { IoReader } from "react-icons/io5";
 import Header from "~/components/Header";
+import IconWrapper from "~/components/landing-page/IconWrapper";
+import BulletPoint from "~/components/landing-page/SubBulletPoint";
 
 type Answer =
   | {
@@ -151,7 +143,7 @@ const StartFreeButton = () => {
 };
 
 export const config = {
-  runtime: "edge", // this is a pre-requisite
+  runtime: "edge",
 };
 
 const Index = () => {
