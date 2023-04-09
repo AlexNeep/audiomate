@@ -131,7 +131,7 @@ const BurgerMenu = ({
       className="absolute left-0 top-0 h-screen w-1/3 min-w-[300px] bg-slate-200"
     >
       <div className="relative flex h-20 w-full items-center justify-between border-b border-slate-400 px-4">
-        <Home onClick={closeMenu} user={user} />
+        <Home onClick={closeMenu} user={user} withBackground />
 
         <button onClick={() => setMenuOpen(false)}>
           <IoMdClose className="fill-slate-400" size="30" />
@@ -143,19 +143,10 @@ const BurgerMenu = ({
           <>
             {<ProfileLink setMenuOpen={setMenuOpen} />}
 
-            <ScenariosLink setMenuOpen={setMenuOpen} />
-
-            <VocabularyLink setMenuOpen={setMenuOpen} />
-
             {showPremium && <PremiumLink setMenuOpen={setMenuOpen} />}
           </>
         ) : (
           <>
-            <TransparentButtonLink
-              to="/#features"
-              text="Features"
-              onClick={closeMenu}
-            />
             <TransparentButtonLink
               to="pricing"
               text="Pricing"
@@ -230,9 +221,11 @@ const VocabularyLink = ({ setMenuOpen = () => {} }: LinkProps) => {
 const Home = ({
   onClick,
   user,
+  withBackground = false,
 }: {
   onClick?: () => void;
   user: UserProfile | null | undefined;
+  withBackground?: boolean;
 }) => {
   return (
     <Link
@@ -241,9 +234,9 @@ const Home = ({
       className="flex h-14 items-center justify-center gap-2 text-2xl font-bold text-slate-800"
     >
       <img
-        src={"/logo-blank.png"}
+        src={withBackground ? "/logo.png" : "/logo-blank.png"}
         loading="eager"
-        className={`h-8 w-auto  rounded-xl`}
+        className={`w-auto  rounded ${withBackground ? "h-10" : "h-8"}`}
       />
     </Link>
   );
