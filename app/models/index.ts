@@ -69,15 +69,15 @@ export async function generateTextFromInput(
     {
       role: "system",
       content:
-        "Process the user message and respond. The content the user is referring to is in the next message",
+        "Process the user message and respond. The content the user is referring to is in the next message. They may be requesting edits to the original text.",
     },
     {
       role: "user",
-      content: `past content: ${pastText}`,
+      content: `Past content: ${pastText}`,
     },
     {
       role: "user",
-      content: `new user input: ${newUserInput}`,
+      content: `New user input: ${newUserInput}`,
     },
   ];
   try {

@@ -7,6 +7,7 @@ export const action: ActionFunction = async ({ request }) => {
     const formData = await request.formData();
     const audio = formData.get("audio") as Blob;
     const pastText = (formData.get("past_text") ?? "") as string;
+    console.log(pastText)
     invariant(audio, "Audio is required");
 
     const text = await getTextFromSpeech(audio);

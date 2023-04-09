@@ -79,7 +79,7 @@ __export(root_exports, {
 var import_node2 = require("@remix-run/node"), import_react11 = require("@remix-run/react"), import_react12 = require("react");
 
 // app/index.css
-var app_default = "/build/_assets/index-ZD6QYRIY.css";
+var app_default = "/build/_assets/index-D7KV7DPK.css";
 
 // app/components/core/Buttons.tsx
 var import_react2 = require("@remix-run/react"), import_react3 = require("react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
@@ -189,7 +189,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), ICON_SIZE = 25, 
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
           "div",
           {
-            className: `top-0 z-30 flex w-full items-center justify-between gap-4 bg-[#05B2DC] px-4  py-2 lg:py-5 ${!showStreakBar && "shadow-md"}`,
+            className: `top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-200 px-4  py-2 lg:py-5 ${!showStreakBar && "shadow-md"}`,
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
                 import_gi.GiHamburgerMenu,
@@ -567,13 +567,13 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), ICON_SIZE = 25, 
   {
     onClick,
     to: `${user ? "/dashboard" : "/"} `,
-    className: "flex items-center justify-center gap-2 text-2xl font-bold text-slate-800",
+    className: "flex h-14 items-center justify-center gap-2 text-2xl font-bold text-slate-800",
     children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
       "img",
       {
         src: "/logo-blank.png",
         loading: "eager",
-        className: "h-14 w-auto  rounded-xl"
+        className: "h-8 w-auto  rounded-xl"
       },
       void 0,
       !1,
@@ -1561,15 +1561,15 @@ async function generateTextFromInput(pastText, newUserInput) {
   }), openai = new import_openai.OpenAIApi(configuration), messages = [
     {
       role: "system",
-      content: "Process the user message and respond. The content the user is referring to is in the next message"
+      content: "Process the user message and respond. The content the user is referring to is in the next message. They may be requesting edits to the original text."
     },
     {
       role: "user",
-      content: `past content: ${pastText}`
+      content: `Past content: ${pastText}`
     },
     {
       role: "user",
-      content: `new user input: ${newUserInput}`
+      content: `New user input: ${newUserInput}`
     }
   ];
   try {
@@ -1590,7 +1590,7 @@ async function generateTextFromInput(pastText, newUserInput) {
 var import_tiny_invariant = __toESM(require("tiny-invariant")), action3 = async ({ request }) => {
   try {
     let formData = await request.formData(), audio = formData.get("audio"), pastText = formData.get("past_text") ?? "";
-    (0, import_tiny_invariant.default)(audio, "Audio is required");
+    console.log(pastText), (0, import_tiny_invariant.default)(audio, "Audio is required");
     let text = await getTextFromSpeech(audio);
     console.log(text);
     let generatedResText = await generateTextFromInput(pastText, text);
@@ -3099,7 +3099,7 @@ function stopRecording(mediaRecorder) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "7e719e1d", entry: { module: "/build/entry.client-HBBHDJDT.js", imports: ["/build/_shared/chunk-GTNGNULT.js", "/build/_shared/chunk-AHL4TSUE.js", "/build/_shared/chunk-VIPVJV6J.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-CVJV2MQX.js", imports: ["/build/_shared/chunk-PZ7ADXAM.js", "/build/_shared/chunk-FV2K25EE.js", "/build/_shared/chunk-R4NVU2UQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/generate-text": { id: "routes/api/generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api/generate-text-Q4QB4RLZ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-TQDAPUY2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-EQOSIBHG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/tts": { id: "routes/api/tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api/tts-LJ5NLFX7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-6CMAHABH.js", imports: ["/build/_shared/chunk-7BOCROTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-23VCAICI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-WRN6NFLT.js", imports: ["/build/_shared/chunk-6PSBREPJ.js", "/build/_shared/chunk-OLUGA6YM.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-U42LZPU5.js", imports: ["/build/_shared/chunk-PNUKJQRB.js", "/build/_shared/chunk-OLUGA6YM.js", "/build/_shared/chunk-7BOCROTM.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-TRYUNQUS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-V4SGKC4T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-SHPUFIWA.js", imports: ["/build/_shared/chunk-6PSBREPJ.js", "/build/_shared/chunk-PNUKJQRB.js", "/build/_shared/chunk-OLUGA6YM.js", "/build/_shared/chunk-7BOCROTM.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-B4GQQB4O.js", imports: ["/build/_shared/chunk-65B4HZGS.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-PSOWNQ44.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-7E719E1D.js" };
+var assets_manifest_default = { version: "10c1e45a", entry: { module: "/build/entry.client-HBBHDJDT.js", imports: ["/build/_shared/chunk-GTNGNULT.js", "/build/_shared/chunk-AHL4TSUE.js", "/build/_shared/chunk-VIPVJV6J.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-MQGDRLYS.js", imports: ["/build/_shared/chunk-6AUZ4R54.js", "/build/_shared/chunk-FV2K25EE.js", "/build/_shared/chunk-R4NVU2UQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/generate-text": { id: "routes/api/generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api/generate-text-Q4QB4RLZ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-TQDAPUY2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-EQOSIBHG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/tts": { id: "routes/api/tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api/tts-LJ5NLFX7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-ZWMATY5V.js", imports: ["/build/_shared/chunk-7BOCROTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-23VCAICI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-QOLOPE46.js", imports: ["/build/_shared/chunk-6PSBREPJ.js", "/build/_shared/chunk-OLUGA6YM.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-U42LZPU5.js", imports: ["/build/_shared/chunk-PNUKJQRB.js", "/build/_shared/chunk-OLUGA6YM.js", "/build/_shared/chunk-7BOCROTM.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-TRYUNQUS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-V4SGKC4T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-SHPUFIWA.js", imports: ["/build/_shared/chunk-6PSBREPJ.js", "/build/_shared/chunk-PNUKJQRB.js", "/build/_shared/chunk-OLUGA6YM.js", "/build/_shared/chunk-7BOCROTM.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-B4GQQB4O.js", imports: ["/build/_shared/chunk-65B4HZGS.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-PSOWNQ44.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-10C1E45A.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
