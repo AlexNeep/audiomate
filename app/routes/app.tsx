@@ -8,7 +8,7 @@ import Header from "~/components/Header";
 
 const App = () => {
   const fetcher = useFetcher();
-  const [versions, setVersions] = useState<string[]>(["1", "2"]);
+  const [versions, setVersions] = useState<string[]>([]);
   const [currentVersionIndex, setCurrentVersionIndex] = useState<null | number>(
     null
   );
@@ -138,11 +138,12 @@ const App = () => {
             </button>
           </div>
         </div>
-        <div className="relative flex h-full w-full resize-none items-center justify-center pt-10 outline-none">
+        <div className="relative flex h-full w-full resize-none items-center justify-center pt-12 outline-none">
           <textarea
             className="h-full w-full resize-none px-4 py-2"
             value={currentVersion}
             contentEditable={false}
+            placeholder={`Click the record button below and say some instructions.\n\nYou will then be able to make further edits.`}
             readOnly
           />
           {isLoading && (
