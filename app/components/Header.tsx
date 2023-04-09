@@ -29,39 +29,43 @@ const Header = ({ user }: { user: UserProfile | undefined }) => {
       } mb-8`}
     >
       <div
-        className={`top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-200 px-4  py-2 lg:py-5 ${
+        className={`relative top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-200  ${
           !showStreakBar && "shadow-md"
         }`}
       >
-        <GiHamburgerMenu
-          size="25"
-          className="cursor-pointer fill-slate-800 lg:hidden"
-          onClick={() => setMenuOpen(true)}
-        />
+        <div className="px-4 py-4 lg:py-5">
+          <GiHamburgerMenu
+            size="25"
+            className="cursor-pointer fill-slate-800 lg:hidden"
+            onClick={() => setMenuOpen(true)}
+          />
 
-        <Home user={user} />
-
-        <MainMenus
-          isLoggedIn={isLoggedIn}
-          setMenuOpen={setMenuOpen}
-          showPremium={showPremium}
-        />
-      </div>
-
-      {menuOpen && (
-        <>
-          <div className="fixed top-0 z-50">
-            <BurgerMenu
-              showPremium={showPremium}
-              setMenuOpen={setMenuOpen}
-              isLoggedIn={isLoggedIn}
-              user={user}
-            />
+          <div className="absolute left-0 top-0 flex w-full items-center justify-center">
+            <Home user={user} />
           </div>
 
-          <div className="fixed top-0 z-40 h-screen w-screen bg-slate-800 bg-opacity-75" />
-        </>
-      )}
+          <MainMenus
+            isLoggedIn={isLoggedIn}
+            setMenuOpen={setMenuOpen}
+            showPremium={showPremium}
+          />
+        </div>
+
+        {menuOpen && (
+          <>
+            <div className="fixed top-0 z-50">
+              <BurgerMenu
+                showPremium={showPremium}
+                setMenuOpen={setMenuOpen}
+                isLoggedIn={isLoggedIn}
+                user={user}
+              />
+            </div>
+
+            <div className="fixed top-0 z-40 h-screen w-screen bg-slate-800 bg-opacity-75" />
+          </>
+        )}
+      </div>
     </div>
   );
 };

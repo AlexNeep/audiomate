@@ -38,10 +38,7 @@ async function transcribeAudioDirect(audio: Blob) {
   );
 
   const data = await response.json();
-  if (data.text) return data.text;
-
-  console.log(data);
-  return;
+  return data.text;
 }
 
 export async function generateTextFromInput(
@@ -69,7 +66,7 @@ export async function generateTextFromInput(
     {
       role: "system",
       content:
-        "Process the user message and respond. The content the user is referring to is in the next message. They may be requesting edits to the original text.",
+        "Process the instructions and respond. The instructions may refer to or request edits to the next message. Follow the instructions exactly.",
     },
     {
       role: "user",
@@ -77,7 +74,7 @@ export async function generateTextFromInput(
     },
     {
       role: "user",
-      content: `New user input: ${newUserInput}`,
+      content: `Instructions: ${newUserInput}`,
     },
   ];
   try {
