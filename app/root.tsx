@@ -1,4 +1,4 @@
-import { json, LoaderFunction, MetaFunction } from "@remix-run/node";
+import { json, LoaderFunction, MetaFunction } from "@vercel/remix";
 import {
   Link,
   Links,

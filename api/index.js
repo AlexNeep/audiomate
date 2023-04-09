@@ -76,7 +76,7 @@ __export(root_exports, {
   loader: () => loader,
   meta: () => meta
 });
-var import_node = require("@remix-run/node"), import_react11 = require("@remix-run/react"), import_react12 = require("react");
+var import_remix = require("@vercel/remix"), import_react11 = require("@remix-run/react"), import_react12 = require("react");
 
 // app/index.css
 var app_default = "/build/_assets/index-D7KV7DPK.css";
@@ -812,7 +812,7 @@ var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta = () => ({
 function links() {
   return [{ href: app_default, rel: "stylesheet" }];
 }
-var loader = async ({ request }) => (0, import_node.json)({ env: "development" });
+var loader = async ({ request }) => (0, import_remix.json)({ env: "development" });
 function addTrackers() {
   setupHotjar();
 }
@@ -1146,7 +1146,7 @@ var link_guest_account_exports = {};
 __export(link_guest_account_exports, {
   action: () => action
 });
-var import_node3 = require("@remix-run/node");
+var import_node2 = require("@remix-run/node");
 
 // app/utils/db.server.ts
 var import_firebase_admin2 = require("firebase-admin");
@@ -1307,7 +1307,7 @@ function sendPlunkEvent(email, event) {
 }
 
 // app/utils/session.server.ts
-var import_node2 = require("@remix-run/node");
+var import_node = require("@remix-run/node");
 
 // app/utils/user.server.ts
 var import_auth = require("firebase/auth");
@@ -1343,7 +1343,7 @@ function createSessionCookie(idToken) {
 var sessionSecret = process.env.SESSION_SECRET;
 if (!sessionSecret)
   throw new Error("SESSION_SECRET must be set!");
-var storage = (0, import_node2.createCookieSessionStorage)({
+var storage = (0, import_node.createCookieSessionStorage)({
   cookie: {
     name: "__session",
     secure: !1,
@@ -1356,7 +1356,7 @@ var storage = (0, import_node2.createCookieSessionStorage)({
 });
 async function createUserSession(idToken, redirectTo) {
   let token = await getSessionToken(idToken), session = await storage.getSession();
-  return session.set("token", token), (0, import_node2.redirect)(redirectTo, {
+  return session.set("token", token), (0, import_node.redirect)(redirectTo, {
     headers: {
       "Set-Cookie": await storage.commitSession(session)
     }
@@ -1377,12 +1377,12 @@ async function getUserSession(request) {
 var action = async ({ request }) => {
   let userToken = await getUserSession(request);
   if (!userToken)
-    return (0, import_node3.json)({}, { status: 500 });
+    return (0, import_node2.json)({}, { status: 500 });
   let email = (await request.formData()).get("email") ?? "";
   return updateUserProfile(userToken == null ? void 0 : userToken.uid, {
     email,
     messages: SUBSCRIBED_USER_MESSAGES.free
-  }), sendWelcomeEmail(email), (0, import_node3.json)({ success: !0 });
+  }), sendWelcomeEmail(email), (0, import_node2.json)({ success: !0 });
 };
 
 // app/routes/api/stripe-webhook.tsx
@@ -1390,10 +1390,10 @@ var stripe_webhook_exports = {};
 __export(stripe_webhook_exports, {
   action: () => action2
 });
-var import_node5 = require("@remix-run/node");
+var import_node4 = require("@remix-run/node");
 
 // app/utils/payment.server.ts
-var import_node4 = require("@remix-run/node");
+var import_node3 = require("@remix-run/node");
 var STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY, stripe = require("stripe")(STRIPE_SECRET_KEY), priceTiers = {
   production: {
     pro: "price_1MVt9uCcziHGfD7iZznsxpcX",
@@ -1425,9 +1425,9 @@ async function createCheckout(priceId, origin, uid) {
         metadata: { client_reference_id: uid }
       }
     });
-    return (0, import_node4.redirect)(session.url);
+    return (0, import_node3.redirect)(session.url);
   } catch (err) {
-    return console.log(err), (0, import_node4.json)({ error: "Something went wrong" });
+    return console.log(err), (0, import_node3.json)({ error: "Something went wrong" });
   }
 }
 async function retrieveSubscription(subscriptionId) {
@@ -1462,7 +1462,7 @@ var action2 = async ({ request }) => {
         endpointSecret
       );
     } catch (err) {
-      return err instanceof Error ? (console.log("\u26A0\uFE0F  Webhook signature verification failed.", err.message), (0, import_node5.json)({}, { status: 400 })) : (0, import_node5.json)({}, 500);
+      return err instanceof Error ? (console.log("\u26A0\uFE0F  Webhook signature verification failed.", err.message), (0, import_node4.json)({}, { status: 400 })) : (0, import_node4.json)({}, 500);
     }
   }
   switch (event == null ? void 0 : event.type) {
@@ -1477,7 +1477,7 @@ var action2 = async ({ request }) => {
     default:
       console.log(`Unhandled event type ${event == null ? void 0 : event.type}.`);
   }
-  return (0, import_node5.json)({});
+  return (0, import_node4.json)({});
 };
 
 // app/routes/api/generate-text.tsx
@@ -1485,7 +1485,7 @@ var generate_text_exports = {};
 __export(generate_text_exports, {
   action: () => action3
 });
-var import_node6 = require("@remix-run/node");
+var import_node5 = require("@remix-run/node");
 
 // app/models/index.ts
 var import_openai = require("openai");
@@ -1570,9 +1570,9 @@ var import_tiny_invariant = __toESM(require("tiny-invariant")), action3 = async 
     let text = await getTextFromSpeech(audio);
     console.log(text);
     let generatedResText = await generateTextFromInput(pastText, text);
-    return console.log(generatedResText), (0, import_node6.json)({ text: generatedResText });
+    return console.log(generatedResText), (0, import_node5.json)({ text: generatedResText });
   } catch (e) {
-    return console.log(e), (0, import_node6.json)({ text: "", error: e });
+    return console.log(e), (0, import_node5.json)({ text: "", error: e });
   }
 };
 
@@ -1624,16 +1624,16 @@ __export(payment_exports, {
   default: () => payment_default,
   loader: () => loader2
 });
-var import_node7 = require("@remix-run/node");
+var import_node6 = require("@remix-run/node");
 var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), loader2 = async ({ request }) => {
   let stripe2 = require("stripe")(process.env.STRIPE_SECRET_KEY), user = await getUserSession(request);
   if (!user)
-    return (0, import_node7.redirect)("/login");
+    return (0, import_node6.redirect)("/login");
   let userProfile = await getUserProfile(user.uid), portalSession = await stripe2.billingPortal.sessions.create({
     customer: userProfile == null ? void 0 : userProfile.customer_number,
     return_url: request.url
   });
-  return (0, import_node7.redirect)(portalSession.url, { status: 303 });
+  return (0, import_node6.redirect)(portalSession.url, { status: 303 });
 }, PaymentDashboard = () => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h1", { children: "Payment Dashboard" }, void 0, !1, {
   fileName: "app/routes/profile/payment.tsx",
   lineNumber: 23,
@@ -1649,13 +1649,13 @@ var tts_exports = {};
 __export(tts_exports, {
   action: () => action4
 });
-var import_node8 = require("@remix-run/node");
+var import_node7 = require("@remix-run/node");
 var action4 = async ({ request }) => {
   try {
     let audio = (await request.formData()).get("audio"), text = await getTextFromSpeech(audio);
-    return (0, import_node8.json)({ text });
+    return (0, import_node7.json)({ text });
   } catch (e) {
-    return console.log(e), (0, import_node8.json)({ error: e, text: "" });
+    return console.log(e), (0, import_node7.json)({ error: e, text: "" });
   }
 };
 
@@ -1665,7 +1665,7 @@ __export(contact_exports, {
   default: () => contact_default,
   loader: () => loader3
 });
-var import_node9 = require("@remix-run/node"), import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), loader3 = () => (0, import_node9.redirect)("https://share-eu1.hsforms.com/1e0-dQW3vTjaiLcA9jiNRVwfxmeh"), Contact = () => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h1", { className: "my-6 text-3xl font-bold", children: "Contact us" }, void 0, !1, {
+var import_node8 = require("@remix-run/node"), import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), loader3 = () => (0, import_node8.redirect)("https://share-eu1.hsforms.com/1e0-dQW3vTjaiLcA9jiNRVwfxmeh"), Contact = () => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h1", { className: "my-6 text-3xl font-bold", children: "Contact us" }, void 0, !1, {
   fileName: "app/routes/contact.tsx",
   lineNumber: 10,
   columnNumber: 7
@@ -1682,7 +1682,7 @@ __export(pricing_exports, {
   default: () => pricing_default,
   meta: () => meta3
 });
-var import_node12 = require("@remix-run/node"), import_react17 = require("@remix-run/react"), import_react18 = require("react");
+var import_node11 = require("@remix-run/node"), import_react17 = require("@remix-run/react"), import_react18 = require("react");
 
 // app/components/core/ErrorMessage.tsx
 var import_bi = require("react-icons/bi"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), ErrorMessage = ({ error }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { className: "flex items-center justify-start gap-2 rounded bg-red-200 px-4 py-2 font-semibold text-black shadow-md", children: [
@@ -1903,7 +1903,7 @@ __export(login_exports, {
   loader: () => loader4,
   meta: () => meta2
 });
-var import_node11 = require("@remix-run/node"), import_react13 = require("@remix-run/react"), import_bi3 = require("react-icons/bi"), import_hi = require("react-icons/hi"), import_auth3 = require("firebase/auth"), import_react14 = require("react"), import_react_google_button = __toESM(require("react-google-button"));
+var import_node10 = require("@remix-run/node"), import_react13 = require("@remix-run/react"), import_bi3 = require("react-icons/bi"), import_hi = require("react-icons/hi"), import_auth3 = require("firebase/auth"), import_react14 = require("react"), import_react_google_button = __toESM(require("react-google-button"));
 
 // app/components/core/Card.tsx
 var import_jsx_dev_runtime16 = require("react/jsx-dev-runtime");
@@ -1929,7 +1929,7 @@ var Card = ({
 ), Card_default = Card;
 
 // app/models/login.ts
-var import_node10 = require("@remix-run/node");
+var import_node9 = require("@remix-run/node");
 var newSignupRedirectAfterLoginPath = "/app", redirectAfterLoginPath = "/app", handleLogin = async (email, password, redirect7) => {
   let { res, error } = await signIn(email, password);
   if (error)
@@ -1940,7 +1940,7 @@ var newSignupRedirectAfterLoginPath = "/app", redirectAfterLoginPath = "/app", h
   return createUserSession(token, redirect7 || redirectAfterLoginPath);
 };
 function handleLoginError(errorCode) {
-  return errorCode === "404" ? { error: "Please create an account first" } : errorCode === "401" ? { error: "Login details are incorrect" } : (0, import_node10.json)({ error: "Something went wrong" });
+  return errorCode === "404" ? { error: "Please create an account first" } : errorCode === "401" ? { error: "Login details are incorrect" } : (0, import_node9.json)({ error: "Something went wrong" });
 }
 var handleSignUp = async (email, password, redirect7, hasSetMarketingEmails, referrer) => {
   let { user } = await signUp(
@@ -1974,7 +1974,7 @@ var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime"), meta2 = () => (
 }), action5 = async ({ request }) => {
   let formData = await request.formData(), _action = formData.get("_action");
   if (_action === "reset_password")
-    return (0, import_node11.json)({
+    return (0, import_node10.json)({
       error: "Sorry you have forgotten your password! We have not setup password resetting yet. Contact us and we will send you a reset link."
     });
   let email = formData.get("email"), uid = formData.get("uid"), token = formData.get("token"), password = formData.get("password"), redirect7 = formData.get("redirect"), referrer = formData.get("referrer"), hasSetMarketingEmails = formData.get("marketing_emails") == "true";
@@ -1995,13 +1995,13 @@ var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime"), meta2 = () => (
     redirect7,
     hasSetMarketingEmails,
     referrer
-  ) : (0, import_node11.json)({});
+  ) : (0, import_node10.json)({});
 }, loader4 = async ({ request }) => {
   let user = await getUserSession(request);
   if (user)
-    return (0, import_node11.redirect)("/scenarios");
+    return (0, import_node10.redirect)("/scenarios");
   let redirectTo = new URL(request.url).searchParams.get("redirect") ?? "";
-  return (0, import_node11.json)({ user, redirect: redirectTo });
+  return (0, import_node10.json)({ user, redirect: redirectTo });
 };
 async function createAccount({
   userCredentials,
@@ -2621,14 +2621,14 @@ var import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), meta3 = () => (
       let url = new URL(request.url), searchParams = new URLSearchParams(url.searchParams);
       searchParams.get("login") || searchParams.append("login", "true"), plan && searchParams.append("plan", plan);
       let newUrl = url.origin + url.pathname + "?" + searchParams.toString();
-      return (0, import_node12.redirect)(newUrl);
+      return (0, import_node11.redirect)(newUrl);
     }
     if (!plan)
       throw Error("Something went wrong with pricing data");
     let priceId = getPriceTierId("development", plan), origin = request.url;
     return await createCheckout(priceId, origin, userToken.uid);
   } catch (e) {
-    return e.message === "Not logged in" ? (0, import_node12.json)({ error: e == null ? void 0 : e.message }, { status: 401 }) : (0, import_node12.json)({ error: e == null ? void 0 : e.message }, { status: 500 });
+    return e.message === "Not logged in" ? (0, import_node11.json)({ error: e == null ? void 0 : e.message }, { status: 401 }) : (0, import_node11.json)({ error: e == null ? void 0 : e.message }, { status: 500 });
   }
 }, Payment = () => {
   var _a3;
@@ -2929,12 +2929,12 @@ __export(app_exports, {
   default: () => app_default2,
   loader: () => loader5
 });
-var import_node13 = require("@remix-run/node"), import_react20 = require("@remix-run/react"), import_react21 = require("react"), import_hi2 = require("react-icons/hi"), import_io5 = require("react-icons/io5");
-var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () => (0, import_node13.json)({ text: "" }), App2 = () => {
-  var _a3;
+var import_node12 = require("@remix-run/node"), import_react20 = require("@remix-run/react"), import_react21 = require("react"), import_hi2 = require("react-icons/hi"), import_io5 = require("react-icons/io5");
+var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () => (0, import_node12.json)({ text: "" }), App2 = () => {
+  var _a3, _b;
   let loaderData = (0, import_react20.useLoaderData)(), fetcher = (0, import_react20.useFetcher)(), text = ((_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text) ?? (loaderData == null ? void 0 : loaderData.text), [duration, setDuration] = (0, import_react21.useState)(0), [recording, setRecording] = (0, import_react21.useState)(!1), [timer, setTimer] = (0, import_react21.useState)(null), [mediaRecorder, setMediaRecorder] = (0, import_react21.useState)(
     null
-  ), [audioChunks, setAudioChunks] = (0, import_react21.useState)(null);
+  ), [audioChunks, setAudioChunks] = (0, import_react21.useState)(null), error = (_b = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _b.error;
   function changeRecording() {
     recording ? stopRecording(mediaRecorder) : startRecording({
       setMediaRecorder,
@@ -2962,21 +2962,21 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () =>
   }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("div", { className: "grid h-screen grid-rows-8", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(Header_default, { user: void 0 }, void 0, !1, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 74,
+      lineNumber: 75,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 73,
+      lineNumber: 74,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("section", { className: "relative row-span-6 mx-2 rounded-lg bg-white p-2 text-gray-900 shadow", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("button", { className: "absolute right-0 top-0 flex items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(import_io5.IoCopy, { size: "20" }, void 0, !1, {
         fileName: "app/routes/app.tsx",
-        lineNumber: 79,
+        lineNumber: 80,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/routes/app.tsx",
-        lineNumber: 78,
+        lineNumber: 79,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
@@ -2991,14 +2991,14 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () =>
         !1,
         {
           fileName: "app/routes/app.tsx",
-          lineNumber: 81,
+          lineNumber: 82,
           columnNumber: 9
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 77,
+      lineNumber: 78,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center", children: [
@@ -3017,7 +3017,7 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () =>
             !1,
             {
               fileName: "app/routes/app.tsx",
-              lineNumber: 99,
+              lineNumber: 100,
               columnNumber: 11
             },
             this
@@ -3027,7 +3027,7 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () =>
         !1,
         {
           fileName: "app/routes/app.tsx",
-          lineNumber: 90,
+          lineNumber: 91,
           columnNumber: 9
         },
         this
@@ -3038,17 +3038,25 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), loader5 = () =>
         " "
       ] }, void 0, !0, {
         fileName: "app/routes/app.tsx",
-        lineNumber: 107,
+        lineNumber: 108,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 89,
+      lineNumber: 90,
       columnNumber: 7
+    }, this),
+    error && /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("p", { className: "rounded bg-red-200 shadow", children: [
+      "Something went wrong ",
+      error
+    ] }, void 0, !0, {
+      fileName: "app/routes/app.tsx",
+      lineNumber: 114,
+      columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/app.tsx",
-    lineNumber: 72,
+    lineNumber: 73,
     columnNumber: 5
   }, this);
 }, app_default2 = App2;
@@ -3078,7 +3086,7 @@ function stopRecording(mediaRecorder) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "46e993bf", entry: { module: "/build/entry.client-HBBHDJDT.js", imports: ["/build/_shared/chunk-GTNGNULT.js", "/build/_shared/chunk-AHL4TSUE.js", "/build/_shared/chunk-VIPVJV6J.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-SSIQYI4L.js", imports: ["/build/_shared/chunk-VI4H5EL5.js", "/build/_shared/chunk-36OTFGTA.js", "/build/_shared/chunk-R4NVU2UQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/generate-text": { id: "routes/api/generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api/generate-text-Q4QB4RLZ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-TQDAPUY2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-EQOSIBHG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/tts": { id: "routes/api/tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api/tts-LJ5NLFX7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-65BFVYX4.js", imports: ["/build/_shared/chunk-7BOCROTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-23VCAICI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-KIP5CQXP.js", imports: ["/build/_shared/chunk-6PSBREPJ.js", "/build/_shared/chunk-OLUGA6YM.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-U42LZPU5.js", imports: ["/build/_shared/chunk-PNUKJQRB.js", "/build/_shared/chunk-OLUGA6YM.js", "/build/_shared/chunk-7BOCROTM.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-TRYUNQUS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-V4SGKC4T.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-TEDHAZQN.js", imports: ["/build/_shared/chunk-6PSBREPJ.js", "/build/_shared/chunk-PNUKJQRB.js", "/build/_shared/chunk-OLUGA6YM.js", "/build/_shared/chunk-7BOCROTM.js", "/build/_shared/chunk-65B4HZGS.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-B4GQQB4O.js", imports: ["/build/_shared/chunk-65B4HZGS.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-PSOWNQ44.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-46E993BF.js" };
+var assets_manifest_default = { version: "99c02c38", entry: { module: "/build/entry.client-EDJAMGSK.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-VNTHNYQZ.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NPNWJIYV.js", imports: ["/build/_shared/chunk-62AXUYCO.js", "/build/_shared/chunk-4MO5ETD4.js", "/build/_shared/chunk-GR2G7SHA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/generate-text": { id: "routes/api/generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api/generate-text-TXHP5IM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-425PLXEO.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-RWBDFGAQ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/tts": { id: "routes/api/tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api/tts-TGKRO7YL.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-FLTD4TH2.js", imports: ["/build/_shared/chunk-GWK4HEH4.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-7LZWHB6L.js", imports: ["/build/_shared/chunk-KLRCRQER.js", "/build/_shared/chunk-XIJEP2GG.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-5O3PJQIM.js", imports: ["/build/_shared/chunk-4TPEOSCJ.js", "/build/_shared/chunk-XIJEP2GG.js", "/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-QK24HLX7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-7ISRKUQC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-GM4UDO5J.js", imports: ["/build/_shared/chunk-KLRCRQER.js", "/build/_shared/chunk-4TPEOSCJ.js", "/build/_shared/chunk-XIJEP2GG.js", "/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-A3OYCH57.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-99C02C38.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

@@ -23,6 +23,7 @@ const App = () => {
     null
   );
   const [audioChunks, setAudioChunks] = useState<Blob[] | null>(null);
+  const error = fetcher?.data?.error;
 
   function changeRecording() {
     if (recording) {
@@ -109,6 +110,11 @@ const App = () => {
           </p>
         )}
       </section>
+      {error && (
+        <p className="rounded bg-red-200 shadow">
+          Something went wrong {error}
+        </p>
+      )}
     </div>
   );
 };
