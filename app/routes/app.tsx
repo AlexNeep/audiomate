@@ -5,7 +5,7 @@ import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { IoMdSend } from "react-icons/io";
-import { IoCopy } from "react-icons/io5";
+import { IoCopy, IoCopyOutline, IoShareOutline } from "react-icons/io5";
 import Header from "~/components/Header";
 
 const App = () => {
@@ -105,8 +105,25 @@ const App = () => {
 
       <section className="relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow">
         <div className="absolute z-10 flex h-12 w-full items-center justify-center ">
-          <button className="absolute right-0 top-0 flex h-full items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800">
-            <IoCopy size="20" />
+          <button
+            className="absolute left-0 top-0 flex h-full items-center justify-center gap-2 rounded-br-lg rounded-tl-lg bg-orange-500 px-3 py-2 text-gray-800"
+            onClick={() => {
+              if (!currentVersion) return;
+              navigator.share({ text: currentVersion });
+            }}
+          >
+            <IoShareOutline size="20" />
+          </button>
+
+          <button
+            className="absolute right-0 top-0 flex h-full items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800"
+            onClick={() => {
+              if (!currentVersion) return;
+              navigator.clipboard.writeText(currentVersion);
+              alert("Copied");
+            }}
+          >
+            <IoCopyOutline size="20" />
           </button>
 
           <div className="flex h-full w-full items-center justify-center gap-2 text-center">
@@ -173,19 +190,19 @@ const App = () => {
       {textEditMode ? (
         <section className="relative row-span-1 flex w-full items-center justify-center">
           <textarea
-            contentEditable
             value={inputText}
             onChange={(e) => setInputText(e.currentTarget.value)}
             className="m-4 h-full w-full resize-none rounded p-2 shadow outline-none"
+            onKeyDown={(e) => {
+              if (e.keyCode === 13 && !e.shiftKey) submitForm();
+            }}
+            disabled={isLoading}
           />
           <button
             type="submit"
             className="border border-transparent p-2"
             disabled={isLoading}
             onClick={() => submitForm()}
-            onKeyDown={(e) => {
-              if (e.keyCode === 13 && !e.shiftKey) submitForm();
-            }}
           >
             <IoMdSend
               size="20"

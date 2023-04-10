@@ -79,7 +79,7 @@ __export(root_exports, {
 var import_remix = require("@vercel/remix"), import_react11 = require("@remix-run/react"), import_react12 = require("react");
 
 // app/index.css
-var app_default = "/build/_assets/index-OZSSGRIX.css";
+var app_default = "/build/_assets/index-GQQJEPV6.css";
 
 // app/components/core/Buttons.tsx
 var import_react2 = require("@remix-run/react"), import_react3 = require("react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
@@ -2888,15 +2888,50 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), App2 = () => {
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("section", { className: "relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("div", { className: "absolute z-10 flex h-12 w-full items-center justify-center ", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("button", { className: "absolute right-0 top-0 flex h-full items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800", children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(import_io5.IoCopy, { size: "20" }, void 0, !1, {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 109,
-          columnNumber: 13
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 108,
-          columnNumber: 11
-        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
+          "button",
+          {
+            className: "absolute left-0 top-0 flex h-full items-center justify-center gap-2 rounded-br-lg rounded-tl-lg bg-orange-500 px-3 py-2 text-gray-800",
+            onClick: () => {
+              !currentVersion || navigator.share({ text: currentVersion });
+            },
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(import_io5.IoShareOutline, { size: "20" }, void 0, !1, {
+              fileName: "app/routes/app.tsx",
+              lineNumber: 115,
+              columnNumber: 13
+            }, this)
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/app.tsx",
+            lineNumber: 108,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
+          "button",
+          {
+            className: "absolute right-0 top-0 flex h-full items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800",
+            onClick: () => {
+              !currentVersion || (navigator.clipboard.writeText(currentVersion), alert("Copied"));
+            },
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(import_io5.IoCopyOutline, { size: "20" }, void 0, !1, {
+              fileName: "app/routes/app.tsx",
+              lineNumber: 126,
+              columnNumber: 13
+            }, this)
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/app.tsx",
+            lineNumber: 118,
+            columnNumber: 11
+          },
+          this
+        ),
         /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("div", { className: "flex h-full w-full items-center justify-center gap-2 text-center", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
             "button",
@@ -2913,7 +2948,7 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), App2 = () => {
                 !1,
                 {
                   fileName: "app/routes/app.tsx",
-                  lineNumber: 123,
+                  lineNumber: 140,
                   columnNumber: 15
                 },
                 this
@@ -2923,14 +2958,14 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), App2 = () => {
             !1,
             {
               fileName: "app/routes/app.tsx",
-              lineNumber: 113,
+              lineNumber: 130,
               columnNumber: 13
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("p", { className: "w-32 font-semibold", children: typeof currentVersionIndex == "number" ? `Version ${currentVersionIndex + 1}` : "Latest version" }, void 0, !1, {
             fileName: "app/routes/app.tsx",
-            lineNumber: 130,
+            lineNumber: 147,
             columnNumber: 13
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
@@ -2948,7 +2983,7 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), App2 = () => {
                 !1,
                 {
                   fileName: "app/routes/app.tsx",
-                  lineNumber: 144,
+                  lineNumber: 161,
                   columnNumber: 15
                 },
                 this
@@ -2958,14 +2993,14 @@ var import_jsx_dev_runtime22 = require("react/jsx-dev-runtime"), App2 = () => {
             !1,
             {
               fileName: "app/routes/app.tsx",
-              lineNumber: 135,
+              lineNumber: 152,
               columnNumber: 13
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/app.tsx",
-          lineNumber: 112,
+          lineNumber: 129,
           columnNumber: 11
         }, this)
       ] }, void 0, !0, {
@@ -2989,7 +3024,7 @@ You will then be able to make further edits.`,
           !1,
           {
             fileName: "app/routes/app.tsx",
-            lineNumber: 154,
+            lineNumber: 171,
             columnNumber: 11
           },
           this
@@ -2997,7 +3032,7 @@ You will then be able to make further edits.`,
         isLoading && /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("p", { className: "absolute top-1/2 flex -translate-y-1/2 transform flex-col items-center justify-center gap-4", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("span", { children: "Loading" }, void 0, !1, {
             fileName: "app/routes/app.tsx",
-            lineNumber: 163,
+            lineNumber: 180,
             columnNumber: 15
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
@@ -3010,19 +3045,19 @@ You will then be able to make further edits.`,
             !1,
             {
               fileName: "app/routes/app.tsx",
-              lineNumber: 164,
+              lineNumber: 181,
               columnNumber: 15
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/app.tsx",
-          lineNumber: 162,
+          lineNumber: 179,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/app.tsx",
-        lineNumber: 153,
+        lineNumber: 170,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
@@ -3034,16 +3069,19 @@ You will then be able to make further edits.`,
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
         "textarea",
         {
-          contentEditable: !0,
           value: inputText,
           onChange: (e) => setInputText(e.currentTarget.value),
-          className: "m-4 h-full w-full resize-none rounded p-2 shadow outline-none"
+          className: "m-4 h-full w-full resize-none rounded p-2 shadow outline-none",
+          onKeyDown: (e) => {
+            e.keyCode === 13 && !e.shiftKey && submitForm();
+          },
+          disabled: isLoading
         },
         void 0,
         !1,
         {
           fileName: "app/routes/app.tsx",
-          lineNumber: 175,
+          lineNumber: 192,
           columnNumber: 11
         },
         this
@@ -3055,9 +3093,6 @@ You will then be able to make further edits.`,
           className: "border border-transparent p-2",
           disabled: isLoading,
           onClick: () => submitForm(),
-          onKeyDown: (e) => {
-            e.keyCode === 13 && !e.shiftKey && submitForm();
-          },
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
             import_io4.IoMdSend,
             {
@@ -3068,7 +3103,7 @@ You will then be able to make further edits.`,
             !1,
             {
               fileName: "app/routes/app.tsx",
-              lineNumber: 190,
+              lineNumber: 207,
               columnNumber: 13
             },
             this
@@ -3078,14 +3113,14 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/app.tsx",
-          lineNumber: 181,
+          lineNumber: 201,
           columnNumber: 11
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 174,
+      lineNumber: 191,
       columnNumber: 9
     }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
@@ -3103,7 +3138,7 @@ You will then be able to make further edits.`,
             !1,
             {
               fileName: "app/routes/app.tsx",
-              lineNumber: 209,
+              lineNumber: 226,
               columnNumber: 13
             },
             this
@@ -3113,7 +3148,7 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/app.tsx",
-          lineNumber: 200,
+          lineNumber: 217,
           columnNumber: 11
         },
         this
@@ -3124,7 +3159,7 @@ You will then be able to make further edits.`,
         " "
       ] }, void 0, !0, {
         fileName: "app/routes/app.tsx",
-        lineNumber: 217,
+        lineNumber: 234,
         columnNumber: 13
       }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(
         "button",
@@ -3133,7 +3168,7 @@ You will then be able to make further edits.`,
           className: "absolute right-10 top-1/2 -translate-y-1/2 transform  rounded-xl bg-gray-200  p-3 text-gray-800 shadow ",
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(import_bi4.BiEdit, { size: "20", className: "shrink-0" }, void 0, !1, {
             fileName: "app/routes/app.tsx",
-            lineNumber: 225,
+            lineNumber: 242,
             columnNumber: 15
           }, this)
         },
@@ -3141,19 +3176,19 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/app.tsx",
-          lineNumber: 221,
+          lineNumber: 238,
           columnNumber: 13
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 199,
+      lineNumber: 216,
       columnNumber: 9
     }, this),
     error && /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("p", { className: "rounded bg-red-200 px-2 py-1 text-center font-semibold shadow", children: error }, void 0, !1, {
       fileName: "app/routes/app.tsx",
-      lineNumber: 231,
+      lineNumber: 248,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
@@ -3188,7 +3223,7 @@ function stopRecording(mediaRecorder) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "a310c706", entry: { module: "/build/entry.client-EDJAMGSK.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-VNTHNYQZ.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-VW727737.js", imports: ["/build/_shared/chunk-ZA2EH22E.js", "/build/_shared/chunk-QX3IQUE6.js", "/build/_shared/chunk-GR2G7SHA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/generate-text": { id: "routes/api/generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api/generate-text-TXHP5IM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-425PLXEO.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-RWBDFGAQ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/tts": { id: "routes/api/tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api/tts-TGKRO7YL.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-77EAHUQV.js", imports: ["/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-UYXFX4VJ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-UL6W5AFK.js", imports: ["/build/_shared/chunk-2AAQGYC7.js", "/build/_shared/chunk-UYXFX4VJ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-DZNP3JU3.js", imports: ["/build/_shared/chunk-NQHSKJRY.js", "/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-UYXFX4VJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-QK24HLX7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-7ISRKUQC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-QHHBTN2U.js", imports: ["/build/_shared/chunk-2AAQGYC7.js", "/build/_shared/chunk-NQHSKJRY.js", "/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-UYXFX4VJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-A3OYCH57.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-A310C706.js" };
+var assets_manifest_default = { version: "1bc9a3da", entry: { module: "/build/entry.client-EDJAMGSK.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-VNTHNYQZ.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ZMVD72KL.js", imports: ["/build/_shared/chunk-ZA2EH22E.js", "/build/_shared/chunk-QX3IQUE6.js", "/build/_shared/chunk-GR2G7SHA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/api/generate-text": { id: "routes/api/generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api/generate-text-TXHP5IM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/login/link-guest-account": { id: "routes/api/login/link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api/login/link-guest-account-425PLXEO.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/stripe-webhook": { id: "routes/api/stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api/stripe-webhook-RWBDFGAQ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/tts": { id: "routes/api/tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api/tts-TGKRO7YL.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-333B4AN3.js", imports: ["/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-UYXFX4VJ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-UL6W5AFK.js", imports: ["/build/_shared/chunk-2AAQGYC7.js", "/build/_shared/chunk-UYXFX4VJ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-DZNP3JU3.js", imports: ["/build/_shared/chunk-NQHSKJRY.js", "/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-UYXFX4VJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/failure": { id: "routes/payment/failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/failure-QK24HLX7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment/success": { id: "routes/payment/success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment/success-7ISRKUQC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-QHHBTN2U.js", imports: ["/build/_shared/chunk-2AAQGYC7.js", "/build/_shared/chunk-NQHSKJRY.js", "/build/_shared/chunk-GWK4HEH4.js", "/build/_shared/chunk-UYXFX4VJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile/payment": { id: "routes/profile/payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile/payment-A3OYCH57.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-1BC9A3DA.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
