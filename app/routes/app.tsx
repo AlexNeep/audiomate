@@ -188,7 +188,15 @@ const App = () => {
       </section>
 
       {textEditMode ? (
-        <section className="relative row-span-1 flex w-full items-center justify-center">
+        <section className="relative row-span-1 flex w-full items-center justify-center px-2">
+          <div className="rounded bg-gray-200 p-2 shadow">
+            <HiOutlineMicrophone
+              size="25"
+              onClick={() => setTextEditMode(false)}
+              className="text-gray-900"
+            />
+          </div>
+
           <textarea
             value={inputText}
             onChange={(e) => setInputText(e.currentTarget.value)}
