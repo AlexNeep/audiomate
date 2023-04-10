@@ -151,8 +151,8 @@ const Index = () => {
     <div>
       <Header user={undefined} />
 
-      <div className="m-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
-        <section className="mx-4 flex max-w-lg flex-col gap-8">
+      <div className="mx-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
+        <section className="mx-auto flex max-w-lg flex-col gap-8">
           <h1 className="text-center text-3xl font-bold text-orange-500">
             Say it, Edit it, Perfect it
           </h1>
@@ -166,7 +166,7 @@ const Index = () => {
         </section>
 
         <img
-          className="mx-auto w-1/2 rounded-xl shadow-inner"
+          className="mx-auto w-2/3 rounded-xl shadow-inner"
           src="https://storage.cloud.google.com/audiomate-public/demo.png"
         />
         {/* <Hero trial={trial} />

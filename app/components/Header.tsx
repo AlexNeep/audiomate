@@ -29,18 +29,18 @@ const Header = ({ user }: { user: UserProfile | undefined }) => {
       } mb-8`}
     >
       <div
-        className={`relative top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-200  ${
+        className={`relative top-0 z-30 flex w-full items-center gap-4 bg-orange-200 p-4 lg:justify-between lg:px-10  ${
           !showStreakBar && "shadow-md"
         }`}
       >
-        <div className="px-4 py-4 lg:py-5">
+        <>
           <GiHamburgerMenu
             size="25"
             className="cursor-pointer fill-slate-800 lg:hidden"
             onClick={() => setMenuOpen(true)}
           />
 
-          <div className="absolute left-0 top-0 flex w-full items-center justify-center">
+          <div className="absolute left-0 top-0 flex w-full items-center justify-center lg:relative lg:w-fit">
             <Home user={user} />
           </div>
 
@@ -49,7 +49,7 @@ const Header = ({ user }: { user: UserProfile | undefined }) => {
             setMenuOpen={setMenuOpen}
             showPremium={showPremium}
           />
-        </div>
+        </>
 
         {menuOpen && (
           <>
@@ -80,28 +80,18 @@ const MainMenus = ({
   showPremium: boolean;
 }) => {
   return (
-    <div className="flex  items-center gap-3">
+    <div className="flex items-center gap-3">
       {isLoggedIn ? (
         <>
           {
             <div className="flex items-center gap-3">
-              <div className="hidden items-center gap-3 lg:flex">
-                <HeaderLink to="scenarios" text="Scenarios" />
-                <HeaderLink to="profile/vocabulary" text="Vocabulary" />
-              </div>
-
-              {showPremium ? (
-                <PremiumLink fullWidth />
-              ) : (
-                <ScenariosLinkNavbar />
-              )}
+              <Button>New chat</Button>
             </div>
           }
         </>
       ) : (
         <>
           <div className="hidden items-center gap-4 lg:flex">
-            <HeaderLink to="/#features" text="Features" />
             <HeaderLink to="pricing" text="Pricing" />
             <HeaderLink to="login" text="Login" />
           </div>
@@ -307,7 +297,7 @@ const HeaderLink = ({ to, text }: { to: string; text: string }) => {
   return (
     <Link
       to={to}
-      className="rounded-md px-2 py-1 text-lg font-semibold text-blue-800 transition-all duration-200 ease-in-out hover:bg-blue-800 hover:bg-opacity-10"
+      className="z-10 cursor-pointer rounded-md px-2 py-1 text-lg font-semibold text-gray-800 transition-all duration-200 ease-in-out hover:bg-gray-600 hover:bg-opacity-10"
     >
       {text}
     </Link>
