@@ -1,14 +1,28 @@
-import { useFetcher } from "@remix-run/react";
+import { json, LoaderFunction } from "@remix-run/node";
+import { useFetcher, useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { IoMdSend } from "react-icons/io";
-import { IoCopy, IoCopyOutline, IoShareOutline } from "react-icons/io5";
+import { IoCopyOutline, IoShareOutline } from "react-icons/io5";
 import Header from "~/components/Header";
+import { getUserProfile } from "~/utils/db.server";
+import { getUserSession } from "~/utils/session.server";
+import { UserProfile } from "~/utils/types";
+
+type LoaderData = { user: UserProfile | null | undefined };
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const userToken = await getUserSession(request);
+  const user = userToken ? await getUserProfile(userToken.uid) : undefined;
+
+  return json<LoaderData>({ user });
+};
 
 const App = () => {
+  const loaderData = useLoaderData<LoaderData>() as LoaderData;
   const fetcher = useFetcher();
   const [versions, setVersions] = useState<string[]>([]);
   const [currentVersionIndex, setCurrentVersionIndex] = useState<null | number>(
@@ -25,6 +39,10 @@ const App = () => {
       setCurrentVersionIndex(null);
     }
   }, [text]);
+
+  useEffect(() => {
+    if (!loaderData.user) alert("Not logged in");
+  }, []);
 
   const error =
     fetcher?.data?.error &&
