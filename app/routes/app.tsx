@@ -126,46 +126,48 @@ const App = () => {
             <IoCopyOutline size="20" />
           </button>
 
-          <div className="flex h-full w-full items-center justify-center gap-2 text-center">
-            <button
-              disabled={isLeftArrowDisabled}
-              onClick={() =>
-                setCurrentVersionIndex((curr) => {
-                  console.log(curr, versions);
-                  if (curr) return Math.max(curr - 1, 0);
-                  return Math.max(versions.length - 2, 0);
-                })
-              }
-            >
-              <BsArrowLeftShort
-                size="35"
-                className={`shrink-0 rounded-lg bg-gray-200 p-1 ${
-                  isLeftArrowDisabled ? "text-gray-400" : "text-gray-700"
-                }`}
-              />
-            </button>
-            <p className="w-32 font-semibold">
-              {typeof currentVersionIndex === "number"
-                ? `Version ${currentVersionIndex + 1}`
-                : "Latest version"}
-            </p>
-            <button
-              disabled={isRightArrowDisabled}
-              onClick={() =>
-                setCurrentVersionIndex((curr) => {
-                  if (curr) return Math.min(curr + 1, versions.length - 1);
-                  return 1;
-                })
-              }
-            >
-              <BsArrowRightShort
-                size="35"
-                className={`shrink-0  rounded-lg bg-gray-200 p-1 ${
-                  isRightArrowDisabled ? "text-gray-400" : "text-gray-700"
-                }`}
-              />
-            </button>
-          </div>
+          {versions.length > 1 && (
+            <div className="flex h-full w-full items-center justify-center gap-2 text-center">
+              <button
+                disabled={isLeftArrowDisabled}
+                onClick={() =>
+                  setCurrentVersionIndex((curr) => {
+                    console.log(curr, versions);
+                    if (curr) return Math.max(curr - 1, 0);
+                    return Math.max(versions.length - 2, 0);
+                  })
+                }
+              >
+                <BsArrowLeftShort
+                  size="35"
+                  className={`shrink-0 rounded-lg bg-gray-200 p-1 ${
+                    isLeftArrowDisabled ? "text-gray-400" : "text-gray-700"
+                  }`}
+                />
+              </button>
+              <p className="w-32 font-semibold">
+                {typeof currentVersionIndex === "number"
+                  ? `Version ${currentVersionIndex + 1}`
+                  : "Latest version"}
+              </p>
+              <button
+                disabled={isRightArrowDisabled}
+                onClick={() =>
+                  setCurrentVersionIndex((curr) => {
+                    if (curr) return Math.min(curr + 1, versions.length - 1);
+                    return 1;
+                  })
+                }
+              >
+                <BsArrowRightShort
+                  size="35"
+                  className={`shrink-0  rounded-lg bg-gray-200 p-1 ${
+                    isRightArrowDisabled ? "text-gray-400" : "text-gray-700"
+                  }`}
+                />
+              </button>
+            </div>
+          )}
         </div>
         <div className="relative flex h-full w-full resize-none items-center justify-center pt-12 outline-none">
           <textarea
