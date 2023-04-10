@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "@remix-run/react";
 import Button from "~/components/core/Buttons";
 import Header from "~/components/Header";
@@ -147,28 +148,53 @@ export const config = {
 };
 
 const Index = () => {
+  const [optionIndex, setOptionIndex] = useState(0);
+  const options = [
+    "text",
+    // "emails",
+    //   // "messages",
+    //   "texts",
+    //   "notes",
+    //   // "social media posts",
+  ];
+
+  // setTimeout(() => {
+  //   setOptionIndex((currIndex) =>
+  //     currIndex + 1 >= options.length ? 0 : currIndex + 1
+  //   );
+  // }, 2000);
+
   return (
     <div>
       <Header user={undefined} />
 
       <div className="mx-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
-        <section className="mx-auto flex max-w-lg flex-col gap-8">
-          <h1 className="text-center text-3xl font-bold text-orange-500">
-            Say it, Edit it, Perfect it
-          </h1>
-          <h2 className="text-center text-xl font-semibold text-slate-800">
-            Effortlessly create and edit text on the move in seconds
-          </h2>
+        <section className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-8 px-4 lg:flex-row">
+          <div className="flex grow flex-col gap-4 lg:gap-12">
+            <h1 className="shrink-0 text-center text-3xl font-bold text-orange-500">
+              Say it, Edit it, Perfect it
+            </h1>
+            <h2 className="text-center text-xl font-semibold text-slate-800">
+              Effortlessly create and edit{" "}
+              <span
+              //className="w-20 underline decoration-orange-500 underline-offset-2"
+              >
+                {options[optionIndex]}
+              </span>{" "}
+              using just your voice in seconds
+            </h2>
 
-          <Link to="/app" className="mx-auto w-fit text-lg">
-            <Button>Join the waitlist</Button>
-          </Link>
+            <Link to="/app" className="mx-auto w-fit text-lg">
+              <Button>Start now for £4.99</Button>
+            </Link>
+          </div>
+
+          <img
+            className="mx-auto block rounded-xl shadow-inner lg:w-1/2"
+            src="https://storage.cloud.google.com/audiomate-public/demo.png"
+          />
         </section>
 
-        <img
-          className="mx-auto w-2/3 rounded-xl shadow-inner"
-          src="https://storage.cloud.google.com/audiomate-public/demo.png"
-        />
         {/* <Hero trial={trial} />
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">

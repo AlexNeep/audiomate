@@ -1,6 +1,5 @@
 import { useMatches } from "@remix-run/react";
 import { useEffect } from "react";
-import { ProfileLoaderData } from "~/routes/profile";
 import { RootLoaderData } from "~/root";
 
 export function useOutsideAlerter(ref: any, onOutsideClick: Function) {
@@ -25,13 +24,4 @@ export function useRootData() {
   if (!rootMatch) return null;
 
   return rootMatch.data as RootLoaderData;
-}
-
-export function useProfileLoaderData() {
-  const matches = useMatches();
-  const profileMatch = matches.find((root) => root.id === "routes/profile");
-
-  if (!profileMatch) return null;
-
-  return profileMatch.data as ProfileLoaderData;
 }

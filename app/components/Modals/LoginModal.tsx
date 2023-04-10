@@ -12,7 +12,6 @@ import { IoMdClose } from "react-icons/io";
 import { createAccount } from "~/routes/login";
 
 import { clientAuth } from "~/services/firebase";
-import { useRootData } from "~/utils/hooks";
 import { SUBSCRIBED_USER_MESSAGES } from "~/utils/payment";
 import { UserProfile } from "~/utils/types";
 import ErrorMessage from "../core/ErrorMessage";
@@ -23,15 +22,16 @@ const LoginModal = ({
   onClose,
   redirect,
   variant = "default",
+  user,
 }: {
   open: boolean;
   onClose: (open: boolean) => void;
   variant?: "default" | "pricing";
   redirect?: string;
+  user: UserProfile | undefined;
 }) => {
   const fetcher = useFetcher();
   const [error, setError] = useState("");
-  const user = useRootData()?.user;
   const [referrer, setReferrer] = useState("");
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const LoginModal = ({
     <Dialog.Root open={open} onOpenChange={onClose}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-slate-500 opacity-30" />
-        <Dialog.Content className="fixed top-[50%] left-[50%] flex w-[90vw] max-w-xl translate-x-[-50%] translate-y-[-50%] flex-col gap-8 rounded-lg bg-white py-10 px-6">
+        <Dialog.Content className="fixed left-[50%] top-[50%] flex w-[90vw] max-w-xl translate-x-[-50%] translate-y-[-50%] flex-col gap-8 rounded-lg bg-white px-6 py-10">
           {variant === "default" && (
             <DefaultContent
               handleGoogleLogin={handleGoogleLogin}
@@ -107,7 +107,7 @@ const LoginModal = ({
               user={user}
             />
           )}
-          <Dialog.Close asChild className="absolute top-2 right-2 ">
+          <Dialog.Close asChild className="absolute right-2 top-2 ">
             <button aria-label="Close">
               <IoMdClose className="fill-slate-400" size="30" />
             </button>

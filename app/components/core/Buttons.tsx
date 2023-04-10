@@ -1,4 +1,4 @@
-import { useTransition } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react";
 import { useState } from "react";
 
 export enum ButtonPaddingOptions {
@@ -39,9 +39,9 @@ const Button = ({
       ? "background-animate-slow bg-gradient-to-r from-green-500 via-blue-500 to-purple-400 text-white shadow-md"
       : variant === "none"
       ? ""
-      : "bg-orange-500 text-stone-200 disabled:bg-orange-200 shadow-md";
+      : "bg-orange-500 text-stone-800 disabled:bg-orange-200 shadow-md";
 
-  const transition = useTransition();
+  const transition = useNavigation();
 
   const { state } = transition;
   const [clicked, setCliced] = useState(false);

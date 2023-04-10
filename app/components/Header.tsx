@@ -1,6 +1,5 @@
 import { Link, useLocation } from "@remix-run/react";
 import { useRef, useState } from "react";
-import { BsBarChartFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { MdPersonOutline } from "react-icons/md";
@@ -29,14 +28,14 @@ const Header = ({ user }: { user: UserProfile | undefined }) => {
       } mb-8`}
     >
       <div
-        className={`relative top-0 z-30 flex w-full items-center gap-4 bg-orange-200 p-4 lg:justify-between lg:px-10  ${
+        className={`relative top-0 z-30 flex w-full items-center gap-4 bg-orange-200 py-4 lg:justify-between lg:px-10  ${
           !showStreakBar && "shadow-md"
         }`}
       >
         <>
           <GiHamburgerMenu
             size="25"
-            className="cursor-pointer fill-slate-800 lg:hidden"
+            className="z-10 ml-4 cursor-pointer fill-slate-800 lg:hidden"
             onClick={() => setMenuOpen(true)}
           />
 
@@ -92,8 +91,8 @@ const MainMenus = ({
       ) : (
         <>
           <div className="hidden items-center gap-4 lg:flex">
-            <HeaderLink to="pricing" text="Pricing" />
-            <HeaderLink to="login" text="Login" />
+            <HeaderLink to="/pricing" text="Pricing" />
+            <HeaderLink to="/login" text="Login" />
           </div>
         </>
       )}
@@ -171,47 +170,6 @@ type LinkProps = {
 
 const ICON_GAP = "gap-1";
 
-const ScenariosLinkNavbar = ({ setMenuOpen = () => {} }: LinkProps) => {
-  return (
-    <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
-      <Button>
-        <div className={`flex items-center justify-center ${ICON_GAP}`}>
-          Dashboard
-        </div>
-      </Button>
-    </Link>
-  );
-};
-
-const ScenariosLink = ({ setMenuOpen = () => {} }: LinkProps) => {
-  return (
-    <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
-      <Button>
-        <div
-          className={`mx-auto flex w-2/3 items-center justify-between ${ICON_GAP}`}
-        >
-          Dashboard
-        </div>
-      </Button>
-    </Link>
-  );
-};
-
-const VocabularyLink = ({ setMenuOpen = () => {} }: LinkProps) => {
-  return (
-    <Link to="/profile/vocabulary" onClick={() => setMenuOpen(false)}>
-      <Button>
-        <div
-          className={`mx-auto flex w-2/3 items-center justify-between ${ICON_GAP}`}
-        >
-          Vocabulary
-          <BsBarChartFill size={ICON_SIZE} />
-        </div>
-      </Button>
-    </Link>
-  );
-};
-
 const Home = ({
   onClick,
   user,
@@ -224,7 +182,7 @@ const Home = ({
   return (
     <Link
       onClick={onClick}
-      to={`${user ? "/dashboard" : "/"} `}
+      to="/"
       className="flex h-14 items-center justify-center gap-2 text-2xl font-bold text-slate-800"
     >
       <img
@@ -276,7 +234,7 @@ const GetStartedLink = ({
   return (
     <Link
       key="header"
-      to={trial ? "/pricing?trial=true" : "/dashboard"}
+      to={trial ? "/pricing?trial=true" : "/pricing"}
       onClick={() => setMenuOpen(false)}
       className="transition-all duration-200 ease-in-out hover:scale-105"
     >

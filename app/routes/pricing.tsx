@@ -10,6 +10,7 @@ import {
   Link,
   useActionData,
   useFetcher,
+  useLoaderData,
   useLocation,
 } from "@remix-run/react";
 import { useEffect, useState } from "react";
@@ -19,10 +20,12 @@ import ErrorMessage from "~/components/core/ErrorMessage";
 import MainFeatureBulletPoints from "~/components/landing-page/MainFeaturesBulletPoint";
 import BulletPoint from "~/components/landing-page/SubBulletPoint";
 import LoginModal from "~/components/Modals/LoginModal";
+import { getUserProfile } from "~/utils/db.server";
 import { useRootData } from "~/utils/hooks";
 import { freePlan, Plan, plans } from "~/utils/payment";
 import { createCheckout, getPriceTierId } from "~/utils/payment.server";
 import { getUserSession } from "~/utils/session.server";
+import { UserProfile } from "~/utils/types";
 
 export const meta: MetaFunction = () => {
   return {
@@ -61,14 +64,27 @@ export const action: ActionFunction = async ({ request }) => {
   }
 };
 
+type LoaderData = {
+  user: UserProfile | undefined;
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const userToken = await getUserSession(request);
+  const user = userToken ? await getUserProfile(userToken.uid) : undefined;
+
+  return json<LoaderData>({
+    user: user || undefined,
+  });
+};
+
 const Payment = () => {
+  const { user } = useLoaderData<LoaderData>() as LoaderData;
   const actionData = useActionData();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const trial = query.get("trial");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const fetcher = useFetcher();
-  const user = useRootData()?.user;
 
   useEffect(() => {
     const login = query.get("login");
@@ -147,6 +163,7 @@ const Payment = () => {
           open={showLoginModal}
           onClose={() => setShowLoginModal(false)}
           redirect={location.pathname + location.search}
+          user={user}
         />
       )}
     </div>

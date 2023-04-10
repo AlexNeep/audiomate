@@ -5,14 +5,6 @@ import { UserProfile } from "./types";
 
 const usersRef = db.collection("users");
 
-export async function getUserTokens(uid: string) {
-  const userProfile = await getUserProfile(uid);
-
-  if (!userProfile) return null;
-
-  return userProfile.tokens;
-}
-
 export async function getAllUsers() {
   const snapshot = await usersRef.get();
   const users: any[] = [];
@@ -80,17 +72,8 @@ export async function updateUserProfile(
   uid: string,
   newUserProfileData: {
     email?: string;
-    tokens?: number;
-    messages?: number;
     customer_number?: string;
     marketing_emails?: boolean;
-    last_login?: Date;
-    gems?: number | firestore.FieldValue;
-    streak?: number;
-    completed_scenarios?: string[];
-    streak_last_updated?: Date;
-    completed_lessons?: UserProfile["completed_lessons"];
-    in_progress_lessons?: UserProfile["in_progress_lessons"];
   }
 ) {
   usersRef.doc(uid).set(newUserProfileData, { merge: true });

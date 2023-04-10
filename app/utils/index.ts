@@ -1,4 +1,4 @@
-import { DynamicScenario, Mode, UserProfile } from "./types";
+import { UserProfile } from "./types";
 
 export const getRandomIndexOfArray = (array: any[]): number =>
   Math.max(Math.round(Math.random() * array.length) - 1, 0);
@@ -32,19 +32,6 @@ export function isGuest(user?: UserProfile | null) {
 
 export function isBetaTester(user?: UserProfile | null) {
   return Boolean(user && user.beta_tester);
-}
-
-export function hasGuidedScenario(scenario: DynamicScenario) {
-  return Boolean(scenario.description);
-}
-export function hasFreeRoamScenario(scenario: DynamicScenario) {
-  return Boolean(scenario.free_roam);
-}
-
-export function hasMode(scenario: DynamicScenario, mode: Mode) {
-  if (mode === "guided") return hasGuidedScenario(scenario);
-
-  if (mode === "free-roam") return hasFreeRoamScenario(scenario);
 }
 
 export enum GEMS_REWARDS {

@@ -14,7 +14,6 @@ export const action: ActionFunction = async ({ request }) => {
 
   updateUserProfile(userToken?.uid, {
     email: email,
-    messages: SUBSCRIBED_USER_MESSAGES.free,
   });
   sendWelcomeEmail(email);
 

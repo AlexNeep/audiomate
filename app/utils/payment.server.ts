@@ -81,7 +81,7 @@ export async function handlePaymentIntentSucceeded(
 
   const plan: Plan = Plan.pro; //fixed for now
 
-  return await updateUserProfile(uid, { tokens: SUBSCRIBED_USER_TOKENS[plan] });
+  return await updateUserProfile(uid, {});
 }
 
 export async function handleInvoicePaid(invoiceData: any) {

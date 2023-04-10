@@ -45,7 +45,7 @@ export type RootLoaderData = {
   env: "development" | "test" | "production";
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
+export const loader: LoaderFunction = async () => {
   return json({ env: process.env.NODE_ENV });
 };
 
