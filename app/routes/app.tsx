@@ -103,7 +103,7 @@ const App = () => {
         <Header user={undefined} />
       </div>
 
-      <section className="relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow">
+      <section className="relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow lg:mx-auto lg:w-full lg:max-w-xl">
         <div className="absolute z-10 flex h-12 w-full items-center justify-center ">
           <button
             className="absolute left-0 top-0 flex h-full items-center justify-center gap-2 rounded-br-lg rounded-tl-lg bg-orange-500 px-3 py-2 text-gray-800"
