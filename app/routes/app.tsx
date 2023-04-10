@@ -214,21 +214,11 @@ const App = () => {
         </section>
       ) : (
         <section className="relative row-span-1 flex w-full items-center justify-center">
-          <div
-            className={`cols-span-1 mx-auto w-fit rounded-xl p-4 shadow-lg transition-colors duration-500 ${
-              recording
-                ? duration % 2
-                  ? "bg-red-500"
-                  : "bg-red-100"
-                : "bg-orange-500"
-            }`}
-          >
-            <HiOutlineMicrophone
-              onClick={changeRecording}
-              size="40"
-              className=" shrink-0  text-gray-800"
-            />
-          </div>
+          <Microphone
+            recording={recording}
+            changeRecording={changeRecording}
+            duration={duration}
+          />
 
           {recording ? (
             <p className="absolute right-10 top-1/2 -translate-y-1/2 transform text-lg">
@@ -295,3 +285,31 @@ function stopRecording(mediaRecorder: MediaRecorder | null) {
   mediaRecorder.stop();
   mediaRecorder.stream.getAudioTracks().forEach((track) => track.stop());
 }
+
+const Microphone = ({
+  changeRecording,
+  recording,
+  duration,
+}: {
+  changeRecording: () => void;
+  recording: boolean;
+  duration: number;
+}) => {
+  return (
+    <div
+      className={`cols-span-1 mx-auto w-fit rounded-xl p-4 shadow-lg transition-colors duration-500 ${
+        recording
+          ? duration % 2
+            ? "bg-red-500"
+            : "bg-red-100"
+          : "bg-orange-500"
+      }`}
+    >
+      <HiOutlineMicrophone
+        onClick={changeRecording}
+        size="40"
+        className=" shrink-0  text-gray-800"
+      />
+    </div>
+  );
+};
