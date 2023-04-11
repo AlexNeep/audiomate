@@ -9,9 +9,7 @@ import { UserProfile } from "~/utils/types";
 import Button, { ButtonPaddingOptions } from "./core/Buttons";
 import { PremiumLink } from "./home/PremiumLink";
 
-const ICON_SIZE = 25;
-
-const Header = ({ user }: { user: UserProfile | undefined }) => {
+const Header = ({ user }: { user?: UserProfile | undefined }) => {
   const isLoggedIn = Boolean(user);
   const showPremium = !isPremium(user);
 

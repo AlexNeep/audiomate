@@ -17,11 +17,11 @@ import { useEffect, useState } from "react";
 import Button from "~/components/core/Buttons";
 
 import ErrorMessage from "~/components/core/ErrorMessage";
+import Header from "~/components/Header";
 import MainFeatureBulletPoints from "~/components/landing-page/MainFeaturesBulletPoint";
 import BulletPoint from "~/components/landing-page/SubBulletPoint";
 import LoginModal from "~/components/Modals/LoginModal";
 import { getUserProfile } from "~/utils/db.server";
-import { useRootData } from "~/utils/hooks";
 import { freePlan, Plan, plans } from "~/utils/payment";
 import { createCheckout, getPriceTierId } from "~/utils/payment.server";
 import { getUserSession } from "~/utils/session.server";
@@ -110,62 +110,66 @@ const Payment = () => {
   const plan = query.get("plan");
 
   return (
-    <div className="mb-10 ">
-      <h1 className="mb-10 text-center text-3xl font-bold text-blue-800">
-        Start becoming fluent today
-      </h1>
+    <div>
+      <Header />
 
-      {actionData?.error && <ErrorMessage error={actionData?.error} />}
+      <div className="mb-10 ">
+        <h1 className="mb-10 text-center text-3xl font-bold text-blue-800">
+          Start becoming fluent today
+        </h1>
 
-      <Form
-        method="post"
-        className="mx-auto flex flex-col items-center justify-center gap-10 text-center"
-      >
-        <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-8">
-          {!trial && (
-            <HeroPaymentSection
-              title={freePlan.title}
-              id={freePlan.id}
-              price={freePlan.price}
-              features={freePlan.features}
-              notFeatures={freePlan.not_features}
-            />
-          )}
-          {plans.map((plan) => (
-            <HeroPaymentSection
-              key={plan.id}
-              title={plan.title}
-              id={plan.id}
-              price={plan.price}
-              features={plan.features}
-              notFeatures={plan.not_features}
-              mostPopular={plan.most_popular}
-            />
-          ))}
-        </div>
+        {actionData?.error && <ErrorMessage error={actionData?.error} />}
 
-        <div className="flex flex-col gap-8">
-          <h4 className="text-xl font-bold text-blue-800">Our features</h4>
-
-          <MainFeatureBulletPoints />
-
-          <div>
-            <Button type="submit" name="plan" value={plans[0].id}>
-              Start your 7-day free trial
-            </Button>
+        <Form
+          method="post"
+          className="mx-auto flex flex-col items-center justify-center gap-10 text-center"
+        >
+          <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-8">
+            {!trial && (
+              <HeroPaymentSection
+                title={freePlan.title}
+                id={freePlan.id}
+                price={freePlan.price}
+                features={freePlan.features}
+                notFeatures={freePlan.not_features}
+              />
+            )}
+            {plans.map((plan) => (
+              <HeroPaymentSection
+                key={plan.id}
+                title={plan.title}
+                id={plan.id}
+                price={plan.price}
+                features={plan.features}
+                notFeatures={plan.not_features}
+                mostPopular={plan.most_popular}
+              />
+            ))}
           </div>
-        </div>
-      </Form>
 
-      {showLoginModal && (
-        <LoginModal
-          variant="pricing"
-          open={showLoginModal}
-          onClose={() => setShowLoginModal(false)}
-          redirect={location.pathname + location.search}
-          user={user}
-        />
-      )}
+          <div className="flex flex-col gap-8">
+            <h4 className="text-xl font-bold text-blue-800">Our features</h4>
+
+            <MainFeatureBulletPoints />
+
+            <div>
+              <Button type="submit" name="plan" value={plans[0].id}>
+                Start your 7-day free trial
+              </Button>
+            </div>
+          </div>
+        </Form>
+
+        {showLoginModal && (
+          <LoginModal
+            variant="pricing"
+            open={showLoginModal}
+            onClose={() => setShowLoginModal(false)}
+            redirect={location.pathname + location.search}
+            user={user}
+          />
+        )}
+      </div>
     </div>
   );
 };

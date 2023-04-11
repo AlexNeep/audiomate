@@ -1,5 +1,5 @@
 import { json, LoaderFunction } from "@remix-run/node";
-import { useFetcher, useLoaderData } from "@remix-run/react";
+import { useFetcher, useLoaderData, useMatches } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
@@ -9,9 +9,12 @@ import { IoMdSend } from "react-icons/io";
 import { IoCopyOutline, IoShareOutline } from "react-icons/io5";
 import Header from "~/components/Header";
 import { getUserProfile } from "~/utils/db.server";
+import { useAuth } from "~/utils/hooks";
 import { getUserSession } from "~/utils/session.server";
 
 const App = () => {
+  const auth = useAuth();
+
   const fetcher = useFetcher();
   const [versions, setVersions] = useState<string[]>([]);
   const [currentVersionIndex, setCurrentVersionIndex] = useState<null | number>(
@@ -107,7 +110,7 @@ const App = () => {
   return (
     <div className="grid h-screen grid-rows-8 gap-4 pb-4">
       <div className="w-full">
-        <Header user={undefined} />
+        <Header user={auth.user} />
       </div>
 
       <section className="relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow lg:mx-auto lg:w-full lg:max-w-xl">

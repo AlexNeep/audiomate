@@ -1,8 +1,8 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_KEY,
+  apiKey: "AIzaSyAqUOhATNBI_6MTCavtjLvCecp1enuSl7g",
   authDomain: "audiomate.firebaseapp.com",
   projectId: "audiomate",
   storageBucket: "audiomate.appspot.com",
@@ -11,7 +11,13 @@ const firebaseConfig = {
   measurementId: "G-046G6QMKSH",
 };
 
-const app = initializeApp(firebaseConfig);
+let app;
+try {
+  app = getApp();
+} catch (e) {
+  app = initializeApp(firebaseConfig);
+}
+
 const clientAuth = getAuth(app);
 
 export { clientAuth };

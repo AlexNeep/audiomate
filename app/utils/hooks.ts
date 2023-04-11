@@ -1,6 +1,7 @@
 import { useMatches } from "@remix-run/react";
 import { useEffect } from "react";
 import { RootLoaderData } from "~/root";
+import { AuthLoaderData } from "~/routes/__auth";
 
 export function useOutsideAlerter(ref: any, onOutsideClick: Function) {
   useEffect(() => {
@@ -24,4 +25,8 @@ export function useRootData() {
   if (!rootMatch) return null;
 
   return rootMatch.data as RootLoaderData;
+}
+
+export function useAuth(): AuthLoaderData {
+  return useMatches().find((match) => match.id === "routes/__auth")?.data;
 }

@@ -28,6 +28,7 @@ import ErrorMessage from "~/components/core/ErrorMessage";
 import { handleClientAuth, handleLogin, handleSignUp } from "~/models/login";
 import { clientAuth } from "~/services/firebase";
 import { getUserSession } from "~/utils/session.server";
+import Header from "~/components/Header";
 
 export const meta: MetaFunction = () => {
   return {
@@ -172,8 +173,9 @@ const Login = () => {
   const isDisabled = fetcher.state === "loading";
 
   return (
-    <div className="m-auto flex flex-col gap-6 lg:w-1/2">
-      <div className="flex flex-col gap-4">
+    <div className="m-auto flex flex-col gap-6 ">
+      <Header />
+      <div className="mx-auto flex flex-col gap-4 px-4 lg:w-1/2">
         <Card width="full">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
@@ -202,34 +204,6 @@ const Login = () => {
             )}
           </div>
         </Card>
-
-        <p className="text-center font-bold">Or</p>
-
-        <Card width="full">
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col items-center justify-center gap-4">
-              <EmailLogin
-                disabled={isDisabled}
-                showEmailLogin={showEmailLogin}
-                setShowEmailLogin={setShowEmailLogin}
-                fetcher={fetcher}
-                redirect={loaderData.redirect}
-              />
-              <Button
-                disabled={isDisabled}
-                variant="transparent"
-                onClick={signInAsGuest}
-              >
-                Continue as guest
-              </Button>
-            </div>
-          </div>
-        </Card>
-
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/languagemate2.appspot.com/o/IMG_0059.PNG?alt=media&token=b0426f00-2cc3-471c-9a25-f27ad180d043"
-          className="mx-auto mb-10 h-auto w-1/2 max-w-[300px] rounded-md shadow-md"
-        />
       </div>
     </div>
   );
