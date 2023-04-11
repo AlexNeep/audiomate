@@ -43,9 +43,8 @@ export const action: ActionFunction = async (args) => {
     if (!plan) throw Error("Something went wrong with pricing data");
 
     const priceId = getPriceTierId(process.env.NODE_ENV, plan);
-    const origin = request.url;
     const trial = false;
-    return await createCheckout(priceId, origin as string, userId, trial);
+    return await createCheckout(priceId, userId, trial);
   } catch (e: any) {
     if ((e as Error).message === "Not logged in")
       return json({ error: e?.message }, { status: 401 });

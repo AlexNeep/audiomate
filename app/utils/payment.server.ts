@@ -33,7 +33,6 @@ export function getPriceTierId(
 
 export async function createCheckout(
   priceId: string,
-  origin: string,
   uid: Uid,
   trial: boolean
 ) {
@@ -87,8 +86,8 @@ export async function handleInvoicePaid(invoiceData: any) {
   return await addPlantoUser(uid, plan, customerNumber);
 }
 
-async function addPlantoUser(uid: Uid, plan: Plan, customerNumber: string) {
-  const res = await fetch(`https://api.clerk.com/v1/users/${uid}/metadata`, {
+function addPlantoUser(uid: Uid, plan: Plan, customerNumber: string) {
+  return fetch(`https://api.clerk.com/v1/users/${uid}/metadata`, {
     method: "patch",
     headers: {
       "Content-Type": "application/json",
