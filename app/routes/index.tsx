@@ -143,10 +143,6 @@ const StartFreeButton = () => {
   );
 };
 
-export const config = {
-  runtime: "edge",
-};
-
 const Index = () => {
   const [optionIndex, setOptionIndex] = useState(0);
   const options = [
