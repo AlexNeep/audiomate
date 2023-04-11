@@ -159,10 +159,11 @@ const Index = () => {
   //     currIndex + 1 >= options.length ? 0 : currIndex + 1
   //   );
   // }, 2000);
+  console.log("here");
 
   return (
     <div>
-      <Header user={undefined} />
+      <Header user={undefinedddd} />
 
       <div className="mx-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10">
         <section className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-8 px-4 lg:flex-row">

@@ -10,19 +10,8 @@ import { IoCopyOutline, IoShareOutline } from "react-icons/io5";
 import Header from "~/components/Header";
 import { getUserProfile } from "~/utils/db.server";
 import { getUserSession } from "~/utils/session.server";
-import { UserProfile } from "~/utils/types";
-
-type LoaderData = { user: UserProfile | null | undefined };
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const userToken = await getUserSession(request);
-  const user = userToken ? await getUserProfile(userToken.uid) : undefined;
-
-  return json<LoaderData>({ user });
-};
 
 const App = () => {
-  const loaderData = useLoaderData<LoaderData>() as LoaderData;
   const fetcher = useFetcher();
   const [versions, setVersions] = useState<string[]>([]);
   const [currentVersionIndex, setCurrentVersionIndex] = useState<null | number>(
@@ -40,9 +29,9 @@ const App = () => {
     }
   }, [text]);
 
-  useEffect(() => {
-    if (!loaderData.user) alert("Not logged in");
-  }, []);
+  // useEffect(() => {
+  //   if (!loaderData.user) alert("Not logged in");
+  // }, []);
 
   const error =
     fetcher?.data?.error &&

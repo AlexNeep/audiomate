@@ -141,12 +141,12 @@ const BurgerMenu = ({
         ) : (
           <>
             <TransparentButtonLink
-              to="pricing"
+              to="/pricing"
               text="Pricing"
               onClick={closeMenu}
             />
             <TransparentButtonLink
-              to="login"
+              to="/login"
               text="Login"
               onClick={closeMenu}
             />
