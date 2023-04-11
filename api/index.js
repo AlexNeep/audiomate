@@ -1149,9 +1149,9 @@ var import_node4 = require("@remix-run/node");
 var import_node3 = require("@remix-run/node");
 var STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY, stripe = require("stripe")(STRIPE_SECRET_KEY), priceTiers = {
   production: {
-    pro: "price_1MVt9uCcziHGfD7iZznsxpcX",
-    accelerated: "price_1MVtABCcziHGfD7i1vzQAgEc",
-    ultimate: "price_1Mr2LcCcziHGfD7iUgN5ML4R"
+    pro: "price_1MviGoC9ECRjg1oUav6jNY5n",
+    accelerated: "price_1MviHLC9ECRjg1oUDjYg9ZOU",
+    ultimate: "price_1MviHgC9ECRjg1oUgi3q7fzB"
   },
   test: {
     pro: "price_1MVt91CcziHGfD7iyQmjA83R",

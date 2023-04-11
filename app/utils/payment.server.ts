@@ -9,9 +9,9 @@ const stripe = require("stripe")(STRIPE_SECRET_KEY);
 
 const priceTiers = {
   production: {
-    pro: "price_1MVt9uCcziHGfD7iZznsxpcX",
-    accelerated: "price_1MVtABCcziHGfD7i1vzQAgEc",
-    ultimate: "price_1Mr2LcCcziHGfD7iUgN5ML4R",
+    pro: "price_1MviGoC9ECRjg1oUav6jNY5n",
+    accelerated: "price_1MviHLC9ECRjg1oUDjYg9ZOU",
+    ultimate: "price_1MviHgC9ECRjg1oUgi3q7fzB",
   },
   test: {
     pro: "price_1MVt91CcziHGfD7iyQmjA83R",
