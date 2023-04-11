@@ -10,9 +10,11 @@ export const loader: LoaderFunction = async (args) => {
     return redirect("/login");
   }
 
-  // const user = await createClerkClient({
-  //   secretKey: process.env.CLERK_SECRET_KEY,
-  // }).users.getUser(userId);
+  const user = await createClerkClient({
+    secretKey: process.env.CLERK_SECRET_KEY,
+  }).users.getUser(userId);
+
+  if (!user?.privateMetadata?.plan) return redirect("/pricing");
 
   return json({});
 };

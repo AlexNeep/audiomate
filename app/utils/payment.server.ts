@@ -1,7 +1,7 @@
-import { json, redirect } from "@remix-run/node";
+import { fetch, json, redirect } from "@remix-run/node";
 import Stripe from "stripe";
 import { getUserProfileByCustomerNumber, updateUserProfile } from "./db.server";
-import { Plan, SUBSCRIBED_USER_TOKENS } from "./payment";
+import { Plan } from "./payment";
 import { Uid } from "./types";
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
@@ -14,9 +14,9 @@ const priceTiers = {
     ultimate: "price_1MviHgC9ECRjg1oUgi3q7fzB",
   },
   test: {
-    pro: "price_1MVt91CcziHGfD7iyQmjA83R",
-    accelerated: "price_1MVt9UCcziHGfD7iRCJxZG0r",
-    ultimate: "price_1Mr2MZCcziHGfD7iE2efLVPX",
+    pro: "price_1MviPgC9ECRjg1oUdTiq3h7K",
+    accelerated: "price_1MviPgC9ECRjg1oUdTiq3h7K",
+    ultimate: "price_1MviPgC9ECRjg1oUdTiq3h7K",
   },
 };
 
@@ -45,8 +45,8 @@ export async function createCheckout(
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "subscription",
       allow_promotion_codes: true,
-      success_url: `${origin}/payment/success`,
-      cancel_url: `${origin}/payment/failure`,
+      success_url: `https://audiomate.me/payment/success`,
+      cancel_url: `https://audiomate.me/payment/failure`,
       subscription_data: {
         trial_period_days: trial ? 7 : undefined,
         metadata: { client_reference_id: uid },
@@ -73,16 +73,7 @@ export async function handlePaymentIntentSucceeded(
   const customerNumber = paymentIntent.customer;
   if (!customerNumber) throw Error("Customer account not created");
 
-  const customer = await getUserProfileByCustomerNumber(
-    customerNumber as string
-  );
-  const uid = customer.uid;
-
-  if (!uid) throw Error("Could not add tokens to user account");
-
-  const plan: Plan = Plan.pro; //fixed for now
-
-  return await updateUserProfile(uid, {});
+  return;
 }
 
 export async function handleInvoicePaid(invoiceData: any) {
@@ -91,5 +82,23 @@ export async function handleInvoicePaid(invoiceData: any) {
   const customerNumber = invoiceData.customer;
   const uid = subscription.metadata.client_reference_id;
 
-  return await updateUserProfile(uid, { customer_number: customerNumber });
+  const plan: Plan = Plan.pro; //fixed for now
+
+  return await addPlantoUser(uid, plan, customerNumber);
+}
+
+async function addPlantoUser(uid: Uid, plan: Plan, customerNumber: string) {
+  const res = await fetch(`https://api.clerk.com/v1/users/${uid}/metadata`, {
+    method: "patch",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+    },
+    body: JSON.stringify({
+      private_metadata: {
+        plan,
+        customerNumber,
+      },
+    }),
+  });
 }

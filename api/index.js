@@ -1015,12 +1015,6 @@ async function getUserProfile(uid) {
   let doc = await usersRef.doc(uid).get();
   return doc.exists ? doc.data() : null;
 }
-async function getUserProfileByCustomerNumber(customerNumber) {
-  let docs = await usersRef.limit(1).where("customer_number", "==", customerNumber).get(), doc = [];
-  return docs.forEach((currenctDoc) => {
-    doc.push(currenctDoc.data());
-  }), doc[0];
-}
 async function createNewProfile(email, uid, marketing_emails, referrer) {
   if (!await usersRef.doc(uid).set(
     {
@@ -1154,9 +1148,9 @@ var STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY, stripe = require("stripe"
     ultimate: "price_1MviHgC9ECRjg1oUgi3q7fzB"
   },
   test: {
-    pro: "price_1MVt91CcziHGfD7iyQmjA83R",
-    accelerated: "price_1MVt9UCcziHGfD7iRCJxZG0r",
-    ultimate: "price_1Mr2MZCcziHGfD7iE2efLVPX"
+    pro: "price_1MviPgC9ECRjg1oUdTiq3h7K",
+    accelerated: "price_1MviPgC9ECRjg1oUdTiq3h7K",
+    ultimate: "price_1MviPgC9ECRjg1oUdTiq3h7K"
   }
 };
 function getPriceTierId(nodeEnv, plan) {
@@ -1171,8 +1165,8 @@ async function createCheckout(priceId, origin, uid, trial) {
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "subscription",
       allow_promotion_codes: !0,
-      success_url: `${origin}/payment/success`,
-      cancel_url: `${origin}/payment/failure`,
+      success_url: "https://audiomate.me/payment/success",
+      cancel_url: "https://audiomate.me/payment/failure",
       subscription_data: {
         trial_period_days: trial ? 7 : void 0,
         metadata: { client_reference_id: uid }
@@ -1187,20 +1181,27 @@ async function retrieveSubscription(subscriptionId) {
   return await stripe.subscriptions.retrieve(subscriptionId);
 }
 async function handlePaymentIntentSucceeded(paymentIntent) {
-  let customerNumber = paymentIntent.customer;
-  if (!customerNumber)
+  if (!paymentIntent.customer)
     throw Error("Customer account not created");
-  let uid = (await getUserProfileByCustomerNumber(
-    customerNumber
-  )).uid;
-  if (!uid)
-    throw Error("Could not add tokens to user account");
-  let plan = "pro" /* pro */;
-  return await updateUserProfile(uid, {});
 }
 async function handleInvoicePaid(invoiceData) {
-  let subscription = await retrieveSubscription(invoiceData.subscription), customerNumber = invoiceData.customer, uid = subscription.metadata.client_reference_id;
-  return await updateUserProfile(uid, { customer_number: customerNumber });
+  let subscription = await retrieveSubscription(invoiceData.subscription), customerNumber = invoiceData.customer, uid = subscription.metadata.client_reference_id, plan = "pro" /* pro */;
+  return await addPlantoUser(uid, plan, customerNumber);
+}
+async function addPlantoUser(uid, plan, customerNumber) {
+  let res = await (0, import_node3.fetch)(`https://api.clerk.com/v1/users/${uid}/metadata`, {
+    method: "patch",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`
+    },
+    body: JSON.stringify({
+      private_metadata: {
+        plan,
+        customerNumber
+      }
+    })
+  });
 }
 
 // app/routes/api.stripe-webhook.tsx
@@ -1346,25 +1347,41 @@ var payment_success_exports = {};
 __export(payment_success_exports, {
   default: () => payment_success_default
 });
+var import_react13 = require("@remix-run/react");
 var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), Success = () => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h1", { children: "Payment successful" }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Header_default, {}, void 0, !1, {
     fileName: "app/routes/payment.success.tsx",
-    lineNumber: 4,
+    lineNumber: 8,
     columnNumber: 7
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { children: "Thank you! You are all ready to go and start learning!" }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "mx-auto flex max-w-lg flex-col gap-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h1", { className: "text-lg font-semibold", children: "Payment successful" }, void 0, !1, {
+      fileName: "app/routes/payment.success.tsx",
+      lineNumber: 10,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { children: "Thank you! You are all ready to go and start!" }, void 0, !1, {
+      fileName: "app/routes/payment.success.tsx",
+      lineNumber: 11,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react13.Link, { to: "/app", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Buttons_default, { children: "Start now" }, void 0, !1, {
+      fileName: "app/routes/payment.success.tsx",
+      lineNumber: 14,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/payment.success.tsx",
+      lineNumber: 13,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
     fileName: "app/routes/payment.success.tsx",
-    lineNumber: 5,
-    columnNumber: 7
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { children: "Slight apologises that this page is so bare your subscription will help me improve the site" }, void 0, !1, {
-    fileName: "app/routes/payment.success.tsx",
-    lineNumber: 6,
+    lineNumber: 9,
     columnNumber: 7
   }, this)
 ] }, void 0, !0, {
   fileName: "app/routes/payment.success.tsx",
-  lineNumber: 3,
+  lineNumber: 7,
   columnNumber: 5
 }, this), payment_success_default = Success;
 
@@ -1399,18 +1416,18 @@ var auth_app_exports = {};
 __export(auth_app_exports, {
   default: () => auth_app_default
 });
-var import_remix4 = require("@clerk/remix"), import_react13 = require("@remix-run/react"), import_react14 = require("react"), import_bi = require("react-icons/bi"), import_cg = require("react-icons/cg"), import_hi = require("react-icons/hi"), import_io3 = require("react-icons/io"), import_io5 = require("react-icons/io5"), import_md2 = require("react-icons/md");
+var import_remix4 = require("@clerk/remix"), import_react14 = require("@remix-run/react"), import_react15 = require("react"), import_bi = require("react-icons/bi"), import_cg = require("react-icons/cg"), import_hi = require("react-icons/hi"), import_io3 = require("react-icons/io"), import_io5 = require("react-icons/io5"), import_md2 = require("react-icons/md");
 var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
   var _a3, _b, _c, _d;
-  let fetcher = (0, import_react13.useFetcher)(), [versions, setVersions] = (0, import_react14.useState)([]), [currentVersionIndex, setCurrentVersionIndex] = (0, import_react14.useState)(
+  let fetcher = (0, import_react14.useFetcher)(), [versions, setVersions] = (0, import_react15.useState)([]), [currentVersionIndex, setCurrentVersionIndex] = (0, import_react15.useState)(
     null
-  ), [inputText, setInputText] = (0, import_react14.useState)(""), [textEditMode, setTextEditMode] = (0, import_react14.useState)(!1), text = (_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text, currentVersion = versions[currentVersionIndex ?? versions.length - 1], user = (0, import_remix4.useUser)();
-  console.log(user), (0, import_react14.useEffect)(() => {
+  ), [inputText, setInputText] = (0, import_react15.useState)(""), [textEditMode, setTextEditMode] = (0, import_react15.useState)(!1), text = (_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text, currentVersion = versions[currentVersionIndex ?? versions.length - 1], user = (0, import_remix4.useUser)();
+  console.log(user), (0, import_react15.useEffect)(() => {
     text && (setVersions((curr) => [...curr, text]), setCurrentVersionIndex(null));
   }, [text]);
-  let error = ((_b = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _b.error) && (typeof ((_c = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _c.error) == "string" ? (_d = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _d.error : "Something went wrong"), isLoading = fetcher.state === "submitting" || fetcher.state === "loading", [duration, setDuration] = (0, import_react14.useState)(0), [recording, setRecording] = (0, import_react14.useState)(!1), [timer, setTimer] = (0, import_react14.useState)(null), [mediaRecorder, setMediaRecorder] = (0, import_react14.useState)(
+  let error = ((_b = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _b.error) && (typeof ((_c = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _c.error) == "string" ? (_d = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _d.error : "Something went wrong"), isLoading = fetcher.state === "submitting" || fetcher.state === "loading", [duration, setDuration] = (0, import_react15.useState)(0), [recording, setRecording] = (0, import_react15.useState)(!1), [timer, setTimer] = (0, import_react15.useState)(null), [mediaRecorder, setMediaRecorder] = (0, import_react15.useState)(
     null
-  ), [audioChunks, setAudioChunks] = (0, import_react14.useState)(null);
+  ), [audioChunks, setAudioChunks] = (0, import_react15.useState)(null);
   function changeRecording() {
     recording ? stopRecording(mediaRecorder) : startRecording({
       setMediaRecorder,
@@ -1419,7 +1436,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
       setTimer
     }), setRecording(!recording);
   }
-  (0, import_react14.useEffect)(() => {
+  (0, import_react15.useEffect)(() => {
     if (audioChunks) {
       let audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
       submitForm(audioBlob), cleanUp();
@@ -1436,7 +1453,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
   function cleanUp() {
     setMediaRecorder(null), setAudioChunks(null), timer && clearInterval(timer), setTimer(null), setDuration(0);
   }
-  (0, import_react14.useEffect)(() => {
+  (0, import_react15.useEffect)(() => {
     let AudioRecorder = require("audio-recorder-polyfill");
     window.MediaRecorder = AudioRecorder;
   }, []);
@@ -1868,7 +1885,7 @@ __export(pricing_exports, {
   default: () => pricing_default,
   meta: () => meta2
 });
-var import_remix6 = require("@clerk/remix"), import_ssr2 = require("@clerk/remix/ssr.server"), import_node9 = require("@remix-run/node"), import_react17 = require("@remix-run/react"), import_react18 = require("react");
+var import_remix6 = require("@clerk/remix"), import_ssr2 = require("@clerk/remix/ssr.server"), import_node9 = require("@remix-run/node"), import_react18 = require("@remix-run/react"), import_react19 = require("react");
 
 // app/components/core/ErrorMessage.tsx
 var import_bi2 = require("react-icons/bi"), import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), ErrorMessage = ({ error }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "flex items-center justify-start gap-2 rounded bg-red-200 px-4 py-2 font-semibold text-black shadow-md", children: [
@@ -1917,16 +1934,16 @@ var import_ai = require("react-icons/ai"), import_bi3 = require("react-icons/bi"
 ), SubBulletPoint_default = BulletPoint;
 
 // app/components/Modals/LoginModal.tsx
-var import_remix5 = require("@clerk/remix"), Dialog = __toESM(require("@radix-ui/react-dialog")), import_react15 = require("@remix-run/react"), import_react16 = require("react"), import_io4 = require("react-icons/io");
+var import_remix5 = require("@clerk/remix"), Dialog = __toESM(require("@radix-ui/react-dialog")), import_react16 = require("@remix-run/react"), import_react17 = require("react"), import_io4 = require("react-icons/io");
 var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), LoginModal = ({
   open,
   onClose,
   redirect: redirect8
 }) => {
-  let fetcher = (0, import_react15.useFetcher)(), [error, setError] = (0, import_react16.useState)(""), [referrer, setReferrer] = (0, import_react16.useState)("");
-  return (0, import_react16.useEffect)(() => {
+  let fetcher = (0, import_react16.useFetcher)(), [error, setError] = (0, import_react17.useState)(""), [referrer, setReferrer] = (0, import_react17.useState)("");
+  return (0, import_react17.useEffect)(() => {
     setReferrer(document.referrer);
-  }, []), (0, import_react16.useEffect)(() => {
+  }, []), (0, import_react17.useEffect)(() => {
     var _a3;
     (_a3 = fetcher.data) != null && _a3.success && window.location.reload();
   }, [fetcher]), /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Root, { open, onOpenChange: onClose, children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Portal, { children: [
@@ -2020,8 +2037,8 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
     return e.message === "Not logged in" ? (0, import_node9.json)({ error: e == null ? void 0 : e.message }, { status: 401 }) : (0, import_node9.json)({ error: e == null ? void 0 : e.message }, { status: 500 });
   }
 }, Payment = () => {
-  let { user } = (0, import_remix6.useUser)(), actionData = (0, import_react17.useActionData)(), location = (0, import_react17.useLocation)(), query = new URLSearchParams(location.search), [showLoginModal, setShowLoginModal] = (0, import_react18.useState)(!1), fetcher = (0, import_react17.useFetcher)();
-  (0, import_react18.useEffect)(() => {
+  let { user } = (0, import_remix6.useUser)(), actionData = (0, import_react18.useActionData)(), location = (0, import_react18.useLocation)(), query = new URLSearchParams(location.search), [showLoginModal, setShowLoginModal] = (0, import_react19.useState)(!1), fetcher = (0, import_react18.useFetcher)();
+  (0, import_react19.useEffect)(() => {
     let login = query.get("login"), removeParams = () => {
       let newUrl = window.location.pathname, params = new URLSearchParams(window.location.search);
       params.delete("login"), params.delete("plan"), params.toString() && (newUrl += "?" + params.toString()), window.history.pushState({ path: newUrl }, "", newUrl);
@@ -2036,22 +2053,22 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
   return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Header_default, {}, void 0, !1, {
       fileName: "app/routes/pricing.tsx",
-      lineNumber: 105,
+      lineNumber: 90,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "mb-10 ", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("h1", { className: "mb-10 text-center text-3xl font-bold text-blue-800", children: "Start becoming fluent today" }, void 0, !1, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 108,
+        lineNumber: 93,
         columnNumber: 9
       }, this),
       (actionData == null ? void 0 : actionData.error) && /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(ErrorMessage_default, { error: actionData == null ? void 0 : actionData.error }, void 0, !1, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 112,
+        lineNumber: 97,
         columnNumber: 31
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
-        import_react17.Form,
+        import_react18.Form,
         {
           method: "post",
           className: "mx-auto flex flex-col items-center justify-center gap-10 text-center",
@@ -2069,33 +2086,33 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
               !1,
               {
                 fileName: "app/routes/pricing.tsx",
-                lineNumber: 120,
+                lineNumber: 105,
                 columnNumber: 15
               },
               this
             )) }, void 0, !1, {
               fileName: "app/routes/pricing.tsx",
-              lineNumber: 118,
+              lineNumber: 103,
               columnNumber: 11
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "flex flex-col gap-8", children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("h4", { className: "text-xl font-bold text-blue-800", children: "Our features" }, void 0, !1, {
                 fileName: "app/routes/pricing.tsx",
-                lineNumber: 133,
+                lineNumber: 118,
                 columnNumber: 13
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Buttons_default, { type: "submit", name: "plan", value: plans[0].id, children: "Buy now" }, void 0, !1, {
                 fileName: "app/routes/pricing.tsx",
-                lineNumber: 138,
+                lineNumber: 123,
                 columnNumber: 15
               }, this) }, void 0, !1, {
                 fileName: "app/routes/pricing.tsx",
-                lineNumber: 137,
+                lineNumber: 122,
                 columnNumber: 13
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/pricing.tsx",
-              lineNumber: 132,
+              lineNumber: 117,
               columnNumber: 11
             }, this)
           ]
@@ -2104,7 +2121,7 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
         !0,
         {
           fileName: "app/routes/pricing.tsx",
-          lineNumber: 114,
+          lineNumber: 99,
           columnNumber: 9
         },
         this
@@ -2120,19 +2137,19 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
         !1,
         {
           fileName: "app/routes/pricing.tsx",
-          lineNumber: 146,
+          lineNumber: 131,
           columnNumber: 11
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/pricing.tsx",
-      lineNumber: 107,
+      lineNumber: 92,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/pricing.tsx",
-    lineNumber: 104,
+    lineNumber: 89,
     columnNumber: 5
   }, this);
 }, HeroPaymentSection = ({
@@ -2150,7 +2167,7 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
         " Plan"
       ] }, void 0, !0, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 176,
+        lineNumber: 161,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("h3", { className: "flex items-center justify-center gap-1 text-lg font-semibold text-blue-800", children: [
@@ -2158,56 +2175,56 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => (
         price,
         mostPopular ? /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("span", { className: "font-semibold text-purple-600", children: "(most popular)" }, void 0, !1, {
           fileName: "app/routes/pricing.tsx",
-          lineNumber: 180,
+          lineNumber: 165,
           columnNumber: 15
         }, this) : ""
       ] }, void 0, !0, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 177,
+        lineNumber: 162,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/pricing.tsx",
-      lineNumber: 175,
+      lineNumber: 160,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "flex flex-col gap-2", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(import_jsx_dev_runtime15.Fragment, { children: features.map((feature, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(SubBulletPoint_default, { bold: index === 0, point: feature }, feature, !1, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 192,
+        lineNumber: 177,
         columnNumber: 15
       }, this)) }, void 0, !1, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 190,
+        lineNumber: 175,
         columnNumber: 11
       }, this),
       notFeatures && notFeatures.map((feature) => /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(SubBulletPoint_default, { point: feature, excluded: !0 }, feature, !1, {
         fileName: "app/routes/pricing.tsx",
-        lineNumber: 197,
+        lineNumber: 182,
         columnNumber: 15
       }, this))
     ] }, void 0, !0, {
       fileName: "app/routes/pricing.tsx",
-      lineNumber: 189,
+      lineNumber: 174,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/pricing.tsx",
-    lineNumber: 174,
+    lineNumber: 159,
     columnNumber: 7
   }, this),
   /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Buttons_default, { type: "submit", name: "plan", value: id, children: "Buy now" }, void 0, !1, {
     fileName: "app/routes/pricing.tsx",
-    lineNumber: 203,
+    lineNumber: 188,
     columnNumber: 9
   }, this) }, void 0, !1, {
     fileName: "app/routes/pricing.tsx",
-    lineNumber: 202,
+    lineNumber: 187,
     columnNumber: 7
   }, this)
 ] }, void 0, !0, {
   fileName: "app/routes/pricing.tsx",
-  lineNumber: 173,
+  lineNumber: 158,
   columnNumber: 5
 }, this), pricing_default = Payment;
 
@@ -2217,12 +2234,18 @@ __export(auth_exports, {
   default: () => auth_default,
   loader: () => loader4
 });
-var import_ssr3 = require("@clerk/remix/ssr.server"), import_node10 = require("@remix-run/node"), import_react19 = require("@remix-run/react"), import_react_router = require("react-router"), import_jsx_dev_runtime16 = require("react/jsx-dev-runtime"), loader4 = async (args) => {
+var import_api = require("@clerk/remix/api.server"), import_ssr3 = require("@clerk/remix/ssr.server"), import_node10 = require("@remix-run/node"), import_react20 = require("@remix-run/react"), import_react_router = require("react-router"), import_jsx_dev_runtime16 = require("react/jsx-dev-runtime"), loader4 = async (args) => {
+  var _a3;
   let { userId } = await (0, import_ssr3.getAuth)(args);
-  return userId ? (0, import_react_router.json)({}) : (0, import_node10.redirect)("/login");
-}, AuthLayout = () => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react19.Outlet, {}, void 0, !1, {
+  if (!userId)
+    return (0, import_node10.redirect)("/login");
+  let user = await (0, import_api.createClerkClient)({
+    secretKey: process.env.CLERK_SECRET_KEY
+  }).users.getUser(userId);
+  return (_a3 = user == null ? void 0 : user.privateMetadata) != null && _a3.plan ? (0, import_react_router.json)({}) : (0, import_node10.redirect)("/pricing");
+}, AuthLayout = () => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react20.Outlet, {}, void 0, !1, {
   fileName: "app/routes/__auth.tsx",
-  lineNumber: 21,
+  lineNumber: 23,
   columnNumber: 10
 }, this), auth_default = AuthLayout;
 
@@ -2231,10 +2254,10 @@ var index_exports = {};
 __export(index_exports, {
   default: () => index_default
 });
-var import_react20 = require("react"), import_react21 = require("@remix-run/react");
+var import_react21 = require("react"), import_react22 = require("@remix-run/react");
 var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime");
 var Index = () => {
-  let [optionIndex, setOptionIndex] = (0, import_react20.useState)(0);
+  let [optionIndex, setOptionIndex] = (0, import_react21.useState)(0);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Header_default, {}, void 0, !1, {
       fileName: "app/routes/_index.tsx",
@@ -2275,7 +2298,7 @@ var Index = () => {
           columnNumber: 13
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
-          import_react21.Link,
+          import_react22.Link,
           {
             to: `/pricing?plan=${plans[0].id}&login=true`,
             className: "mx-auto w-fit text-lg",
@@ -2491,7 +2514,7 @@ var import_jsx_dev_runtime20 = require("react/jsx-dev-runtime"), Terms = () => /
 }, this), terms_default = Terms;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "0afb6de5", entry: { module: "/build/entry.client-B2YUOGUI.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-FDDKQUMY.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-YQ3BT27H.js", imports: ["/build/_shared/chunk-K3I4BZ64.js", "/build/_shared/chunk-D4WE36CW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/__auth": { id: "routes/__auth", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__auth-E65ZLYEX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__auth.app": { id: "routes/__auth.app", parentId: "routes/__auth", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/__auth.app-TWI62J4V.js", imports: ["/build/_shared/chunk-5HMBHLNB.js", "/build/_shared/chunk-D4WE36CW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-DGNXKSRJ.js", imports: ["/build/_shared/chunk-YMTZAKLE.js", "/build/_shared/chunk-5HMBHLNB.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.generate-text": { id: "routes/api.generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api.generate-text-VNJMQONS.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.login.link-guest-account": { id: "routes/api.login.link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api.login.link-guest-account-HUH2MJH2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.stripe-webhook": { id: "routes/api.stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api.stripe-webhook-EC7RELM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.tts": { id: "routes/api.tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api.tts-HXBS76RE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-PBLJP2CO.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-RCECUQH4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.failure": { id: "routes/payment.failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.failure-ZM6UI2VR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.success": { id: "routes/payment.success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.success-R6QYUF4G.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-UMPMV3IZ.js", imports: ["/build/_shared/chunk-YMTZAKLE.js", "/build/_shared/chunk-5HMBHLNB.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile.payment": { id: "routes/profile.payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile.payment-W24PCB56.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-0AFB6DE5.js" };
+var assets_manifest_default = { version: "3a5ccf0d", entry: { module: "/build/entry.client-B2YUOGUI.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-FDDKQUMY.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-YQ3BT27H.js", imports: ["/build/_shared/chunk-K3I4BZ64.js", "/build/_shared/chunk-D4WE36CW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/__auth": { id: "routes/__auth", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__auth-I56OOYC7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__auth.app": { id: "routes/__auth.app", parentId: "routes/__auth", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/__auth.app-TWI62J4V.js", imports: ["/build/_shared/chunk-5HMBHLNB.js", "/build/_shared/chunk-D4WE36CW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-DGNXKSRJ.js", imports: ["/build/_shared/chunk-YMTZAKLE.js", "/build/_shared/chunk-5HMBHLNB.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.generate-text": { id: "routes/api.generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api.generate-text-VNJMQONS.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.login.link-guest-account": { id: "routes/api.login.link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api.login.link-guest-account-HUH2MJH2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.stripe-webhook": { id: "routes/api.stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api.stripe-webhook-EC7RELM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.tts": { id: "routes/api.tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api.tts-HXBS76RE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-PBLJP2CO.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-RCECUQH4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.failure": { id: "routes/payment.failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.failure-ZM6UI2VR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.success": { id: "routes/payment.success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.success-B4JP54YB.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-BU3KRYQT.js", imports: ["/build/_shared/chunk-YMTZAKLE.js", "/build/_shared/chunk-5HMBHLNB.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile.payment": { id: "routes/profile.payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile.payment-W24PCB56.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-3A5CCF0D.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

@@ -1,19 +1,7 @@
-import { useAuth, useUser } from "@clerk/remix";
+import { useUser } from "@clerk/remix";
 import { getAuth } from "@clerk/remix/ssr.server";
-import {
-  ActionFunction,
-  json,
-  LoaderFunction,
-  MetaFunction,
-  redirect,
-} from "@remix-run/node";
-import {
-  Form,
-  useActionData,
-  useFetcher,
-  useLoaderData,
-  useLocation,
-} from "@remix-run/react";
+import { ActionFunction, json, MetaFunction, redirect } from "@remix-run/node";
+import { Form, useActionData, useFetcher, useLocation } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import Button from "~/components/core/Buttons";
 
@@ -21,11 +9,8 @@ import ErrorMessage from "~/components/core/ErrorMessage";
 import Header from "~/components/Header";
 import BulletPoint from "~/components/landing-page/SubBulletPoint";
 import LoginModal from "~/components/Modals/LoginModal";
-import { getUserProfile } from "~/utils/db.server";
 import { Plan, plans } from "~/utils/payment";
 import { createCheckout, getPriceTierId } from "~/utils/payment.server";
-import { getUserSession } from "~/utils/session.server";
-import { UserProfile } from "~/utils/types";
 
 export const meta: MetaFunction = () => {
   return {
