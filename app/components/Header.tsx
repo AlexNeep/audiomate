@@ -1,23 +1,24 @@
+import { useAuth } from "@clerk/remix";
 import { Link, useLocation } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { MdPersonOutline } from "react-icons/md";
-import { isPremium } from "~/utils";
 import { useOutsideAlerter } from "~/utils/hooks";
 import { UserProfile } from "~/utils/types";
 import Button, { ButtonPaddingOptions } from "./core/Buttons";
 import { PremiumLink } from "./home/PremiumLink";
 
-const Header = ({ user }: { user?: UserProfile | undefined }) => {
-  const isLoggedIn = Boolean(user);
-  const showPremium = !isPremium(user);
+const Header = () => {
+  const { userId } = useAuth();
+  const isLoggedIn = Boolean(userId);
+  const showPremium = true;
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   const location = useLocation();
   const fixHeader = location?.pathname === "/";
-  const showStreakBar = user;
+  const showStreakBar = userId;
 
   return (
     <div
@@ -26,7 +27,7 @@ const Header = ({ user }: { user?: UserProfile | undefined }) => {
       } mb-8`}
     >
       <div
-        className={`relative top-0 z-30 flex w-full items-center gap-4 bg-orange-200 py-4 lg:justify-between lg:px-10  ${
+        className={`relative top-0 z-30 flex w-full items-center justify-between gap-4 bg-orange-200 py-4 lg:px-10  ${
           !showStreakBar && "shadow-md"
         }`}
       >
@@ -38,7 +39,7 @@ const Header = ({ user }: { user?: UserProfile | undefined }) => {
           />
 
           <div className="absolute left-0 top-0 flex w-full items-center justify-center lg:relative lg:w-fit">
-            <Home user={user} />
+            <Home />
           </div>
 
           <MainMenus
@@ -55,7 +56,6 @@ const Header = ({ user }: { user?: UserProfile | undefined }) => {
                 showPremium={showPremium}
                 setMenuOpen={setMenuOpen}
                 isLoggedIn={isLoggedIn}
-                user={user}
               />
             </div>
 
@@ -77,12 +77,14 @@ const MainMenus = ({
   showPremium: boolean;
 }) => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="z-10 mr-4 flex items-center gap-3">
       {isLoggedIn ? (
         <>
           {
             <div className="flex items-center gap-3">
-              <Button>New chat</Button>
+              <Link to="/app">
+                <Button>New chat</Button>
+              </Link>
             </div>
           }
         </>
@@ -122,7 +124,7 @@ const BurgerMenu = ({
       className="absolute left-0 top-0 h-screen w-1/3 min-w-[300px] bg-slate-200"
     >
       <div className="relative flex h-20 w-full items-center justify-between border-b border-slate-400 px-4">
-        <Home onClick={closeMenu} user={user} withBackground />
+        <Home onClick={closeMenu} withBackground />
 
         <button onClick={() => setMenuOpen(false)}>
           <IoMdClose className="fill-slate-400" size="30" />
@@ -170,11 +172,9 @@ const ICON_GAP = "gap-1";
 
 const Home = ({
   onClick,
-  user,
   withBackground = false,
 }: {
   onClick?: () => void;
-  user: UserProfile | null | undefined;
   withBackground?: boolean;
 }) => {
   return (

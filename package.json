@@ -11,6 +11,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@clerk/remix": "^2.5.1",
     "@radix-ui/react-alert-dialog": "^1.0.2",
     "@radix-ui/react-icons": "^1.2.0",
     "@radix-ui/react-progress": "^1.0.2",

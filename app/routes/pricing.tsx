@@ -7,7 +7,6 @@ import {
 } from "@remix-run/node";
 import {
   Form,
-  Link,
   useActionData,
   useFetcher,
   useLoaderData,
@@ -18,11 +17,10 @@ import Button from "~/components/core/Buttons";
 
 import ErrorMessage from "~/components/core/ErrorMessage";
 import Header from "~/components/Header";
-import MainFeatureBulletPoints from "~/components/landing-page/MainFeaturesBulletPoint";
 import BulletPoint from "~/components/landing-page/SubBulletPoint";
 import LoginModal from "~/components/Modals/LoginModal";
 import { getUserProfile } from "~/utils/db.server";
-import { freePlan, Plan, plans } from "~/utils/payment";
+import { Plan, plans } from "~/utils/payment";
 import { createCheckout, getPriceTierId } from "~/utils/payment.server";
 import { getUserSession } from "~/utils/session.server";
 import { UserProfile } from "~/utils/types";
@@ -125,15 +123,6 @@ const Payment = () => {
           className="mx-auto flex flex-col items-center justify-center gap-10 text-center"
         >
           <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-8">
-            {!trial && (
-              <HeroPaymentSection
-                title={freePlan.title}
-                id={freePlan.id}
-                price={freePlan.price}
-                features={freePlan.features}
-                notFeatures={freePlan.not_features}
-              />
-            )}
             {plans.map((plan) => (
               <HeroPaymentSection
                 key={plan.id}
@@ -142,7 +131,7 @@ const Payment = () => {
                 price={plan.price}
                 features={plan.features}
                 notFeatures={plan.not_features}
-                mostPopular={plan.most_popular}
+                // mostPopular={plan.most_popular}
               />
             ))}
           </div>
@@ -150,11 +139,11 @@ const Payment = () => {
           <div className="flex flex-col gap-8">
             <h4 className="text-xl font-bold text-blue-800">Our features</h4>
 
-            <MainFeatureBulletPoints />
+            {/* <MainFeatureBulletPoints /> */}
 
             <div>
               <Button type="submit" name="plan" value={plans[0].id}>
-                Start your 7-day free trial
+                Buy now
               </Button>
             </div>
           </div>
@@ -171,12 +160,6 @@ const Payment = () => {
         )}
       </div>
     </div>
-  );
-};
-
-const ColouredBackground = () => {
-  return (
-    <div className="absolute -z-10 h-full w-full rounded-md bg-gradient-to-tr from-green-300 via-blue-500 to-purple-600 blur-sm" />
   );
 };
 
@@ -226,18 +209,10 @@ const HeroPaymentSection = ({
       </div>
 
       <div className="flex items-center justify-center">
-        {price > 0 ? (
-          <Button type="submit" name="plan" value={id}>
-            Start your 7-day free trial
-          </Button>
-        ) : (
-          <Link to="/login">
-            <Button>Get started</Button>
-          </Link>
-        )}
+        <Button type="submit" name="plan" value={id}>
+          Buy now
+        </Button>
       </div>
-
-      <ColouredBackground />
     </div>
   );
 };

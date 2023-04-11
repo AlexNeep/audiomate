@@ -29,10 +29,11 @@ import { handleClientAuth, handleLogin, handleSignUp } from "~/models/login";
 import { clientAuth } from "~/services/firebase";
 import { getUserSession } from "~/utils/session.server";
 import Header from "~/components/Header";
+import { SignIn } from "@clerk/remix";
 
 export const meta: MetaFunction = () => {
   return {
-    title: "LanguageMate | Login",
+    title: "AudioMate | Login",
   };
 };
 
@@ -130,176 +131,33 @@ export async function createAccount({
 }
 
 const Login = () => {
-  const fetcher = useFetcher();
-  const [marketingEmails, setMarketingEmails] = useState(false);
-  const [showEmailLogin, setShowEmailLogin] = useState(false);
-  const [referrer, setReferrer] = useState<string>("");
-  const loaderData = useLoaderData<LoaderData>();
+  // useEffect(() => {
+  //   setReferrer(document.referrer);
+  // }, []);
 
-  useEffect(() => {
-    setReferrer(document.referrer);
-  }, []);
-
-  function signInAsGuest() {
-    signInAnonymously(clientAuth)
-      .then((userCredentials) =>
-        createAccount({
-          userCredentials,
-          fetcher,
-          marketingEmails,
-          referrer,
-          redirect: loaderData.redirect,
-        })
-      )
-      .catch((e) => console.log(e));
-  }
-
-  const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
-
-    await signInWithPopup(clientAuth, provider)
-      .then((userCredentials) =>
-        createAccount({
-          userCredentials,
-          fetcher,
-          marketingEmails,
-          referrer,
-          redirect: loaderData.redirect,
-        })
-      )
-      .catch((e) => console.log(e));
-  };
-
-  const isDisabled = fetcher.state === "loading";
+  // const handleGoogleLogin = async () => {
+  //   const provider = new GoogleAuthProvider();
+  //   console.log(provider);
+  //   await signInWithPopup(clientAuth, provider)
+  //     .then((userCredentials) =>
+  //       createAccount({
+  //         userCredentials,
+  //         fetcher,
+  //         marketingEmails,
+  //         referrer,
+  //         redirect: loaderData.redirect,
+  //       })
+  //     )
+  //     .catch((e) => console.log(e));
+  // };
 
   return (
     <div className="m-auto flex flex-col gap-6 ">
       <Header />
-      <div className="mx-auto flex flex-col gap-4 px-4 lg:w-1/2">
-        <Card width="full">
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-4">
-              <h1 className="text-xl font-bold text-blue-800">
-                Accelerate your learning with Google Signup
-              </h1>
-
-              <p className="text-slate-500">
-                Sign up with Google to start learning immediately, get
-                translations & more for free.
-              </p>
-              <p className="text-slate-500"></p>
-            </div>
-
-            <div className="flex flex-col items-center justify-center gap-6">
-              <GoogleButton
-                disabled={isDisabled}
-                label="Continue with Google"
-                onClick={handleGoogleLogin}
-              />
-            </div>
-            {fetcher.state === "loading" && (
-              <p className="text-center font-bold text-blue-800">
-                Getting your account details!
-              </p>
-            )}
-          </div>
-        </Card>
+      <div className="mx-auto flex flex-col gap-4 lg:mx-auto lg:w-1/2">
+        <SignIn redirectUrl={"/app"} />
       </div>
     </div>
-  );
-};
-
-const EmailLogin = ({
-  showEmailLogin,
-  setShowEmailLogin,
-  fetcher,
-  redirect,
-  disabled,
-}: {
-  showEmailLogin: boolean;
-  setShowEmailLogin: (show: boolean) => void;
-  fetcher: FetcherWithComponents<any>;
-  redirect: string;
-  disabled: boolean;
-}) => {
-  return (
-    <>
-      {!showEmailLogin && (
-        <>
-          <Button
-            disabled={disabled}
-            variant="transparent"
-            className="cursor-pointer text-sm text-slate-500"
-            onClick={() => setShowEmailLogin(true)}
-          >
-            Login with email and password
-          </Button>
-        </>
-      )}
-
-      {fetcher?.data?.error && (
-        <div className="m-auto text-center">
-          <ErrorMessage error={fetcher.data.error} />
-        </div>
-      )}
-
-      {showEmailLogin && (
-        <>
-          <fetcher.Form method="post" className="lg:w-2/3">
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-2">
-                <input name="redirect" hidden readOnly value={redirect} />
-
-                <label className="font-semibold">Email</label>
-                <span className="flex w-full items-center gap-2 rounded-md bg-white p-2 font-semibold text-slate-700 shadow-sm placeholder:text-slate-400">
-                  <HiOutlineMail size={20} className="stroke-slate-700" />
-                  <input
-                    className="w-full bg-transparent"
-                    type="email"
-                    name="email"
-                    placeholder="janedoe@gmail.com"
-                  />
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label className="font-semibold">Password</label>
-                <span className="flex w-full items-center gap-2 rounded-md bg-white p-2 font-semibold text-slate-700 shadow-sm placeholder:text-slate-400">
-                  <BiLockAlt size={20} className="stroke-slate-700" />
-                  <input
-                    type="password"
-                    name="password"
-                    className="w-full bg-transparent"
-                    placeholder="password"
-                  />
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-6 lg:flex-row">
-                <Button name="_action" value="login" type="submit">
-                  Login
-                </Button>
-
-                <Button name="_action" value="signup" type="submit">
-                  Sign up
-                </Button>
-              </div>
-
-              <p
-                onClick={() =>
-                  fetcher.submit(
-                    { _action: "reset_password" },
-                    { method: "post" }
-                  )
-                }
-              >
-                Reset password
-              </p>
-            </div>
-          </fetcher.Form>
-        </>
-      )}
-    </>
   );
 };
 

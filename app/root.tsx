@@ -1,4 +1,3 @@
-import { json, LoaderFunction, MetaFunction } from "@vercel/remix";
 import {
   Link,
   Links,
@@ -9,8 +8,11 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
+import { LoaderFunction, MetaFunction } from "@vercel/remix";
 import { useEffect } from "react";
 
+import { rootAuthLoader } from "@clerk/remix/ssr.server";
+import { ClerkApp } from "@clerk/remix";
 import styles from "~/index.css";
 import Button from "./components/core/Buttons";
 import Header from "./components/Header";
@@ -45,15 +47,24 @@ export type RootLoaderData = {
   env: "development" | "test" | "production";
 };
 
-export const loader: LoaderFunction = async () => {
-  return json({ env: process.env.NODE_ENV });
+export const loader: LoaderFunction = async (args) => {
+  return rootAuthLoader(
+    args,
+    async ({ request }) => {
+      const { userId } = request.auth;
+      const userProfile = userId ? await getUserProfile(userId) : undefined;
+
+      return { env: process.env.NODE_ENV, userProfile };
+    },
+    { loadUser: true }
+  );
 };
 
 function addTrackers() {
   setupHotjar();
 }
 
-export default function App() {
+function App() {
   const { env } = useLoaderData<RootLoaderData>() as RootLoaderData;
 
   useEffect(() => {
@@ -99,6 +110,8 @@ export default function App() {
   );
 }
 
+export default ClerkApp(App);
+
 export function ErrorBoundary() {
   return (
     <html lang="en">
@@ -114,7 +127,7 @@ export function ErrorBoundary() {
       </head>
 
       <body className="bg-slate-100">
-        <Header user={undefined} />
+        <Header />
         <div className="mx-auto flex min-h-screen max-w-lg flex-col gap-8 px-2">
           <h1 className="text-lg font-bold text-blue-800">
             LanguageMate is at capacity right now
@@ -144,39 +157,7 @@ export function ErrorBoundary() {
   );
 }
 
-export function CatchBoundary() {
-  return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <Meta />
-        <Links />
-      </head>
+import { ClerkCatchBoundary } from "@clerk/remix";
+import { getUserProfile } from "./utils/db.server";
 
-      <body className="bg-slate-100">
-        <Header user={undefined} />
-        <div className="mx-auto flex min-h-screen max-w-lg flex-col gap-8 px-2">
-          <h1 className="text-lg font-bold text-blue-800">
-            This page does not exist
-          </h1>
-
-          <Link to="/">
-            <Button>Go home</Button>
-          </Link>
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/languagemate2.appspot.com/o/IMG_0059.PNG?alt=media&token=b0426f00-2cc3-471c-9a25-f27ad180d043"
-            className="mx-auto h-auto w-1/2 max-w-[300px] rounded-md shadow-md"
-          />
-        </div>
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
-}
+export const CatchBoundary = ClerkCatchBoundary();
