@@ -1,4 +1,4 @@
-import { useAuth } from "@clerk/remix";
+import { useAuth, UserButton } from "@clerk/remix";
 import { Link, useLocation } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -85,6 +85,7 @@ const MainMenus = ({
               <Link to="/app">
                 <Button padding={ButtonPaddingOptions.SMALL}>New chat</Button>
               </Link>
+              <UserButton />
             </div>
           }
         </>
@@ -94,6 +95,7 @@ const MainMenus = ({
             <HeaderLink to="/pricing" text="Pricing" />
             <HeaderLink to="/login" text="Login" />
           </div>
+          <GetStartedLink />
         </>
       )}
     </div>

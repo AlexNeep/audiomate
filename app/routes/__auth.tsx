@@ -8,6 +8,7 @@ export const loader: LoaderFunction = async (args) => {
   if (!userId) {
     return redirect("/login");
   }
+
   return json({});
 };
 

@@ -281,15 +281,22 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   isLoggedIn,
   setMenuOpen,
   showPremium
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "z-10 mr-4 flex items-center gap-3", children: isLoggedIn ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center gap-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react7.Link, { to: "/app", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Buttons_default, { padding: "py-2 lg:py-4" /* SMALL */, children: "New chat" }, void 0, !1, {
-  fileName: "app/components/Header.tsx",
-  lineNumber: 86,
-  columnNumber: 17
-}, this) }, void 0, !1, {
-  fileName: "app/components/Header.tsx",
-  lineNumber: 85,
-  columnNumber: 15
-}, this) }, void 0, !1, {
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "z-10 mr-4 flex items-center gap-3", children: isLoggedIn ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center gap-3", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react7.Link, { to: "/app", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Buttons_default, { padding: "py-2 lg:py-4" /* SMALL */, children: "New chat" }, void 0, !1, {
+    fileName: "app/components/Header.tsx",
+    lineNumber: 86,
+    columnNumber: 17
+  }, this) }, void 0, !1, {
+    fileName: "app/components/Header.tsx",
+    lineNumber: 85,
+    columnNumber: 15
+  }, this),
+  /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_remix.UserButton, {}, void 0, !1, {
+    fileName: "app/components/Header.tsx",
+    lineNumber: 88,
+    columnNumber: 15
+  }, this)
+] }, void 0, !0, {
   fileName: "app/components/Header.tsx",
   lineNumber: 84,
   columnNumber: 13
@@ -297,24 +304,31 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   fileName: "app/components/Header.tsx",
   lineNumber: 82,
   columnNumber: 9
-}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "hidden items-center gap-4 lg:flex", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(HeaderLink, { to: "/pricing", text: "Pricing" }, void 0, !1, {
+}, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "hidden items-center gap-4 lg:flex", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(HeaderLink, { to: "/pricing", text: "Pricing" }, void 0, !1, {
+      fileName: "app/components/Header.tsx",
+      lineNumber: 95,
+      columnNumber: 13
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(HeaderLink, { to: "/login", text: "Login" }, void 0, !1, {
+      fileName: "app/components/Header.tsx",
+      lineNumber: 96,
+      columnNumber: 13
+    }, this)
+  ] }, void 0, !0, {
     fileName: "app/components/Header.tsx",
     lineNumber: 94,
-    columnNumber: 13
+    columnNumber: 11
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(HeaderLink, { to: "/login", text: "Login" }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(GetStartedLink, {}, void 0, !1, {
     fileName: "app/components/Header.tsx",
-    lineNumber: 95,
-    columnNumber: 13
+    lineNumber: 98,
+    columnNumber: 11
   }, this)
 ] }, void 0, !0, {
   fileName: "app/components/Header.tsx",
   lineNumber: 93,
-  columnNumber: 11
-}, this) }, void 0, !1, {
-  fileName: "app/components/Header.tsx",
-  lineNumber: 92,
   columnNumber: 9
 }, this) }, void 0, !1, {
   fileName: "app/components/Header.tsx",
@@ -338,37 +352,37 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "relative flex h-20 w-full items-center justify-between border-b border-slate-400 px-4", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Home, { onClick: closeMenu, withBackground: !0 }, void 0, !1, {
             fileName: "app/components/Header.tsx",
-            lineNumber: 127,
+            lineNumber: 129,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("button", { onClick: () => setMenuOpen(!1), children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_io2.IoMdClose, { className: "fill-slate-400", size: "30" }, void 0, !1, {
             fileName: "app/components/Header.tsx",
-            lineNumber: 130,
+            lineNumber: 132,
             columnNumber: 11
           }, this) }, void 0, !1, {
             fileName: "app/components/Header.tsx",
-            lineNumber: 129,
+            lineNumber: 131,
             columnNumber: 9
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/Header.tsx",
-          lineNumber: 126,
+          lineNumber: 128,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mt-10 flex flex-col gap-4 px-4", children: isLoggedIn ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(ProfileLink, { setMenuOpen }, void 0, !1, {
             fileName: "app/components/Header.tsx",
-            lineNumber: 137,
+            lineNumber: 139,
             columnNumber: 14
           }, this),
           showPremium && /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(PremiumLink, { setMenuOpen }, void 0, !1, {
             fileName: "app/components/Header.tsx",
-            lineNumber: 139,
+            lineNumber: 141,
             columnNumber: 29
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/Header.tsx",
-          lineNumber: 136,
+          lineNumber: 138,
           columnNumber: 11
         }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
@@ -382,7 +396,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
             !1,
             {
               fileName: "app/components/Header.tsx",
-              lineNumber: 143,
+              lineNumber: 145,
               columnNumber: 13
             },
             this
@@ -398,7 +412,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
             !1,
             {
               fileName: "app/components/Header.tsx",
-              lineNumber: 148,
+              lineNumber: 150,
               columnNumber: 13
             },
             this
@@ -414,18 +428,18 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
             !1,
             {
               fileName: "app/components/Header.tsx",
-              lineNumber: 153,
+              lineNumber: 155,
               columnNumber: 13
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/components/Header.tsx",
-          lineNumber: 142,
+          lineNumber: 144,
           columnNumber: 11
         }, this) }, void 0, !1, {
           fileName: "app/components/Header.tsx",
-          lineNumber: 134,
+          lineNumber: 136,
           columnNumber: 7
         }, this)
       ]
@@ -434,7 +448,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
     !0,
     {
       fileName: "app/components/Header.tsx",
-      lineNumber: 122,
+      lineNumber: 124,
       columnNumber: 5
     },
     this
@@ -459,7 +473,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
       !1,
       {
         fileName: "app/components/Header.tsx",
-        lineNumber: 186,
+        lineNumber: 188,
         columnNumber: 7
       },
       this
@@ -469,7 +483,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   !1,
   {
     fileName: "app/components/Header.tsx",
-    lineNumber: 181,
+    lineNumber: 183,
     columnNumber: 5
   },
   this
@@ -484,13 +498,13 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   !1,
   {
     fileName: "app/components/Header.tsx",
-    lineNumber: 199,
+    lineNumber: 201,
     columnNumber: 9
   },
   this
 ) }, void 0, !1, {
   fileName: "app/components/Header.tsx",
-  lineNumber: 198,
+  lineNumber: 200,
   columnNumber: 7
 }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react7.Link, { to: "/profile", onClick: () => setMenuOpen(!1), children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Buttons_default, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
   "div",
@@ -508,7 +522,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
         !1,
         {
           fileName: "app/components/Header.tsx",
-          lineNumber: 213,
+          lineNumber: 215,
           columnNumber: 11
         },
         this
@@ -519,17 +533,17 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   !0,
   {
     fileName: "app/components/Header.tsx",
-    lineNumber: 209,
+    lineNumber: 211,
     columnNumber: 9
   },
   this
 ) }, void 0, !1, {
   fileName: "app/components/Header.tsx",
-  lineNumber: 208,
+  lineNumber: 210,
   columnNumber: 7
 }, this) }, void 0, !1, {
   fileName: "app/components/Header.tsx",
-  lineNumber: 207,
+  lineNumber: 209,
   columnNumber: 5
 }, this), GetStartedLink = ({
   setMenuOpen = () => {
@@ -554,13 +568,13 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
         !1,
         {
           fileName: "app/components/Header.tsx",
-          lineNumber: 240,
+          lineNumber: 242,
           columnNumber: 9
         },
         this
       ) }, void 0, !1, {
         fileName: "app/components/Header.tsx",
-        lineNumber: 239,
+        lineNumber: 241,
         columnNumber: 7
       }, this)
     },
@@ -568,7 +582,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
     !1,
     {
       fileName: "app/components/Header.tsx",
-      lineNumber: 233,
+      lineNumber: 235,
       columnNumber: 5
     },
     this
@@ -584,7 +598,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   !1,
   {
     fileName: "app/components/Header.tsx",
-    lineNumber: 254,
+    lineNumber: 256,
     columnNumber: 5
   },
   this
@@ -600,11 +614,11 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
     className: "text-lg font-semibold text-blue-800",
     children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Buttons_default, { variant: "transparent", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("span", { className: "px-5", children: text }, void 0, !1, {
       fileName: "app/components/Header.tsx",
-      lineNumber: 279,
+      lineNumber: 281,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/components/Header.tsx",
-      lineNumber: 278,
+      lineNumber: 280,
       columnNumber: 7
     }, this)
   },
@@ -612,7 +626,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   !1,
   {
     fileName: "app/components/Header.tsx",
-    lineNumber: 273,
+    lineNumber: 275,
     columnNumber: 5
   },
   this
@@ -687,7 +701,239 @@ function setupHotjar() {
 }
 
 // app/root.tsx
-var import_remix3 = require("@clerk/remix");
+var import_remix3 = require("@clerk/remix"), import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta = () => ({
+  charset: "utf-8",
+  title: "AudioMate",
+  viewport: "width=device-width,initial-scale=1"
+});
+function links() {
+  return [{ href: app_default, rel: "stylesheet" }];
+}
+var loader = async (args) => (0, import_ssr.rootAuthLoader)(
+  args,
+  () => ({ env: "development" }),
+  { loadUser: !0 }
+);
+function addTrackers() {
+  setupHotjar();
+}
+function App() {
+  let { env } = (0, import_react11.useLoaderData)();
+  return (0, import_react12.useEffect)(() => {
+    env === "production" && addTrackers();
+  }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 87,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.gstatic.com" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 88,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+        "link",
+        {
+          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap",
+          rel: "stylesheet"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/root.tsx",
+          lineNumber: 89,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "manifest", href: "/manifest.json" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 93,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(googleTagManger_default, { env, gtmTrackingId: "GTM-PXRZMNX" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 94,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Meta, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 95,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Links, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 96,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 86,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "bg-slate-100 ", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "min-h-screen", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Outlet, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 100,
+        columnNumber: 11
+      }, this) }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 99,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.ScrollRestoration, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 102,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Scripts, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 103,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.LiveReload, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 104,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 98,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/root.tsx",
+    lineNumber: 85,
+    columnNumber: 5
+  }, this);
+}
+var root_default = (0, import_remix2.ClerkApp)(App);
+function ErrorBoundary() {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 116,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.gstatic.com" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 117,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+        "link",
+        {
+          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap",
+          rel: "stylesheet"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/root.tsx",
+          lineNumber: 118,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Meta, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 122,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Links, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 123,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 115,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "bg-slate-100", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Header_default, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 127,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mx-auto flex min-h-screen max-w-lg flex-col gap-8 px-2", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-lg font-bold text-blue-800", children: "LanguageMate is at capacity right now" }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 129,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: "We're thrilled to have so many users! Fear not, we're hustling to make some room and get things back up to speed faster than a cheetah on roller skates. In the meantime, hang tight and enjoy some cat videos (we won't judge)." }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 133,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: "Thanks for your patience and for being a part of our community!" }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 140,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: "Try refreshing or come back later" }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 142,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+          "img",
+          {
+            src: "https://firebasestorage.googleapis.com/v0/b/languagemate2.appspot.com/o/IMG_0059.PNG?alt=media&token=b0426f00-2cc3-471c-9a25-f27ad180d043",
+            className: "mx-auto h-auto w-1/2 max-w-[300px] rounded-md shadow-md"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/root.tsx",
+            lineNumber: 144,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/root.tsx",
+        lineNumber: 128,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.ScrollRestoration, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 149,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Scripts, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 150,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.LiveReload, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 151,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 126,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/root.tsx",
+    lineNumber: 114,
+    columnNumber: 5
+  }, this);
+}
+var CatchBoundary = (0, import_remix3.ClerkCatchBoundary)();
+
+// app/routes/api.login.link-guest-account.tsx
+var api_login_link_guest_account_exports = {};
+__export(api_login_link_guest_account_exports, {
+  action: () => action
+});
+var import_node2 = require("@remix-run/node");
 
 // app/utils/db.server.ts
 var import_firebase_admin2 = require("firebase-admin");
@@ -793,244 +1039,6 @@ async function createNewProfile(email, uid, marketing_emails, referrer) {
 async function updateUserProfile(uid, newUserProfileData) {
   usersRef.doc(uid).set(newUserProfileData, { merge: !0 });
 }
-
-// app/root.tsx
-var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta = () => ({
-  charset: "utf-8",
-  title: "AudioMate",
-  viewport: "width=device-width,initial-scale=1"
-});
-function links() {
-  return [{ href: app_default, rel: "stylesheet" }];
-}
-var loader = async (args) => (0, import_ssr.rootAuthLoader)(
-  args,
-  async ({ request }) => {
-    let { userId } = request.auth;
-    return { env: "development", userProfile: userId ? await getUserProfile(userId) : void 0 };
-  },
-  { loadUser: !0 }
-);
-function addTrackers() {
-  setupHotjar();
-}
-function App() {
-  let { env } = (0, import_react11.useLoaderData)();
-  return (0, import_react12.useEffect)(() => {
-    env === "production" && addTrackers();
-  }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 90,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.gstatic.com" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 91,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-        "link",
-        {
-          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap",
-          rel: "stylesheet"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/root.tsx",
-          lineNumber: 92,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "manifest", href: "/manifest.json" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 96,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(googleTagManger_default, { env, gtmTrackingId: "GTM-PXRZMNX" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 97,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 98,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 99,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 89,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "bg-slate-100 ", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "min-h-screen", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Outlet, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 103,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 102,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 105,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 106,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 107,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 101,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 88,
-    columnNumber: 5
-  }, this);
-}
-var root_default = (0, import_remix2.ClerkApp)(App);
-function ErrorBoundary() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.googleapis.com" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 119,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("link", { rel: "preconnect", href: "https://fonts.gstatic.com" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 120,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-        "link",
-        {
-          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap",
-          rel: "stylesheet"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/root.tsx",
-          lineNumber: 121,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 125,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 126,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 118,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "bg-slate-100", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Header_default, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 130,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mx-auto flex min-h-screen max-w-lg flex-col gap-8 px-2", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-lg font-bold text-blue-800", children: "LanguageMate is at capacity right now" }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 132,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: "We're thrilled to have so many users! Fear not, we're hustling to make some room and get things back up to speed faster than a cheetah on roller skates. In the meantime, hang tight and enjoy some cat videos (we won't judge)." }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 136,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: "Thanks for your patience and for being a part of our community!" }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 143,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { children: "Try refreshing or come back later" }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 145,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-          "img",
-          {
-            src: "https://firebasestorage.googleapis.com/v0/b/languagemate2.appspot.com/o/IMG_0059.PNG?alt=media&token=b0426f00-2cc3-471c-9a25-f27ad180d043",
-            className: "mx-auto h-auto w-1/2 max-w-[300px] rounded-md shadow-md"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/root.tsx",
-            lineNumber: 147,
-            columnNumber: 11
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/root.tsx",
-        lineNumber: 131,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 152,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 153,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react11.LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 154,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 129,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 117,
-    columnNumber: 5
-  }, this);
-}
-var CatchBoundary = (0, import_remix3.ClerkCatchBoundary)();
-
-// app/routes/api.login.link-guest-account.tsx
-var api_login_link_guest_account_exports = {};
-__export(api_login_link_guest_account_exports, {
-  action: () => action
-});
-var import_node2 = require("@remix-run/node");
 
 // app/utils/emails.server.ts
 function sendWelcomeEmail(email) {
@@ -1391,13 +1399,13 @@ var auth_app_exports = {};
 __export(auth_app_exports, {
   default: () => auth_app_default
 });
-var import_react13 = require("@remix-run/react"), import_react14 = require("react"), import_bi = require("react-icons/bi"), import_bs = require("react-icons/bs"), import_cg = require("react-icons/cg"), import_hi = require("react-icons/hi"), import_io3 = require("react-icons/io"), import_io5 = require("react-icons/io5");
+var import_remix4 = require("@clerk/remix"), import_react13 = require("@remix-run/react"), import_react14 = require("react"), import_bi = require("react-icons/bi"), import_bs = require("react-icons/bs"), import_cg = require("react-icons/cg"), import_hi = require("react-icons/hi"), import_io3 = require("react-icons/io"), import_io5 = require("react-icons/io5");
 var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
   var _a3, _b, _c, _d;
   let fetcher = (0, import_react13.useFetcher)(), [versions, setVersions] = (0, import_react14.useState)([]), [currentVersionIndex, setCurrentVersionIndex] = (0, import_react14.useState)(
     null
-  ), [inputText, setInputText] = (0, import_react14.useState)(""), [textEditMode, setTextEditMode] = (0, import_react14.useState)(!1), text = (_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text, currentVersion = versions[currentVersionIndex ?? versions.length - 1];
-  (0, import_react14.useEffect)(() => {
+  ), [inputText, setInputText] = (0, import_react14.useState)(""), [textEditMode, setTextEditMode] = (0, import_react14.useState)(!1), text = (_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text, currentVersion = versions[currentVersionIndex ?? versions.length - 1], user = (0, import_remix4.useUser)();
+  console.log(user), (0, import_react14.useEffect)(() => {
     text && (setVersions((curr) => [...curr, text]), setCurrentVersionIndex(null));
   }, [text]);
   let error = ((_b = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _b.error) && (typeof ((_c = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _c.error) == "string" ? (_d = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _d.error : "Something went wrong"), isLoading = fetcher.state === "submitting" || fetcher.state === "loading", [duration, setDuration] = (0, import_react14.useState)(0), [recording, setRecording] = (0, import_react14.useState)(!1), [timer, setTimer] = (0, import_react14.useState)(null), [mediaRecorder, setMediaRecorder] = (0, import_react14.useState)(
@@ -1436,11 +1444,11 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "grid h-screen grid-rows-8 gap-4 pb-4", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(Header_default, {}, void 0, !1, {
       fileName: "app/routes/__auth.app.tsx",
-      lineNumber: 103,
+      lineNumber: 107,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/__auth.app.tsx",
-      lineNumber: 102,
+      lineNumber: 106,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("section", { className: "relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow lg:mx-auto lg:w-full lg:max-w-xl", children: [
@@ -1454,7 +1462,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
             },
             children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_io5.IoShareOutline, { size: "20" }, void 0, !1, {
               fileName: "app/routes/__auth.app.tsx",
-              lineNumber: 115,
+              lineNumber: 119,
               columnNumber: 13
             }, this)
           },
@@ -1462,7 +1470,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
           !1,
           {
             fileName: "app/routes/__auth.app.tsx",
-            lineNumber: 108,
+            lineNumber: 112,
             columnNumber: 11
           },
           this
@@ -1476,7 +1484,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
             },
             children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_io5.IoCopyOutline, { size: "20" }, void 0, !1, {
               fileName: "app/routes/__auth.app.tsx",
-              lineNumber: 126,
+              lineNumber: 130,
               columnNumber: 13
             }, this)
           },
@@ -1484,7 +1492,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
           !1,
           {
             fileName: "app/routes/__auth.app.tsx",
-            lineNumber: 118,
+            lineNumber: 122,
             columnNumber: 11
           },
           this
@@ -1505,7 +1513,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
                 !1,
                 {
                   fileName: "app/routes/__auth.app.tsx",
-                  lineNumber: 141,
+                  lineNumber: 145,
                   columnNumber: 17
                 },
                 this
@@ -1515,14 +1523,14 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
             !1,
             {
               fileName: "app/routes/__auth.app.tsx",
-              lineNumber: 131,
+              lineNumber: 135,
               columnNumber: 15
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "w-32 font-semibold", children: typeof currentVersionIndex == "number" ? `Version ${currentVersionIndex + 1}` : "Latest version" }, void 0, !1, {
             fileName: "app/routes/__auth.app.tsx",
-            lineNumber: 148,
+            lineNumber: 152,
             columnNumber: 15
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
@@ -1540,7 +1548,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
                 !1,
                 {
                   fileName: "app/routes/__auth.app.tsx",
-                  lineNumber: 162,
+                  lineNumber: 166,
                   columnNumber: 17
                 },
                 this
@@ -1550,19 +1558,19 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
             !1,
             {
               fileName: "app/routes/__auth.app.tsx",
-              lineNumber: 153,
+              lineNumber: 157,
               columnNumber: 15
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 130,
+          lineNumber: 134,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/__auth.app.tsx",
-        lineNumber: 107,
+        lineNumber: 111,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "relative flex h-full w-full resize-none items-center justify-center pt-12 outline-none", children: [
@@ -1581,7 +1589,7 @@ You will then be able to make further edits.`,
           !1,
           {
             fileName: "app/routes/__auth.app.tsx",
-            lineNumber: 173,
+            lineNumber: 177,
             columnNumber: 11
           },
           this
@@ -1589,7 +1597,7 @@ You will then be able to make further edits.`,
         isLoading && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "absolute top-1/2 flex -translate-y-1/2 transform flex-col items-center justify-center gap-4", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { children: "Loading" }, void 0, !1, {
             fileName: "app/routes/__auth.app.tsx",
-            lineNumber: 182,
+            lineNumber: 186,
             columnNumber: 15
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
@@ -1602,24 +1610,24 @@ You will then be able to make further edits.`,
             !1,
             {
               fileName: "app/routes/__auth.app.tsx",
-              lineNumber: 183,
+              lineNumber: 187,
               columnNumber: 15
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 181,
+          lineNumber: 185,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/__auth.app.tsx",
-        lineNumber: 172,
+        lineNumber: 176,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/__auth.app.tsx",
-      lineNumber: 106,
+      lineNumber: 110,
       columnNumber: 7
     }, this),
     textEditMode ? /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center px-2", children: [
@@ -1634,13 +1642,13 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 195,
+          lineNumber: 199,
           columnNumber: 13
         },
         this
       ) }, void 0, !1, {
         fileName: "app/routes/__auth.app.tsx",
-        lineNumber: 194,
+        lineNumber: 198,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
@@ -1658,7 +1666,7 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 202,
+          lineNumber: 206,
           columnNumber: 11
         },
         this
@@ -1680,7 +1688,7 @@ You will then be able to make further edits.`,
             !1,
             {
               fileName: "app/routes/__auth.app.tsx",
-              lineNumber: 217,
+              lineNumber: 221,
               columnNumber: 13
             },
             this
@@ -1690,14 +1698,14 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 211,
+          lineNumber: 215,
           columnNumber: 11
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/__auth.app.tsx",
-      lineNumber: 193,
+      lineNumber: 197,
       columnNumber: 9
     }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
@@ -1711,7 +1719,7 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 227,
+          lineNumber: 231,
           columnNumber: 11
         },
         this
@@ -1722,7 +1730,7 @@ You will then be able to make further edits.`,
         " "
       ] }, void 0, !0, {
         fileName: "app/routes/__auth.app.tsx",
-        lineNumber: 234,
+        lineNumber: 238,
         columnNumber: 13
       }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
         "button",
@@ -1731,7 +1739,7 @@ You will then be able to make further edits.`,
           className: "absolute right-10 top-1/2 -translate-y-1/2 transform  rounded-xl bg-gray-200  p-3 text-gray-800 shadow ",
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_bi.BiEdit, { size: "20", className: "shrink-0" }, void 0, !1, {
             fileName: "app/routes/__auth.app.tsx",
-            lineNumber: 242,
+            lineNumber: 246,
             columnNumber: 15
           }, this)
         },
@@ -1739,24 +1747,24 @@ You will then be able to make further edits.`,
         !1,
         {
           fileName: "app/routes/__auth.app.tsx",
-          lineNumber: 238,
+          lineNumber: 242,
           columnNumber: 13
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/__auth.app.tsx",
-      lineNumber: 226,
+      lineNumber: 230,
       columnNumber: 9
     }, this),
     error && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "rounded bg-red-200 px-2 py-1 text-center font-semibold shadow", children: error }, void 0, !1, {
       fileName: "app/routes/__auth.app.tsx",
-      lineNumber: 249,
+      lineNumber: 253,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/__auth.app.tsx",
-    lineNumber: 101,
+    lineNumber: 105,
     columnNumber: 5
   }, this);
 }, auth_app_default = App2;
@@ -1803,7 +1811,7 @@ var Microphone = ({
       !1,
       {
         fileName: "app/routes/__auth.app.tsx",
-        lineNumber: 319,
+        lineNumber: 323,
         columnNumber: 7
       },
       this
@@ -1813,7 +1821,7 @@ var Microphone = ({
   !1,
   {
     fileName: "app/routes/__auth.app.tsx",
-    lineNumber: 310,
+    lineNumber: 314,
     columnNumber: 5
   },
   this
@@ -1907,7 +1915,7 @@ var import_ai = require("react-icons/ai"), import_bi3 = require("react-icons/bi"
 ), SubBulletPoint_default = BulletPoint;
 
 // app/components/Modals/LoginModal.tsx
-var import_remix4 = require("@clerk/remix"), Dialog = __toESM(require("@radix-ui/react-dialog")), import_react15 = require("@remix-run/react"), import_react16 = require("react"), import_io4 = require("react-icons/io");
+var import_remix5 = require("@clerk/remix"), Dialog = __toESM(require("@radix-ui/react-dialog")), import_react15 = require("@remix-run/react"), import_react16 = require("react"), import_io4 = require("react-icons/io");
 var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), LoginModal = ({
   open,
   onClose,
@@ -1960,7 +1968,7 @@ var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), LoginModal = ({
     columnNumber: 5
   }, this);
 }, DefaultContent = ({ error }) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_jsx_dev_runtime14.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col gap-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col items-center justify-center gap-4", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_remix4.SignIn, {}, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_remix5.SignIn, {}, void 0, !1, {
     fileName: "app/components/Modals/LoginModal.tsx",
     lineNumber: 57,
     columnNumber: 11
@@ -2213,7 +2221,7 @@ var import_ssr2 = require("@clerk/remix/ssr.server"), import_node10 = require("@
   return userId ? (0, import_react_router.json)({}) : (0, import_node10.redirect)("/login");
 }, AuthLayout = () => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react19.Outlet, {}, void 0, !1, {
   fileName: "app/routes/__auth.tsx",
-  lineNumber: 15,
+  lineNumber: 16,
   columnNumber: 10
 }, this), auth_default = AuthLayout;
 
@@ -2380,7 +2388,7 @@ var handleSignUp = async (email, password, redirect8, hasSetMarketingEmails, ref
 };
 
 // app/routes/login.tsx
-var import_remix5 = require("@clerk/remix"), import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), meta3 = () => ({
+var import_remix6 = require("@clerk/remix"), import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), meta3 = () => ({
   title: "AudioMate | Login"
 }), action6 = async ({ request }) => {
   let formData = await request.formData(), _action = formData.get("_action");
@@ -2440,7 +2448,7 @@ var Login = () => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { 
     lineNumber: 156,
     columnNumber: 7
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mx-auto flex flex-col gap-4 lg:mx-auto lg:w-1/2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_remix5.SignIn, { redirectUrl: "/app" }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mx-auto flex flex-col gap-4 lg:mx-auto lg:w-1/2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_remix6.SignIn, { redirectUrl: "/app" }, void 0, !1, {
     fileName: "app/routes/login.tsx",
     lineNumber: 158,
     columnNumber: 9
@@ -2471,7 +2479,7 @@ var import_jsx_dev_runtime20 = require("react/jsx-dev-runtime"), Terms = () => /
 }, this), terms_default = Terms;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "4a04a3fb", entry: { module: "/build/entry.client-B2YUOGUI.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-FDDKQUMY.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-WIDICX7S.js", imports: ["/build/_shared/chunk-K3I4BZ64.js", "/build/_shared/chunk-MQFVQF2P.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/__auth": { id: "routes/__auth", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__auth-5UKJJ5FH.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__auth.app": { id: "routes/__auth.app", parentId: "routes/__auth", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/__auth.app-6JFKO3FT.js", imports: ["/build/_shared/chunk-FNIA44VN.js", "/build/_shared/chunk-MQFVQF2P.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-LTZKWXXH.js", imports: ["/build/_shared/chunk-2E2XBHQP.js", "/build/_shared/chunk-FNIA44VN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.generate-text": { id: "routes/api.generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api.generate-text-VNJMQONS.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.login.link-guest-account": { id: "routes/api.login.link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api.login.link-guest-account-HUH2MJH2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.stripe-webhook": { id: "routes/api.stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api.stripe-webhook-EC7RELM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.tts": { id: "routes/api.tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api.tts-HXBS76RE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-4I5XY3PI.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-HVM677HO.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.failure": { id: "routes/payment.failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.failure-ZM6UI2VR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.success": { id: "routes/payment.success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.success-R6QYUF4G.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-OI34D5G2.js", imports: ["/build/_shared/chunk-2E2XBHQP.js", "/build/_shared/chunk-FNIA44VN.js", "/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile.payment": { id: "routes/profile.payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile.payment-R2UAXEMY.js", imports: ["/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-4A04A3FB.js" };
+var assets_manifest_default = { version: "fcb42fb2", entry: { module: "/build/entry.client-B2YUOGUI.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-FDDKQUMY.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-UT3WMXV3.js", imports: ["/build/_shared/chunk-K3I4BZ64.js", "/build/_shared/chunk-HAVMEERF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/__auth": { id: "routes/__auth", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__auth-443VUPGO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__auth.app": { id: "routes/__auth.app", parentId: "routes/__auth", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/__auth.app-NVPGWVFX.js", imports: ["/build/_shared/chunk-6VFV6SAP.js", "/build/_shared/chunk-HAVMEERF.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3DPUSIZ2.js", imports: ["/build/_shared/chunk-PLNQBJT3.js", "/build/_shared/chunk-6VFV6SAP.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.generate-text": { id: "routes/api.generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api.generate-text-VNJMQONS.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.login.link-guest-account": { id: "routes/api.login.link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api.login.link-guest-account-HUH2MJH2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.stripe-webhook": { id: "routes/api.stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api.stripe-webhook-EC7RELM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.tts": { id: "routes/api.tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api.tts-HXBS76RE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-RCRLQKNI.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-AB5SDO5Y.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.failure": { id: "routes/payment.failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.failure-ZM6UI2VR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.success": { id: "routes/payment.success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.success-R6QYUF4G.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-X36KR77P.js", imports: ["/build/_shared/chunk-PLNQBJT3.js", "/build/_shared/chunk-6VFV6SAP.js", "/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile.payment": { id: "routes/profile.payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile.payment-R2UAXEMY.js", imports: ["/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-FCB42FB2.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

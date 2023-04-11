@@ -50,11 +50,8 @@ export type RootLoaderData = {
 export const loader: LoaderFunction = async (args) => {
   return rootAuthLoader(
     args,
-    async ({ request }) => {
-      const { userId } = request.auth;
-      const userProfile = userId ? await getUserProfile(userId) : undefined;
-
-      return { env: process.env.NODE_ENV, userProfile };
+    () => {
+      return { env: process.env.NODE_ENV };
     },
     { loadUser: true }
   );

@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/remix";
 import { useFetcher } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
@@ -18,6 +19,9 @@ const App = () => {
   const [textEditMode, setTextEditMode] = useState(false);
   const text = fetcher?.data?.text;
   const currentVersion = versions[currentVersionIndex ?? versions.length - 1];
+
+  const user = useUser();
+  console.log(user);
 
   useEffect(() => {
     if (text) {
