@@ -30,7 +30,7 @@ const Button = ({
 }: ButtonProps) => {
   const variantClassNames =
     variant === "transparent"
-      ? "text-blue-500 disabled:bg-slate-300 outline outline-blue-500 shadow-md"
+      ? "text-orange-500 disabled:bg-slate-300 outline outline-orange-500 shadow-md"
       : variant === "red"
       ? "bg-red-500 text-white disabled:bg-red-200 shadow-md"
       : variant === "green"

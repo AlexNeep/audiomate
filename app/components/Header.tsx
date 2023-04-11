@@ -1,4 +1,4 @@
-import { useAuth, UserButton } from "@clerk/remix";
+import { useAuth, UserButton, useUser } from "@clerk/remix";
 import { Link, useLocation } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -11,9 +11,9 @@ import { PremiumLink } from "./home/PremiumLink";
 
 const Header = () => {
   const { userId } = useAuth();
+  const { user } = useUser();
   const isLoggedIn = Boolean(userId);
-  const showPremium = true;
-
+  const showPremium = !user?.publicMetadata.plan;
   const [menuOpen, setMenuOpen] = useState(false);
 
   const location = useLocation();

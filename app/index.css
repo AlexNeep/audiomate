@@ -805,6 +805,10 @@ video {
   max-width: 36rem;
 }
 
+.max-w-sm {
+  max-width: 24rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1247,6 +1251,11 @@ video {
   padding-bottom: 1rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1482,6 +1491,10 @@ video {
 
 .outline-blue-500 {
   outline-color: #3b82f6;
+}
+
+.outline-orange-500 {
+  outline-color: #f97316;
 }
 
 .transition {
