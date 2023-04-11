@@ -1,4 +1,3 @@
-import { useAuth } from "@clerk/remix";
 import { useFetcher } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
@@ -26,10 +25,6 @@ const App = () => {
       setCurrentVersionIndex(null);
     }
   }, [text]);
-
-  // useEffect(() => {
-  //   if (!loaderData.user) alert("Not logged in");
-  // }, []);
 
   const error =
     fetcher?.data?.error &&
@@ -249,6 +244,7 @@ const App = () => {
           )}
         </section>
       )}
+
       {error && (
         <p className="rounded bg-red-200 px-2 py-1 text-center font-semibold shadow">
           {error}

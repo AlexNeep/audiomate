@@ -83,7 +83,7 @@ const MainMenus = ({
           {
             <div className="flex items-center gap-3">
               <Link to="/app">
-                <Button>New chat</Button>
+                <Button padding={ButtonPaddingOptions.SMALL}>New chat</Button>
               </Link>
             </div>
           }

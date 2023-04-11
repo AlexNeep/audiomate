@@ -79,7 +79,7 @@ __export(root_exports, {
 var import_react11 = require("@remix-run/react"), import_react12 = require("react"), import_ssr = require("@clerk/remix/ssr.server"), import_remix2 = require("@clerk/remix");
 
 // app/index.css
-var app_default = "/build/_assets/index-VAVRCJRH.css";
+var app_default = "/build/_assets/index-HFCFTANK.css";
 
 // app/components/Header.tsx
 var import_remix = require("@clerk/remix"), import_react7 = require("@remix-run/react"), import_react8 = require("react"), import_gi = require("react-icons/gi"), import_io2 = require("react-icons/io"), import_md = require("react-icons/md");
@@ -281,7 +281,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), Header = () => {
   isLoggedIn,
   setMenuOpen,
   showPremium
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "z-10 mr-4 flex items-center gap-3", children: isLoggedIn ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center gap-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react7.Link, { to: "/app", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Buttons_default, { children: "New chat" }, void 0, !1, {
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "z-10 mr-4 flex items-center gap-3", children: isLoggedIn ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_jsx_dev_runtime4.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex items-center gap-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react7.Link, { to: "/app", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Buttons_default, { padding: "py-2 lg:py-4" /* SMALL */, children: "New chat" }, void 0, !1, {
   fileName: "app/components/Header.tsx",
   lineNumber: 86,
   columnNumber: 17
@@ -708,7 +708,7 @@ if (!import_firebase_admin.default.apps.length) {
 }
 var db = import_firebase_admin.default.firestore(), adminAuth = import_firebase_admin.default.auth(), Firebase, _a2;
 if (!((_a2 = Firebase == null ? void 0 : Firebase.apps) != null && _a2.length)) {
-  let firebaseConfig2 = {
+  let firebaseConfig = {
     apiKey: process.env.FIREBASE_KEY,
     authDomain: "audiomate.firebaseapp.com",
     projectId: "audiomate",
@@ -717,7 +717,7 @@ if (!((_a2 = Firebase == null ? void 0 : Firebase.apps) != null && _a2.length)) 
     appId: "1:768929423248:web:8d0f7a3e2617c1ea62dd15",
     measurementId: "G-046G6QMKSH"
   };
-  Firebase = (0, import_app2.initializeApp)(firebaseConfig2);
+  Firebase = (0, import_app2.initializeApp)(firebaseConfig);
 }
 
 // app/utils/payment.ts
@@ -1386,6 +1386,439 @@ var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), loader2 = async 
   columnNumber: 5
 }, this), profile_payment_default = PaymentDashboard;
 
+// app/routes/__auth.app.tsx
+var auth_app_exports = {};
+__export(auth_app_exports, {
+  default: () => auth_app_default
+});
+var import_react13 = require("@remix-run/react"), import_react14 = require("react"), import_bi = require("react-icons/bi"), import_bs = require("react-icons/bs"), import_cg = require("react-icons/cg"), import_hi = require("react-icons/hi"), import_io3 = require("react-icons/io"), import_io5 = require("react-icons/io5");
+var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), App2 = () => {
+  var _a3, _b, _c, _d;
+  let fetcher = (0, import_react13.useFetcher)(), [versions, setVersions] = (0, import_react14.useState)([]), [currentVersionIndex, setCurrentVersionIndex] = (0, import_react14.useState)(
+    null
+  ), [inputText, setInputText] = (0, import_react14.useState)(""), [textEditMode, setTextEditMode] = (0, import_react14.useState)(!1), text = (_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text, currentVersion = versions[currentVersionIndex ?? versions.length - 1];
+  (0, import_react14.useEffect)(() => {
+    text && (setVersions((curr) => [...curr, text]), setCurrentVersionIndex(null));
+  }, [text]);
+  let error = ((_b = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _b.error) && (typeof ((_c = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _c.error) == "string" ? (_d = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _d.error : "Something went wrong"), isLoading = fetcher.state === "submitting" || fetcher.state === "loading", [duration, setDuration] = (0, import_react14.useState)(0), [recording, setRecording] = (0, import_react14.useState)(!1), [timer, setTimer] = (0, import_react14.useState)(null), [mediaRecorder, setMediaRecorder] = (0, import_react14.useState)(
+    null
+  ), [audioChunks, setAudioChunks] = (0, import_react14.useState)(null);
+  function changeRecording() {
+    recording ? stopRecording(mediaRecorder) : startRecording({
+      setMediaRecorder,
+      setAudioChunks,
+      setDuration,
+      setTimer
+    }), setRecording(!recording);
+  }
+  (0, import_react14.useEffect)(() => {
+    if (audioChunks) {
+      let audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
+      submitForm(audioBlob), cleanUp();
+    }
+  }, [audioChunks]);
+  function submitForm(audioBlob) {
+    let form = new FormData();
+    audioBlob && form.append("audio", audioBlob), form.append("input_text", inputText), form.append("past_text", currentVersion), fetcher.submit(form, {
+      method: "post",
+      encType: "multipart/form-data",
+      action: "/api/generate-text"
+    });
+  }
+  function cleanUp() {
+    setMediaRecorder(null), setAudioChunks(null), timer && clearInterval(timer), setTimer(null), setDuration(0);
+  }
+  (0, import_react14.useEffect)(() => {
+    let AudioRecorder = require("audio-recorder-polyfill");
+    window.MediaRecorder = AudioRecorder;
+  }, []);
+  let isLeftArrowDisabled = versions.length === 0 || currentVersionIndex === 0, isRightArrowDisabled = typeof currentVersionIndex != "number" || currentVersionIndex === versions.length - 1;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "grid h-screen grid-rows-8 gap-4 pb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(Header_default, {}, void 0, !1, {
+      fileName: "app/routes/__auth.app.tsx",
+      lineNumber: 103,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/__auth.app.tsx",
+      lineNumber: 102,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("section", { className: "relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow lg:mx-auto lg:w-full lg:max-w-xl", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "absolute z-10 flex h-12 w-full items-center justify-center ", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          "button",
+          {
+            className: "absolute left-0 top-0 flex h-full items-center justify-center gap-2 rounded-br-lg rounded-tl-lg bg-orange-500 px-3 py-2 text-gray-800",
+            onClick: () => {
+              !currentVersion || navigator.share({ text: currentVersion });
+            },
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_io5.IoShareOutline, { size: "20" }, void 0, !1, {
+              fileName: "app/routes/__auth.app.tsx",
+              lineNumber: 115,
+              columnNumber: 13
+            }, this)
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/__auth.app.tsx",
+            lineNumber: 108,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          "button",
+          {
+            className: "absolute right-0 top-0 flex h-full items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800",
+            onClick: () => {
+              !currentVersion || (navigator.clipboard.writeText(currentVersion), alert("Copied"));
+            },
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_io5.IoCopyOutline, { size: "20" }, void 0, !1, {
+              fileName: "app/routes/__auth.app.tsx",
+              lineNumber: 126,
+              columnNumber: 13
+            }, this)
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/__auth.app.tsx",
+            lineNumber: 118,
+            columnNumber: 11
+          },
+          this
+        ),
+        versions.length > 1 && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex h-full w-full items-center justify-center gap-2 text-center", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+            "button",
+            {
+              disabled: isLeftArrowDisabled,
+              onClick: () => setCurrentVersionIndex((curr) => (console.log(curr, versions), Math.max(curr ? curr - 1 : versions.length - 2, 0))),
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+                import_bs.BsArrowLeftShort,
+                {
+                  size: "35",
+                  className: `shrink-0 rounded-lg bg-gray-200 p-1 ${isLeftArrowDisabled ? "text-gray-400" : "text-gray-700"}`
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/__auth.app.tsx",
+                  lineNumber: 141,
+                  columnNumber: 17
+                },
+                this
+              )
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/__auth.app.tsx",
+              lineNumber: 131,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "w-32 font-semibold", children: typeof currentVersionIndex == "number" ? `Version ${currentVersionIndex + 1}` : "Latest version" }, void 0, !1, {
+            fileName: "app/routes/__auth.app.tsx",
+            lineNumber: 148,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+            "button",
+            {
+              disabled: isRightArrowDisabled,
+              onClick: () => setCurrentVersionIndex((curr) => curr ? Math.min(curr + 1, versions.length - 1) : 1),
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+                import_bs.BsArrowRightShort,
+                {
+                  size: "35",
+                  className: `shrink-0  rounded-lg bg-gray-200 p-1 ${isRightArrowDisabled ? "text-gray-400" : "text-gray-700"}`
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/__auth.app.tsx",
+                  lineNumber: 162,
+                  columnNumber: 17
+                },
+                this
+              )
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/__auth.app.tsx",
+              lineNumber: 153,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 130,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/__auth.app.tsx",
+        lineNumber: 107,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "relative flex h-full w-full resize-none items-center justify-center pt-12 outline-none", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          "textarea",
+          {
+            className: "h-full w-full resize-none px-4 py-2 outline-none",
+            value: currentVersion,
+            contentEditable: !1,
+            placeholder: `Click the record button below and say some instructions.
+
+You will then be able to make further edits.`,
+            readOnly: !0
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/__auth.app.tsx",
+            lineNumber: 173,
+            columnNumber: 11
+          },
+          this
+        ),
+        isLoading && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "absolute top-1/2 flex -translate-y-1/2 transform flex-col items-center justify-center gap-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { children: "Loading" }, void 0, !1, {
+            fileName: "app/routes/__auth.app.tsx",
+            lineNumber: 182,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+            import_cg.CgSpinner,
+            {
+              className: "flex-shrink-0 animate-spin  text-orange-500",
+              size: "30"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/__auth.app.tsx",
+              lineNumber: 183,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 181,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/__auth.app.tsx",
+        lineNumber: 172,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/__auth.app.tsx",
+      lineNumber: 106,
+      columnNumber: 7
+    }, this),
+    textEditMode ? /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center px-2", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "rounded bg-gray-200 p-2 shadow", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        import_hi.HiOutlineMicrophone,
+        {
+          size: "25",
+          onClick: () => setTextEditMode(!1),
+          className: "text-gray-900"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 195,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/__auth.app.tsx",
+        lineNumber: 194,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        "textarea",
+        {
+          value: inputText,
+          onChange: (e) => setInputText(e.currentTarget.value),
+          className: "m-4 h-full w-full resize-none rounded p-2 shadow outline-none",
+          onKeyDown: (e) => {
+            e.keyCode === 13 && !e.shiftKey && submitForm();
+          },
+          disabled: isLoading
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 202,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        "button",
+        {
+          type: "submit",
+          className: "border border-transparent p-2",
+          disabled: isLoading,
+          onClick: () => submitForm(),
+          children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+            import_io3.IoMdSend,
+            {
+              size: "20",
+              className: ` transition-colors duration-100 ${prompt.length > 0 ? "fill-gray-50" : "fill-gray-800"}`
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/__auth.app.tsx",
+              lineNumber: 217,
+              columnNumber: 13
+            },
+            this
+          )
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 211,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/routes/__auth.app.tsx",
+      lineNumber: 193,
+      columnNumber: 9
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        Microphone,
+        {
+          recording,
+          changeRecording,
+          duration
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 227,
+          columnNumber: 11
+        },
+        this
+      ),
+      recording ? /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "absolute right-10 top-1/2 -translate-y-1/2 transform text-lg", children: [
+        duration,
+        " seconds",
+        " "
+      ] }, void 0, !0, {
+        fileName: "app/routes/__auth.app.tsx",
+        lineNumber: 234,
+        columnNumber: 13
+      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        "button",
+        {
+          onClick: () => setTextEditMode(!0),
+          className: "absolute right-10 top-1/2 -translate-y-1/2 transform  rounded-xl bg-gray-200  p-3 text-gray-800 shadow ",
+          children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_bi.BiEdit, { size: "20", className: "shrink-0" }, void 0, !1, {
+            fileName: "app/routes/__auth.app.tsx",
+            lineNumber: 242,
+            columnNumber: 15
+          }, this)
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/__auth.app.tsx",
+          lineNumber: 238,
+          columnNumber: 13
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/routes/__auth.app.tsx",
+      lineNumber: 226,
+      columnNumber: 9
+    }, this),
+    error && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "rounded bg-red-200 px-2 py-1 text-center font-semibold shadow", children: error }, void 0, !1, {
+      fileName: "app/routes/__auth.app.tsx",
+      lineNumber: 249,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/__auth.app.tsx",
+    lineNumber: 101,
+    columnNumber: 5
+  }, this);
+}, auth_app_default = App2;
+function startRecording({
+  setMediaRecorder,
+  setAudioChunks,
+  setDuration,
+  setTimer
+}) {
+  navigator.mediaDevices.getUserMedia({ audio: !0, video: !1 }).then((stream) => {
+    let localMediaRecorder = new MediaRecorder(stream);
+    localMediaRecorder.start();
+    let timer = setInterval(() => {
+      setDuration((curr) => curr + 1);
+    }, 1e3);
+    setTimer(timer), localMediaRecorder.addEventListener("dataavailable", (event) => {
+      console.log("Recording stopped, data available"), setAudioChunks((prev) => [...prev ?? [], event.data]);
+    }), setMediaRecorder(localMediaRecorder);
+  });
+}
+function stopRecording(mediaRecorder) {
+  if (!mediaRecorder) {
+    console.error("mediaRecorder is not defined");
+    return;
+  }
+  mediaRecorder.stop(), mediaRecorder.stream.getAudioTracks().forEach((track) => track.stop());
+}
+var Microphone = ({
+  changeRecording,
+  recording,
+  duration
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+  "div",
+  {
+    className: `cols-span-1 mx-auto w-fit rounded-xl p-4 shadow-lg transition-colors duration-500 ${recording ? duration % 2 ? "bg-red-500" : "bg-red-100" : "bg-orange-500"}`,
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+      import_hi.HiOutlineMicrophone,
+      {
+        onClick: changeRecording,
+        size: "40",
+        className: " shrink-0  text-gray-800"
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/__auth.app.tsx",
+        lineNumber: 319,
+        columnNumber: 7
+      },
+      this
+    )
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/routes/__auth.app.tsx",
+    lineNumber: 310,
+    columnNumber: 5
+  },
+  this
+);
+
 // app/routes/api.tts.tsx
 var api_tts_exports = {};
 __export(api_tts_exports, {
@@ -1407,7 +1840,7 @@ __export(contact_exports, {
   default: () => contact_default,
   loader: () => loader3
 });
-var import_node8 = require("@remix-run/node"), import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), loader3 = () => (0, import_node8.redirect)("https://share-eu1.hsforms.com/1e0-dQW3vTjaiLcA9jiNRVwfxmeh"), Contact = () => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h1", { className: "my-6 text-3xl font-bold", children: "Contact us" }, void 0, !1, {
+var import_node8 = require("@remix-run/node"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), loader3 = () => (0, import_node8.redirect)("https://share-eu1.hsforms.com/1e0-dQW3vTjaiLcA9jiNRVwfxmeh"), Contact = () => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h1", { className: "my-6 text-3xl font-bold", children: "Contact us" }, void 0, !1, {
   fileName: "app/routes/contact.tsx",
   lineNumber: 10,
   columnNumber: 7
@@ -1420,16 +1853,16 @@ var import_node8 = require("@remix-run/node"), import_jsx_dev_runtime10 = requir
 // app/routes/pricing.tsx
 var pricing_exports = {};
 __export(pricing_exports, {
-  action: () => action6,
+  action: () => action5,
   default: () => pricing_default,
-  loader: () => loader5,
-  meta: () => meta3
+  loader: () => loader4,
+  meta: () => meta2
 });
-var import_node11 = require("@remix-run/node"), import_react15 = require("@remix-run/react"), import_react16 = require("react");
+var import_node9 = require("@remix-run/node"), import_react17 = require("@remix-run/react"), import_react18 = require("react");
 
 // app/components/core/ErrorMessage.tsx
-var import_bi = require("react-icons/bi"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), ErrorMessage = ({ error }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { className: "flex items-center justify-start gap-2 rounded bg-red-200 px-4 py-2 font-semibold text-black shadow-md", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_bi.BiErrorCircle, { size: "25", className: "flex-shrink-0 fill-red-900" }, void 0, !1, {
+var import_bi2 = require("react-icons/bi"), import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), ErrorMessage = ({ error }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "flex items-center justify-start gap-2 rounded bg-red-200 px-4 py-2 font-semibold text-black shadow-md", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_bi2.BiErrorCircle, { size: "25", className: "flex-shrink-0 fill-red-900" }, void 0, !1, {
     fileName: "app/components/core/ErrorMessage.tsx",
     lineNumber: 8,
     columnNumber: 7
@@ -1442,20 +1875,20 @@ var import_bi = require("react-icons/bi"), import_jsx_dev_runtime11 = require("r
 }, this), ErrorMessage_default = ErrorMessage;
 
 // app/components/landing-page/SubBulletPoint.tsx
-var import_ai = require("react-icons/ai"), import_bi2 = require("react-icons/bi"), import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), BulletPoint = ({
+var import_ai = require("react-icons/ai"), import_bi3 = require("react-icons/bi"), import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), BulletPoint = ({
   point,
   excluded,
   bold
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
   "p",
   {
     className: `flex items-center justify-start gap-4 text-left ${excluded ? "text-slate-400" : "text-slate-700"} ${bold ? "font-semibold" : "font-normal"}`,
     children: [
-      excluded ? /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_bi2.BiPlus, { size: 25, className: "rotate-45 text-red-400" }, void 0, !1, {
+      excluded ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_bi3.BiPlus, { size: 25, className: "rotate-45 text-red-400" }, void 0, !1, {
         fileName: "app/components/landing-page/SubBulletPoint.tsx",
         lineNumber: 19,
         columnNumber: 9
-      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_ai.AiOutlineEdit, { size: 25, className: "fill-blue-500" }, void 0, !1, {
+      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_ai.AiOutlineEdit, { size: 25, className: "fill-blue-500" }, void 0, !1, {
         fileName: "app/components/landing-page/SubBulletPoint.tsx",
         lineNumber: 21,
         columnNumber: 9
@@ -1474,415 +1907,110 @@ var import_ai = require("react-icons/ai"), import_bi2 = require("react-icons/bi"
 ), SubBulletPoint_default = BulletPoint;
 
 // app/components/Modals/LoginModal.tsx
-var Dialog = __toESM(require("@radix-ui/react-dialog")), import_react13 = require("@remix-run/react"), import_auth3 = require("firebase/auth"), import_react14 = require("react"), import_react_google_button = __toESM(require("react-google-button")), import_io3 = require("react-icons/io");
-
-// app/routes/login.tsx
-var login_exports = {};
-__export(login_exports, {
-  action: () => action5,
-  createAccount: () => createAccount,
-  default: () => login_default,
-  loader: () => loader4,
-  meta: () => meta2
-});
-var import_node10 = require("@remix-run/node");
-
-// app/models/login.ts
-var import_node9 = require("@remix-run/node");
-var newSignupRedirectAfterLoginPath = "/app", redirectAfterLoginPath = "/app", handleLogin = async (email, password, redirect7) => {
-  let { res, error } = await signIn(email, password);
-  if (error)
-    return handleLoginError(error);
-  if (!res.user)
-    return handleLoginError();
-  let token = await res.user.getIdToken();
-  return createUserSession(token, redirect7 || redirectAfterLoginPath);
-};
-function handleLoginError(errorCode) {
-  return errorCode === "404" ? { error: "Please create an account first" } : errorCode === "401" ? { error: "Login details are incorrect" } : (0, import_node9.json)({ error: "Something went wrong" });
-}
-var handleSignUp = async (email, password, redirect7, hasSetMarketingEmails, referrer) => {
-  let { user } = await signUp(
-    email,
-    password,
-    hasSetMarketingEmails,
-    referrer
-  ), token = await user.getIdToken();
-  return createUserSession(token, redirect7 || newSignupRedirectAfterLoginPath);
-}, handleClientAuth = async (email, uid, token, redirect7, hasSetMarketingEmails, referrer) => {
-  let existingUser = await getUserProfile(uid), relevantRedirect = redirectAfterLoginPath;
-  return existingUser || (relevantRedirect = newSignupRedirectAfterLoginPath, await triggerNewAccountEvents(email, uid, hasSetMarketingEmails, referrer)), existingUser && !(existingUser != null && existingUser.marketing_emails) && hasSetMarketingEmails && await updateUserProfile(existingUser.uid, {
-    marketing_emails: hasSetMarketingEmails
-  }), createUserSession(token, redirect7 || relevantRedirect);
-};
-
-// app/routes/login.tsx
-var import_remix4 = require("@clerk/remix"), import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), meta2 = () => ({
-  title: "AudioMate | Login"
-}), action5 = async ({ request }) => {
-  let formData = await request.formData(), _action = formData.get("_action");
-  if (_action === "reset_password")
-    return (0, import_node10.json)({
-      error: "Sorry you have forgotten your password! We have not setup password resetting yet. Contact us and we will send you a reset link."
-    });
-  let email = formData.get("email"), uid = formData.get("uid"), token = formData.get("token"), password = formData.get("password"), redirect7 = formData.get("redirect"), referrer = formData.get("referrer"), hasSetMarketingEmails = formData.get("marketing_emails") == "true";
-  if (uid && token)
-    return await handleClientAuth(
-      email,
-      uid,
-      token,
-      redirect7,
-      hasSetMarketingEmails,
-      referrer
-    );
-  if (!password)
-    throw Error("Something went wrong- no passowrd");
-  return _action === "login" ? await handleLogin(email, password, redirect7) : _action === "signup" ? await handleSignUp(
-    email,
-    password,
-    redirect7,
-    hasSetMarketingEmails,
-    referrer
-  ) : (0, import_node10.json)({});
-}, loader4 = async ({ request }) => {
-  let user = await getUserSession(request);
-  if (user)
-    return (0, import_node10.redirect)("/scenarios");
-  let redirectTo = new URL(request.url).searchParams.get("redirect") ?? "";
-  return (0, import_node10.json)({ user, redirect: redirectTo });
-};
-async function createAccount({
-  userCredentials,
-  fetcher,
-  marketingEmails,
-  referrer,
-  redirect: redirect7 = ""
-}) {
-  let user = userCredentials.user, token = await user.getIdToken();
-  fetcher.submit(
-    {
-      email: user.email ?? "",
-      marketing_emails: `${marketingEmails}`,
-      uid: user.uid,
-      token,
-      redirect: redirect7,
-      referrer
-    },
-    { action: "/login", method: "post" }
-  );
-}
-var Login = () => /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "m-auto flex flex-col gap-6 ", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Header_default, {}, void 0, !1, {
-    fileName: "app/routes/login.tsx",
-    lineNumber: 156,
-    columnNumber: 7
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mx-auto flex flex-col gap-4 lg:mx-auto lg:w-1/2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_remix4.SignIn, { redirectUrl: "/app" }, void 0, !1, {
-    fileName: "app/routes/login.tsx",
-    lineNumber: 158,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/login.tsx",
-    lineNumber: 157,
-    columnNumber: 7
-  }, this)
-] }, void 0, !0, {
-  fileName: "app/routes/login.tsx",
-  lineNumber: 155,
-  columnNumber: 5
-}, this), login_default = Login;
-
-// app/services/firebase.ts
-var import_app3 = require("firebase/app"), import_auth2 = require("firebase/auth"), firebaseConfig = {
-  apiKey: "AIzaSyAqUOhATNBI_6MTCavtjLvCecp1enuSl7g",
-  authDomain: "audiomate.firebaseapp.com",
-  projectId: "audiomate",
-  storageBucket: "audiomate.appspot.com",
-  messagingSenderId: "768929423248",
-  appId: "1:768929423248:web:8d0f7a3e2617c1ea62dd15",
-  measurementId: "G-046G6QMKSH"
-}, app;
-try {
-  app = (0, import_app3.getApp)();
-} catch {
-  app = (0, import_app3.initializeApp)(firebaseConfig);
-}
-var clientAuth = (0, import_auth2.getAuth)(app);
-
-// app/components/Modals/LoginModal.tsx
+var import_remix4 = require("@clerk/remix"), Dialog = __toESM(require("@radix-ui/react-dialog")), import_react15 = require("@remix-run/react"), import_react16 = require("react"), import_io4 = require("react-icons/io");
 var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), LoginModal = ({
   open,
   onClose,
-  redirect: redirect7,
-  variant = "default",
-  user
+  redirect: redirect8,
+  variant = "default"
 }) => {
-  let fetcher = (0, import_react13.useFetcher)(), [error, setError] = (0, import_react14.useState)(""), [referrer, setReferrer] = (0, import_react14.useState)("");
-  (0, import_react14.useEffect)(() => {
+  let fetcher = (0, import_react15.useFetcher)(), [error, setError] = (0, import_react16.useState)(""), [referrer, setReferrer] = (0, import_react16.useState)("");
+  return (0, import_react16.useEffect)(() => {
     setReferrer(document.referrer);
-  }, []), (0, import_react14.useEffect)(() => {
+  }, []), (0, import_react16.useEffect)(() => {
     var _a3;
     (_a3 = fetcher.data) != null && _a3.success && window.location.reload();
-  }, [fetcher]);
-  let handleGoogleLogin = (user2) => {
-    user2 ? linkGuestWithGoogleAccount() : loginWithGoogle();
-  };
-  function loginWithGoogle() {
-    let provider = new import_auth3.GoogleAuthProvider();
-    (0, import_auth3.signInWithPopup)(clientAuth, provider).then(
-      (userCredentials) => createAccount({
-        userCredentials,
-        fetcher,
-        marketingEmails: !0,
-        referrer,
-        redirect: redirect7
-      })
-    ).catch((e) => console.log(e));
-  }
-  function linkGuestWithGoogleAccount() {
-    let provider = new import_auth3.GoogleAuthProvider();
-    (0, import_auth3.signInAnonymously)(clientAuth).then((usercred) => {
-      let user2 = usercred.user;
-      (0, import_auth3.linkWithPopup)(user2, provider).then(() => {
-        fetcher.submit(
-          { email: user2.email ?? "" },
-          { method: "post", action: "/api/login/link-guest-account" }
-        );
-      }).catch((e) => {
-        let duplicateAccount = "Firebase: Error (auth/credential-already-in-use).", duplicateAccountMsg = "This Google account is already linked to another account. Please login with that account or use a different Google account.";
-        if ((e == null ? void 0 : e.message) === duplicateAccount)
-          return setError(duplicateAccountMsg);
-        setError("Something went wrong");
-      });
-    });
-  }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Root, { open, onOpenChange: onClose, children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Portal, { children: [
+  }, [fetcher]), /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Root, { open, onOpenChange: onClose, children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Portal, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Overlay, { className: "fixed inset-0 bg-slate-500 opacity-30" }, void 0, !1, {
       fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 94,
+      lineNumber: 38,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Content, { className: "fixed left-[50%] top-[50%] flex w-[90vw] max-w-xl translate-x-[-50%] translate-y-[-50%] flex-col gap-8 rounded-lg bg-white px-6 py-10", children: [
-      variant === "default" && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
-        DefaultContent,
-        {
-          handleGoogleLogin,
-          error,
-          user
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/Modals/LoginModal.tsx",
-          lineNumber: 97,
-          columnNumber: 13
-        },
-        this
-      ),
-      variant === "pricing" && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
-        PricingContent,
-        {
-          handleGoogleLogin,
-          error,
-          user
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/Modals/LoginModal.tsx",
-          lineNumber: 104,
-          columnNumber: 13
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Close, { asChild: !0, className: "absolute right-2 top-2 ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("button", { "aria-label": "Close", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_io3.IoMdClose, { className: "fill-slate-400", size: "30" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(DefaultContent, { error }, void 0, !1, {
         fileName: "app/components/Modals/LoginModal.tsx",
-        lineNumber: 112,
+        lineNumber: 40,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Dialog.Close, { asChild: !0, className: "absolute right-2 top-2 ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("button", { "aria-label": "Close", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_io4.IoMdClose, { className: "fill-slate-400", size: "30" }, void 0, !1, {
+        fileName: "app/components/Modals/LoginModal.tsx",
+        lineNumber: 43,
         columnNumber: 15
       }, this) }, void 0, !1, {
         fileName: "app/components/Modals/LoginModal.tsx",
-        lineNumber: 111,
+        lineNumber: 42,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/components/Modals/LoginModal.tsx",
-        lineNumber: 110,
+        lineNumber: 41,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 95,
+      lineNumber: 39,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 93,
+    lineNumber: 37,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 92,
+    lineNumber: 36,
     columnNumber: 5
   }, this);
-}, DefaultContent = ({
-  handleGoogleLogin,
-  error,
-  user
-}) => {
-  let fullAccessFeatures = [
-    `${SUBSCRIBED_USER_MESSAGES.free} more AI-powered messages`,
-    "Access to all scenarios",
-    "Generate translations",
-    "Practise listening audio",
-    "Track your vocabulary growth"
-  ];
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_jsx_dev_runtime14.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col gap-10", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("h2", { className: "flex items-center justify-center gap-2 text-lg font-semibold text-blue-800", children: "Sign up for full access" }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 141,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col items-start justify-center gap-2", children: fullAccessFeatures.map((text, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(SubBulletPoint_default, { point: text }, index, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 147,
-      columnNumber: 13
-    }, this)) }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 145,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("hr", { className: "mx-auto w-1/2 border-gray-400" }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 151,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col items-center justify-center gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
-        import_react_google_button.default,
-        {
-          label: "Signup with Google",
-          onClick: () => handleGoogleLogin(user)
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/Modals/LoginModal.tsx",
-          lineNumber: 154,
-          columnNumber: 11
-        },
-        this
-      ),
-      error && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(ErrorMessage_default, { error }, void 0, !1, {
-        fileName: "app/components/Modals/LoginModal.tsx",
-        lineNumber: 159,
-        columnNumber: 21
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 153,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
+}, DefaultContent = ({ error }) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_jsx_dev_runtime14.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col gap-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col items-center justify-center gap-4", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_remix4.SignIn, {}, void 0, !1, {
     fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 140,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 139,
-    columnNumber: 5
-  }, this);
-}, PricingContent = ({
-  handleGoogleLogin,
-  error,
-  user
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_jsx_dev_runtime14.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col gap-10", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("section", { className: "flex flex-col items-center justify-center gap-2 text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("h2", { className: "text-lg font-semibold text-blue-800", children: "Bye bye foreign language anxiety" }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 179,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { children: "Start your free trial now by creating an account in seconds." }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 182,
-      columnNumber: 11
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 178,
-    columnNumber: 9
+    lineNumber: 57,
+    columnNumber: 11
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("hr", { className: "mx-auto w-1/2 border-gray-400" }, void 0, !1, {
+  error && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(ErrorMessage_default, { error }, void 0, !1, {
     fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 185,
-    columnNumber: 9
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-col items-center justify-center gap-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
-      import_react_google_button.default,
-      {
-        label: "Signup with Google",
-        onClick: () => handleGoogleLogin(user)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/Modals/LoginModal.tsx",
-        lineNumber: 188,
-        columnNumber: 11
-      },
-      this
-    ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "text-center text-sm text-gray-400", children: "After signing up, you'll then be taken to our payment provider to start your free trial." }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 192,
-      columnNumber: 11
-    }, this),
-    error && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(ErrorMessage_default, { error }, void 0, !1, {
-      fileName: "app/components/Modals/LoginModal.tsx",
-      lineNumber: 196,
-      columnNumber: 21
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/Modals/LoginModal.tsx",
-    lineNumber: 187,
-    columnNumber: 9
+    lineNumber: 59,
+    columnNumber: 21
   }, this)
 ] }, void 0, !0, {
   fileName: "app/components/Modals/LoginModal.tsx",
-  lineNumber: 177,
+  lineNumber: 56,
+  columnNumber: 9
+}, this) }, void 0, !1, {
+  fileName: "app/components/Modals/LoginModal.tsx",
+  lineNumber: 55,
   columnNumber: 7
 }, this) }, void 0, !1, {
   fileName: "app/components/Modals/LoginModal.tsx",
-  lineNumber: 176,
+  lineNumber: 54,
   columnNumber: 5
 }, this), LoginModal_default = LoginModal;
 
 // app/routes/pricing.tsx
-var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta3 = () => ({
+var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta2 = () => ({
   title: "AudioMate | Pricing"
-}), action6 = async ({ request }) => {
+}), action5 = async ({ request }) => {
   try {
     let userToken = await getUserSession(request), plan = (await request.formData()).get("plan");
     if (!userToken) {
       let url = new URL(request.url), searchParams = new URLSearchParams(url.searchParams);
       searchParams.get("login") || searchParams.append("login", "true"), plan && searchParams.append("plan", plan);
       let newUrl = url.origin + url.pathname + "?" + searchParams.toString();
-      return (0, import_node11.redirect)(newUrl);
+      return (0, import_node9.redirect)(newUrl);
     }
     if (!plan)
       throw Error("Something went wrong with pricing data");
     let priceId = getPriceTierId("development", plan), origin = request.url;
     return await createCheckout(priceId, origin, userToken.uid);
   } catch (e) {
-    return e.message === "Not logged in" ? (0, import_node11.json)({ error: e == null ? void 0 : e.message }, { status: 401 }) : (0, import_node11.json)({ error: e == null ? void 0 : e.message }, { status: 500 });
+    return e.message === "Not logged in" ? (0, import_node9.json)({ error: e == null ? void 0 : e.message }, { status: 401 }) : (0, import_node9.json)({ error: e == null ? void 0 : e.message }, { status: 500 });
   }
-}, loader5 = async ({ request }) => {
+}, loader4 = async ({ request }) => {
   let userToken = await getUserSession(request), user = userToken ? await getUserProfile(userToken.uid) : void 0;
-  return (0, import_node11.json)({
+  return (0, import_node9.json)({
     user: user || void 0
   });
 }, Payment = () => {
-  let { user } = (0, import_react15.useLoaderData)(), actionData = (0, import_react15.useActionData)(), location = (0, import_react15.useLocation)(), query = new URLSearchParams(location.search), trial = query.get("trial"), [showLoginModal, setShowLoginModal] = (0, import_react16.useState)(!1), fetcher = (0, import_react15.useFetcher)();
-  (0, import_react16.useEffect)(() => {
+  let { user } = (0, import_react17.useLoaderData)(), actionData = (0, import_react17.useActionData)(), location = (0, import_react17.useLocation)(), query = new URLSearchParams(location.search), trial = query.get("trial"), [showLoginModal, setShowLoginModal] = (0, import_react18.useState)(!1), fetcher = (0, import_react17.useFetcher)();
+  (0, import_react18.useEffect)(() => {
     let login = query.get("login"), removeParams = () => {
       let newUrl = window.location.pathname, params = new URLSearchParams(window.location.search);
       params.delete("login"), params.delete("plan"), params.toString() && (newUrl += "?" + params.toString()), window.history.pushState({ path: newUrl }, "", newUrl);
@@ -1912,7 +2040,7 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta3 = () => (
         columnNumber: 31
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
-        import_react15.Form,
+        import_react17.Form,
         {
           method: "post",
           className: "mx-auto flex flex-col items-center justify-center gap-10 text-center",
@@ -2074,32 +2202,48 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta3 = () => (
   columnNumber: 5
 }, this), pricing_default = Payment;
 
+// app/routes/__auth.tsx
+var auth_exports = {};
+__export(auth_exports, {
+  default: () => auth_default,
+  loader: () => loader5
+});
+var import_ssr2 = require("@clerk/remix/ssr.server"), import_node10 = require("@remix-run/node"), import_react19 = require("@remix-run/react"), import_jsx_dev_runtime16 = require("react/jsx-dev-runtime"), loader5 = async (args) => {
+  let { userId } = await (0, import_ssr2.getAuth)(args);
+  if (!userId)
+    return (0, import_node10.redirect)("/login");
+}, AuthLayout = () => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react19.Outlet, {}, void 0, !1, {
+  fileName: "app/routes/__auth.tsx",
+  lineNumber: 13,
+  columnNumber: 10
+}, this), auth_default = AuthLayout;
+
 // app/routes/_index.tsx
 var index_exports = {};
 __export(index_exports, {
   default: () => index_default
 });
-var import_react17 = require("react"), import_react18 = require("@remix-run/react");
-var import_jsx_dev_runtime16 = require("react/jsx-dev-runtime");
+var import_react20 = require("react"), import_react21 = require("@remix-run/react");
+var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime");
 var Index = () => {
-  let [optionIndex, setOptionIndex] = (0, import_react17.useState)(0);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Header_default, {}, void 0, !1, {
+  let [optionIndex, setOptionIndex] = (0, import_react20.useState)(0);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Header_default, {}, void 0, !1, {
       fileName: "app/routes/_index.tsx",
       lineNumber: 165,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "mx-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("section", { className: "mx-auto flex max-w-2xl flex-col items-center justify-center gap-8 px-4 lg:flex-row", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "flex grow flex-col gap-4 lg:gap-12", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("h1", { className: "shrink-0 text-center text-3xl font-bold text-orange-500", children: "Say it, Edit it, Perfect it" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mx-auto flex max-w-5xl flex-col gap-10 scroll-smooth pb-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("section", { className: "mx-auto flex max-w-2xl flex-col items-center justify-center gap-8 px-4 lg:flex-row", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "flex grow flex-col gap-4 lg:gap-12", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("h1", { className: "shrink-0 text-center text-3xl font-bold text-orange-500", children: "Say it, Edit it, Perfect it" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 170,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("h2", { className: "text-center text-xl font-semibold text-slate-800", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("h2", { className: "text-center text-xl font-semibold text-slate-800", children: [
           "Effortlessly create and edit",
           " ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
             "span",
             {
               children: [
@@ -2122,7 +2266,7 @@ var Index = () => {
           lineNumber: 173,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react18.Link, { to: "/app", className: "mx-auto w-fit text-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Buttons_default, { children: "Start now for \xA34.99" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(import_react21.Link, { to: "/app", className: "mx-auto w-fit text-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Buttons_default, { children: "Start now for \xA34.99" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 184,
           columnNumber: 15
@@ -2136,7 +2280,7 @@ var Index = () => {
         lineNumber: 169,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
         "img",
         {
           className: "mx-auto block rounded-xl shadow-inner lg:w-1/2",
@@ -2174,18 +2318,18 @@ __export(logout_exports, {
   default: () => logout_default
 });
 var import_clerk_react = require("@clerk/clerk-react");
-var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime"), Logout = () => /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Header_default, {}, void 0, !1, {
+var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), Logout = () => /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(Header_default, {}, void 0, !1, {
     fileName: "app/routes/logout.tsx",
     lineNumber: 7,
     columnNumber: 7
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("h1", { children: "My application" }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("h1", { children: "My application" }, void 0, !1, {
     fileName: "app/routes/logout.tsx",
     lineNumber: 8,
     columnNumber: 7
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(import_clerk_react.UserButton, {}, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_clerk_react.UserButton, {}, void 0, !1, {
     fileName: "app/routes/logout.tsx",
     lineNumber: 9,
     columnNumber: 7
@@ -2196,12 +2340,128 @@ var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime"), Logout = () => 
   columnNumber: 5
 }, this), logout_default = Logout;
 
+// app/routes/login.tsx
+var login_exports = {};
+__export(login_exports, {
+  action: () => action6,
+  createAccount: () => createAccount,
+  default: () => login_default,
+  loader: () => loader6,
+  meta: () => meta3
+});
+var import_node12 = require("@remix-run/node");
+
+// app/models/login.ts
+var import_node11 = require("@remix-run/node");
+var newSignupRedirectAfterLoginPath = "/app", redirectAfterLoginPath = "/app", handleLogin = async (email, password, redirect8) => {
+  let { res, error } = await signIn(email, password);
+  if (error)
+    return handleLoginError(error);
+  if (!res.user)
+    return handleLoginError();
+  let token = await res.user.getIdToken();
+  return createUserSession(token, redirect8 || redirectAfterLoginPath);
+};
+function handleLoginError(errorCode) {
+  return errorCode === "404" ? { error: "Please create an account first" } : errorCode === "401" ? { error: "Login details are incorrect" } : (0, import_node11.json)({ error: "Something went wrong" });
+}
+var handleSignUp = async (email, password, redirect8, hasSetMarketingEmails, referrer) => {
+  let { user } = await signUp(
+    email,
+    password,
+    hasSetMarketingEmails,
+    referrer
+  ), token = await user.getIdToken();
+  return createUserSession(token, redirect8 || newSignupRedirectAfterLoginPath);
+}, handleClientAuth = async (email, uid, token, redirect8, hasSetMarketingEmails, referrer) => {
+  let existingUser = await getUserProfile(uid), relevantRedirect = redirectAfterLoginPath;
+  return existingUser || (relevantRedirect = newSignupRedirectAfterLoginPath, await triggerNewAccountEvents(email, uid, hasSetMarketingEmails, referrer)), existingUser && !(existingUser != null && existingUser.marketing_emails) && hasSetMarketingEmails && await updateUserProfile(existingUser.uid, {
+    marketing_emails: hasSetMarketingEmails
+  }), createUserSession(token, redirect8 || relevantRedirect);
+};
+
+// app/routes/login.tsx
+var import_remix5 = require("@clerk/remix"), import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), meta3 = () => ({
+  title: "AudioMate | Login"
+}), action6 = async ({ request }) => {
+  let formData = await request.formData(), _action = formData.get("_action");
+  if (_action === "reset_password")
+    return (0, import_node12.json)({
+      error: "Sorry you have forgotten your password! We have not setup password resetting yet. Contact us and we will send you a reset link."
+    });
+  let email = formData.get("email"), uid = formData.get("uid"), token = formData.get("token"), password = formData.get("password"), redirect8 = formData.get("redirect"), referrer = formData.get("referrer"), hasSetMarketingEmails = formData.get("marketing_emails") == "true";
+  if (uid && token)
+    return await handleClientAuth(
+      email,
+      uid,
+      token,
+      redirect8,
+      hasSetMarketingEmails,
+      referrer
+    );
+  if (!password)
+    throw Error("Something went wrong- no passowrd");
+  return _action === "login" ? await handleLogin(email, password, redirect8) : _action === "signup" ? await handleSignUp(
+    email,
+    password,
+    redirect8,
+    hasSetMarketingEmails,
+    referrer
+  ) : (0, import_node12.json)({});
+}, loader6 = async ({ request }) => {
+  let user = await getUserSession(request);
+  if (user)
+    return (0, import_node12.redirect)("/scenarios");
+  let redirectTo = new URL(request.url).searchParams.get("redirect") ?? "";
+  return (0, import_node12.json)({ user, redirect: redirectTo });
+};
+async function createAccount({
+  userCredentials,
+  fetcher,
+  marketingEmails,
+  referrer,
+  redirect: redirect8 = ""
+}) {
+  let user = userCredentials.user, token = await user.getIdToken();
+  fetcher.submit(
+    {
+      email: user.email ?? "",
+      marketing_emails: `${marketingEmails}`,
+      uid: user.uid,
+      token,
+      redirect: redirect8,
+      referrer
+    },
+    { action: "/login", method: "post" }
+  );
+}
+var Login = () => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "m-auto flex flex-col gap-6 ", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(Header_default, {}, void 0, !1, {
+    fileName: "app/routes/login.tsx",
+    lineNumber: 156,
+    columnNumber: 7
+  }, this),
+  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mx-auto flex flex-col gap-4 lg:mx-auto lg:w-1/2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_remix5.SignIn, { redirectUrl: "/app" }, void 0, !1, {
+    fileName: "app/routes/login.tsx",
+    lineNumber: 158,
+    columnNumber: 9
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/login.tsx",
+    lineNumber: 157,
+    columnNumber: 7
+  }, this)
+] }, void 0, !0, {
+  fileName: "app/routes/login.tsx",
+  lineNumber: 155,
+  columnNumber: 5
+}, this), login_default = Login;
+
 // app/routes/terms.tsx
 var terms_exports = {};
 __export(terms_exports, {
   default: () => terms_default
 });
-var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), Terms = () => /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { className: "flex flex-col gap-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("h1", { className: "font-bold text-blue-800", children: "Terms and conditions" }, void 0, !1, {
+var import_jsx_dev_runtime20 = require("react/jsx-dev-runtime"), Terms = () => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "flex flex-col gap-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("h1", { className: "font-bold text-blue-800", children: "Terms and conditions" }, void 0, !1, {
   fileName: "app/routes/terms.tsx",
   lineNumber: 4,
   columnNumber: 7
@@ -2211,441 +2471,8 @@ var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), Terms = () => /
   columnNumber: 5
 }, this), terms_default = Terms;
 
-// app/routes/app.tsx
-var app_exports = {};
-__export(app_exports, {
-  default: () => app_default2
-});
-var import_react19 = require("@remix-run/react"), import_react20 = require("react"), import_bi3 = require("react-icons/bi"), import_bs = require("react-icons/bs"), import_cg = require("react-icons/cg"), import_hi = require("react-icons/hi"), import_io4 = require("react-icons/io"), import_io5 = require("react-icons/io5");
-var import_jsx_dev_runtime19 = require("react/jsx-dev-runtime"), App2 = () => {
-  var _a3, _b, _c, _d;
-  let fetcher = (0, import_react19.useFetcher)(), [versions, setVersions] = (0, import_react20.useState)([]), [currentVersionIndex, setCurrentVersionIndex] = (0, import_react20.useState)(
-    null
-  ), [inputText, setInputText] = (0, import_react20.useState)(""), [textEditMode, setTextEditMode] = (0, import_react20.useState)(!1), text = (_a3 = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _a3.text, currentVersion = versions[currentVersionIndex ?? versions.length - 1];
-  (0, import_react20.useEffect)(() => {
-    text && (setVersions((curr) => [...curr, text]), setCurrentVersionIndex(null));
-  }, [text]);
-  let error = ((_b = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _b.error) && (typeof ((_c = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _c.error) == "string" ? (_d = fetcher == null ? void 0 : fetcher.data) == null ? void 0 : _d.error : "Something went wrong"), isLoading = fetcher.state === "submitting" || fetcher.state === "loading", [duration, setDuration] = (0, import_react20.useState)(0), [recording, setRecording] = (0, import_react20.useState)(!1), [timer, setTimer] = (0, import_react20.useState)(null), [mediaRecorder, setMediaRecorder] = (0, import_react20.useState)(
-    null
-  ), [audioChunks, setAudioChunks] = (0, import_react20.useState)(null);
-  function changeRecording() {
-    recording ? stopRecording(mediaRecorder) : startRecording({
-      setMediaRecorder,
-      setAudioChunks,
-      setDuration,
-      setTimer
-    }), setRecording(!recording);
-  }
-  (0, import_react20.useEffect)(() => {
-    if (audioChunks) {
-      let audioBlob = new Blob(audioChunks, { type: "audio/mp3" });
-      submitForm(audioBlob), cleanUp();
-    }
-  }, [audioChunks]);
-  function submitForm(audioBlob) {
-    let form = new FormData();
-    audioBlob && form.append("audio", audioBlob), form.append("input_text", inputText), form.append("past_text", currentVersion), fetcher.submit(form, {
-      method: "post",
-      encType: "multipart/form-data",
-      action: "/api/generate-text"
-    });
-  }
-  function cleanUp() {
-    setMediaRecorder(null), setAudioChunks(null), timer && clearInterval(timer), setTimer(null), setDuration(0);
-  }
-  (0, import_react20.useEffect)(() => {
-    let AudioRecorder = require("audio-recorder-polyfill");
-    window.MediaRecorder = AudioRecorder;
-  }, []);
-  let isLeftArrowDisabled = versions.length === 0 || currentVersionIndex === 0, isRightArrowDisabled = typeof currentVersionIndex != "number" || currentVersionIndex === versions.length - 1;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "grid h-screen grid-rows-8 gap-4 pb-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(Header_default, {}, void 0, !1, {
-      fileName: "app/routes/app.tsx",
-      lineNumber: 108,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/app.tsx",
-      lineNumber: 107,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("section", { className: "relative row-span-6 mx-2 rounded-lg bg-white text-gray-900 shadow lg:mx-auto lg:w-full lg:max-w-xl", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "absolute z-10 flex h-12 w-full items-center justify-center ", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-          "button",
-          {
-            className: "absolute left-0 top-0 flex h-full items-center justify-center gap-2 rounded-br-lg rounded-tl-lg bg-orange-500 px-3 py-2 text-gray-800",
-            onClick: () => {
-              !currentVersion || navigator.share({ text: currentVersion });
-            },
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_io5.IoShareOutline, { size: "20" }, void 0, !1, {
-              fileName: "app/routes/app.tsx",
-              lineNumber: 120,
-              columnNumber: 13
-            }, this)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/app.tsx",
-            lineNumber: 113,
-            columnNumber: 11
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-          "button",
-          {
-            className: "absolute right-0 top-0 flex h-full items-center justify-center gap-2 rounded-bl-lg rounded-tr-lg bg-orange-500 px-3 py-2 text-gray-800",
-            onClick: () => {
-              !currentVersion || (navigator.clipboard.writeText(currentVersion), alert("Copied"));
-            },
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_io5.IoCopyOutline, { size: "20" }, void 0, !1, {
-              fileName: "app/routes/app.tsx",
-              lineNumber: 131,
-              columnNumber: 13
-            }, this)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/app.tsx",
-            lineNumber: 123,
-            columnNumber: 11
-          },
-          this
-        ),
-        versions.length > 1 && /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "flex h-full w-full items-center justify-center gap-2 text-center", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-            "button",
-            {
-              disabled: isLeftArrowDisabled,
-              onClick: () => setCurrentVersionIndex((curr) => (console.log(curr, versions), Math.max(curr ? curr - 1 : versions.length - 2, 0))),
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-                import_bs.BsArrowLeftShort,
-                {
-                  size: "35",
-                  className: `shrink-0 rounded-lg bg-gray-200 p-1 ${isLeftArrowDisabled ? "text-gray-400" : "text-gray-700"}`
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/app.tsx",
-                  lineNumber: 146,
-                  columnNumber: 17
-                },
-                this
-              )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/app.tsx",
-              lineNumber: 136,
-              columnNumber: 15
-            },
-            this
-          ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("p", { className: "w-32 font-semibold", children: typeof currentVersionIndex == "number" ? `Version ${currentVersionIndex + 1}` : "Latest version" }, void 0, !1, {
-            fileName: "app/routes/app.tsx",
-            lineNumber: 153,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-            "button",
-            {
-              disabled: isRightArrowDisabled,
-              onClick: () => setCurrentVersionIndex((curr) => curr ? Math.min(curr + 1, versions.length - 1) : 1),
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-                import_bs.BsArrowRightShort,
-                {
-                  size: "35",
-                  className: `shrink-0  rounded-lg bg-gray-200 p-1 ${isRightArrowDisabled ? "text-gray-400" : "text-gray-700"}`
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/app.tsx",
-                  lineNumber: 167,
-                  columnNumber: 17
-                },
-                this
-              )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/app.tsx",
-              lineNumber: 158,
-              columnNumber: 15
-            },
-            this
-          )
-        ] }, void 0, !0, {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 135,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/app.tsx",
-        lineNumber: 112,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "relative flex h-full w-full resize-none items-center justify-center pt-12 outline-none", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-          "textarea",
-          {
-            className: "h-full w-full resize-none px-4 py-2 outline-none",
-            value: currentVersion,
-            contentEditable: !1,
-            placeholder: `Click the record button below and say some instructions.
-
-You will then be able to make further edits.`,
-            readOnly: !0
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/app.tsx",
-            lineNumber: 178,
-            columnNumber: 11
-          },
-          this
-        ),
-        isLoading && /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("p", { className: "absolute top-1/2 flex -translate-y-1/2 transform flex-col items-center justify-center gap-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("span", { children: "Loading" }, void 0, !1, {
-            fileName: "app/routes/app.tsx",
-            lineNumber: 187,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-            import_cg.CgSpinner,
-            {
-              className: "flex-shrink-0 animate-spin  text-orange-500",
-              size: "30"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/app.tsx",
-              lineNumber: 188,
-              columnNumber: 15
-            },
-            this
-          )
-        ] }, void 0, !0, {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 186,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/app.tsx",
-        lineNumber: 177,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/app.tsx",
-      lineNumber: 111,
-      columnNumber: 7
-    }, this),
-    textEditMode ? /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center px-2", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "rounded bg-gray-200 p-2 shadow", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-        import_hi.HiOutlineMicrophone,
-        {
-          size: "25",
-          onClick: () => setTextEditMode(!1),
-          className: "text-gray-900"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 200,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/app.tsx",
-        lineNumber: 199,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-        "textarea",
-        {
-          value: inputText,
-          onChange: (e) => setInputText(e.currentTarget.value),
-          className: "m-4 h-full w-full resize-none rounded p-2 shadow outline-none",
-          onKeyDown: (e) => {
-            e.keyCode === 13 && !e.shiftKey && submitForm();
-          },
-          disabled: isLoading
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 207,
-          columnNumber: 11
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-        "button",
-        {
-          type: "submit",
-          className: "border border-transparent p-2",
-          disabled: isLoading,
-          onClick: () => submitForm(),
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-            import_io4.IoMdSend,
-            {
-              size: "20",
-              className: ` transition-colors duration-100 ${prompt.length > 0 ? "fill-gray-50" : "fill-gray-800"}`
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/app.tsx",
-              lineNumber: 222,
-              columnNumber: 13
-            },
-            this
-          )
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 216,
-          columnNumber: 11
-        },
-        this
-      )
-    ] }, void 0, !0, {
-      fileName: "app/routes/app.tsx",
-      lineNumber: 198,
-      columnNumber: 9
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("section", { className: "relative row-span-1 flex w-full items-center justify-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-        Microphone,
-        {
-          recording,
-          changeRecording,
-          duration
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 232,
-          columnNumber: 11
-        },
-        this
-      ),
-      recording ? /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("p", { className: "absolute right-10 top-1/2 -translate-y-1/2 transform text-lg", children: [
-        duration,
-        " seconds",
-        " "
-      ] }, void 0, !0, {
-        fileName: "app/routes/app.tsx",
-        lineNumber: 239,
-        columnNumber: 13
-      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-        "button",
-        {
-          onClick: () => setTextEditMode(!0),
-          className: "absolute right-10 top-1/2 -translate-y-1/2 transform  rounded-xl bg-gray-200  p-3 text-gray-800 shadow ",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_bi3.BiEdit, { size: "20", className: "shrink-0" }, void 0, !1, {
-            fileName: "app/routes/app.tsx",
-            lineNumber: 247,
-            columnNumber: 15
-          }, this)
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/app.tsx",
-          lineNumber: 243,
-          columnNumber: 13
-        },
-        this
-      )
-    ] }, void 0, !0, {
-      fileName: "app/routes/app.tsx",
-      lineNumber: 231,
-      columnNumber: 9
-    }, this),
-    error && /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("p", { className: "rounded bg-red-200 px-2 py-1 text-center font-semibold shadow", children: error }, void 0, !1, {
-      fileName: "app/routes/app.tsx",
-      lineNumber: 253,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/app.tsx",
-    lineNumber: 106,
-    columnNumber: 5
-  }, this);
-}, app_default2 = App2;
-function startRecording({
-  setMediaRecorder,
-  setAudioChunks,
-  setDuration,
-  setTimer
-}) {
-  navigator.mediaDevices.getUserMedia({ audio: !0, video: !1 }).then((stream) => {
-    let localMediaRecorder = new MediaRecorder(stream);
-    localMediaRecorder.start();
-    let timer = setInterval(() => {
-      setDuration((curr) => curr + 1);
-    }, 1e3);
-    setTimer(timer), localMediaRecorder.addEventListener("dataavailable", (event) => {
-      console.log("Recording stopped, data available"), setAudioChunks((prev) => [...prev ?? [], event.data]);
-    }), setMediaRecorder(localMediaRecorder);
-  });
-}
-function stopRecording(mediaRecorder) {
-  if (!mediaRecorder) {
-    console.error("mediaRecorder is not defined");
-    return;
-  }
-  mediaRecorder.stop(), mediaRecorder.stream.getAudioTracks().forEach((track) => track.stop());
-}
-var Microphone = ({
-  changeRecording,
-  recording,
-  duration
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-  "div",
-  {
-    className: `cols-span-1 mx-auto w-fit rounded-xl p-4 shadow-lg transition-colors duration-500 ${recording ? duration % 2 ? "bg-red-500" : "bg-red-100" : "bg-orange-500"}`,
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-      import_hi.HiOutlineMicrophone,
-      {
-        onClick: changeRecording,
-        size: "40",
-        className: " shrink-0  text-gray-800"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/app.tsx",
-        lineNumber: 323,
-        columnNumber: 7
-      },
-      this
-    )
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/app.tsx",
-    lineNumber: 314,
-    columnNumber: 5
-  },
-  this
-);
-
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "c1f7a87e", entry: { module: "/build/entry.client-B2YUOGUI.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-FDDKQUMY.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-L2SBNQDF.js", imports: ["/build/_shared/chunk-PNRS76RF.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-PH2WEV7A.js", imports: ["/build/_shared/chunk-S23ENW3V.js", "/build/_shared/chunk-YJWDNDTZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.generate-text": { id: "routes/api.generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api.generate-text-VNJMQONS.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.login.link-guest-account": { id: "routes/api.login.link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api.login.link-guest-account-HUH2MJH2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.stripe-webhook": { id: "routes/api.stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api.stripe-webhook-EC7RELM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.tts": { id: "routes/api.tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api.tts-HXBS76RE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/app": { id: "routes/app", parentId: "root", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/app-MKPJ5KFT.js", imports: ["/build/_shared/chunk-YJWDNDTZ.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-X2KV5JM3.js", imports: ["/build/_shared/chunk-FQ4KIVVN.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-A2UYPPIK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.failure": { id: "routes/payment.failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.failure-ZM6UI2VR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.success": { id: "routes/payment.success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.success-R6QYUF4G.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-EPWODFTZ.js", imports: ["/build/_shared/chunk-S23ENW3V.js", "/build/_shared/chunk-FQ4KIVVN.js", "/build/_shared/chunk-YJWDNDTZ.js", "/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile.payment": { id: "routes/profile.payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile.payment-R2UAXEMY.js", imports: ["/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-C1F7A87E.js" };
+var assets_manifest_default = { version: "1920ab2c", entry: { module: "/build/entry.client-B2YUOGUI.js", imports: ["/build/_shared/chunk-VFRHADDM.js", "/build/_shared/chunk-FDDKQUMY.js", "/build/_shared/chunk-FN3KWL4V.js", "/build/_shared/chunk-4IYZMDEG.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-WIDICX7S.js", imports: ["/build/_shared/chunk-K3I4BZ64.js", "/build/_shared/chunk-MQFVQF2P.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/__auth": { id: "routes/__auth", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__auth-3IHW2PZB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__auth.app": { id: "routes/__auth.app", parentId: "routes/__auth", path: "app", index: void 0, caseSensitive: void 0, module: "/build/routes/__auth.app-6JFKO3FT.js", imports: ["/build/_shared/chunk-FNIA44VN.js", "/build/_shared/chunk-MQFVQF2P.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-LTZKWXXH.js", imports: ["/build/_shared/chunk-2E2XBHQP.js", "/build/_shared/chunk-FNIA44VN.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.generate-text": { id: "routes/api.generate-text", parentId: "root", path: "api/generate-text", index: void 0, caseSensitive: void 0, module: "/build/routes/api.generate-text-VNJMQONS.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.login.link-guest-account": { id: "routes/api.login.link-guest-account", parentId: "root", path: "api/login/link-guest-account", index: void 0, caseSensitive: void 0, module: "/build/routes/api.login.link-guest-account-HUH2MJH2.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.stripe-webhook": { id: "routes/api.stripe-webhook", parentId: "root", path: "api/stripe-webhook", index: void 0, caseSensitive: void 0, module: "/build/routes/api.stripe-webhook-EC7RELM5.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api.tts": { id: "routes/api.tts", parentId: "root", path: "api/tts", index: void 0, caseSensitive: void 0, module: "/build/routes/api.tts-HXBS76RE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact": { id: "routes/contact", parentId: "root", path: "contact", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-ZDYSYRDV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-4I5XY3PI.js", imports: ["/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-HVM677HO.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.failure": { id: "routes/payment.failure", parentId: "root", path: "payment/failure", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.failure-ZM6UI2VR.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/payment.success": { id: "routes/payment.success", parentId: "root", path: "payment/success", index: void 0, caseSensitive: void 0, module: "/build/routes/payment.success-R6QYUF4G.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pricing": { id: "routes/pricing", parentId: "root", path: "pricing", index: void 0, caseSensitive: void 0, module: "/build/routes/pricing-OI34D5G2.js", imports: ["/build/_shared/chunk-2E2XBHQP.js", "/build/_shared/chunk-FNIA44VN.js", "/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/profile.payment": { id: "routes/profile.payment", parentId: "root", path: "profile/payment", index: void 0, caseSensitive: void 0, module: "/build/routes/profile.payment-R2UAXEMY.js", imports: ["/build/_shared/chunk-AX4XTCKJ.js", "/build/_shared/chunk-RRK7CBX6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/terms": { id: "routes/terms", parentId: "root", path: "terms", index: void 0, caseSensitive: void 0, module: "/build/routes/terms-33F5EAA2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, hmr: void 0, url: "/build/manifest-1920AB2C.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -2705,6 +2532,14 @@ var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, u
     caseSensitive: void 0,
     module: profile_payment_exports
   },
+  "routes/__auth.app": {
+    id: "routes/__auth.app",
+    parentId: "routes/__auth",
+    path: "app",
+    index: void 0,
+    caseSensitive: void 0,
+    module: auth_app_exports
+  },
   "routes/api.tts": {
     id: "routes/api.tts",
     parentId: "root",
@@ -2728,6 +2563,14 @@ var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, u
     index: void 0,
     caseSensitive: void 0,
     module: pricing_exports
+  },
+  "routes/__auth": {
+    id: "routes/__auth",
+    parentId: "root",
+    path: void 0,
+    index: void 0,
+    caseSensitive: void 0,
+    module: auth_exports
   },
   "routes/_index": {
     id: "routes/_index",
@@ -2760,14 +2603,6 @@ var assetsBuildDirectory = "public/build", future = { unstable_cssModules: !1, u
     index: void 0,
     caseSensitive: void 0,
     module: terms_exports
-  },
-  "routes/app": {
-    id: "routes/app",
-    parentId: "root",
-    path: "app",
-    index: void 0,
-    caseSensitive: void 0,
-    module: app_exports
   }
 };
 // Annotate the CommonJS export names for ESM import in node:
