@@ -38,7 +38,7 @@ const Header = () => {
             onClick={() => setMenuOpen(true)}
           />
 
-          <div className="absolute left-0 top-0 flex w-full items-center justify-center lg:relative lg:w-fit">
+          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center lg:relative lg:w-fit">
             <Home />
           </div>
 

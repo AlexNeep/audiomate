@@ -131,30 +131,10 @@ export async function createAccount({
 }
 
 const Login = () => {
-  // useEffect(() => {
-  //   setReferrer(document.referrer);
-  // }, []);
-
-  // const handleGoogleLogin = async () => {
-  //   const provider = new GoogleAuthProvider();
-  //   console.log(provider);
-  //   await signInWithPopup(clientAuth, provider)
-  //     .then((userCredentials) =>
-  //       createAccount({
-  //         userCredentials,
-  //         fetcher,
-  //         marketingEmails,
-  //         referrer,
-  //         redirect: loaderData.redirect,
-  //       })
-  //     )
-  //     .catch((e) => console.log(e));
-  // };
-
   return (
-    <div className="m-auto flex flex-col gap-6 ">
+    <div className="mx-auto flex flex-col gap-6 ">
       <Header />
-      <div className="mx-auto flex flex-col gap-4 lg:mx-auto lg:w-1/2">
+      <div className="mx-auto flex flex-col items-center justify-center gap-4 lg:w-1/2">
         <SignIn redirectUrl={"/app"} />
       </div>
     </div>
