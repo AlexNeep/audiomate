@@ -7,6 +7,7 @@ import { CgSpinner } from "react-icons/cg";
 import { HiOutlineMicrophone } from "react-icons/hi";
 import { IoMdSend } from "react-icons/io";
 import { IoCopyOutline, IoShareOutline } from "react-icons/io5";
+import { MdOutlineRedo, MdOutlineUndo } from "react-icons/md";
 import Header from "~/components/Header";
 
 const App = () => {
@@ -133,28 +134,26 @@ const App = () => {
           {versions.length > 1 && (
             <div className="flex h-full w-full items-center justify-center gap-2 text-center">
               <button
+                className="flex items-center justify-center gap-2 rounded bg-gray-200 px-2 py-1 shadow"
                 disabled={isLeftArrowDisabled}
                 onClick={() =>
                   setCurrentVersionIndex((curr) => {
-                    console.log(curr, versions);
                     if (curr) return Math.max(curr - 1, 0);
                     return Math.max(versions.length - 2, 0);
                   })
                 }
               >
-                <BsArrowLeftShort
-                  size="35"
-                  className={`shrink-0 rounded-lg bg-gray-200 p-1 ${
+                <MdOutlineUndo
+                  size="20"
+                  className={`shrink-0  ${
                     isLeftArrowDisabled ? "text-gray-400" : "text-gray-700"
                   }`}
                 />
+                Undo
               </button>
-              <p className="w-32 font-semibold">
-                {typeof currentVersionIndex === "number"
-                  ? `Version ${currentVersionIndex + 1}`
-                  : "Latest version"}
-              </p>
+
               <button
+                className="flex items-center justify-center gap-2 rounded bg-gray-200 p-1 shadow"
                 disabled={isRightArrowDisabled}
                 onClick={() =>
                   setCurrentVersionIndex((curr) => {
@@ -163,12 +162,13 @@ const App = () => {
                   })
                 }
               >
-                <BsArrowRightShort
-                  size="35"
-                  className={`shrink-0  rounded-lg bg-gray-200 p-1 ${
+                <MdOutlineRedo
+                  size="20"
+                  className={`shrink-0   ${
                     isRightArrowDisabled ? "text-gray-400" : "text-gray-700"
                   }`}
                 />
+                Redo
               </button>
             </div>
           )}
