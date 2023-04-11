@@ -1,3 +1,5 @@
+import { useAuth, useUser } from "@clerk/remix";
+import { getAuth } from "@clerk/remix/ssr.server";
 import {
   ActionFunction,
   json,
@@ -31,13 +33,18 @@ export const meta: MetaFunction = () => {
   };
 };
 
-export const action: ActionFunction = async ({ request }) => {
+export const action: ActionFunction = async (args) => {
+  const request = args.request;
+
   try {
-    const userToken = await getUserSession(request);
+    const { userId } = await getAuth(args);
+    if (!userId) {
+      return redirect("/login");
+    }
     const formData = await request.formData();
     const plan = formData.get("plan") as Plan | null;
 
-    if (!userToken) {
+    if (!userId) {
       const url = new URL(request.url);
       const searchParams = new URLSearchParams(url.searchParams);
 
@@ -52,8 +59,8 @@ export const action: ActionFunction = async ({ request }) => {
 
     const priceId = getPriceTierId(process.env.NODE_ENV, plan);
     const origin = request.url;
-
-    return await createCheckout(priceId, origin as string, userToken.uid);
+    const trial = false;
+    return await createCheckout(priceId, origin as string, userId, trial);
   } catch (e: any) {
     if ((e as Error).message === "Not logged in")
       return json({ error: e?.message }, { status: 401 });
@@ -62,25 +69,11 @@ export const action: ActionFunction = async ({ request }) => {
   }
 };
 
-type LoaderData = {
-  user: UserProfile | undefined;
-};
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const userToken = await getUserSession(request);
-  const user = userToken ? await getUserProfile(userToken.uid) : undefined;
-
-  return json<LoaderData>({
-    user: user || undefined,
-  });
-};
-
 const Payment = () => {
-  const { user } = useLoaderData<LoaderData>() as LoaderData;
+  const { user } = useUser();
   const actionData = useActionData();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const trial = query.get("trial");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const fetcher = useFetcher();
 
@@ -151,11 +144,9 @@ const Payment = () => {
 
         {showLoginModal && (
           <LoginModal
-            variant="pricing"
             open={showLoginModal}
             onClose={() => setShowLoginModal(false)}
             redirect={location.pathname + location.search}
-            user={user}
           />
         )}
       </div>

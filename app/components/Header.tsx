@@ -85,7 +85,7 @@ const MainMenus = ({
               <Link to="/app">
                 <Button padding={ButtonPaddingOptions.SMALL}>New chat</Button>
               </Link>
-              <UserButton />
+              <UserButton afterSignOutUrl="/" />
             </div>
           }
         </>

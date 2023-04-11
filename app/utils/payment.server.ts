@@ -34,7 +34,8 @@ export function getPriceTierId(
 export async function createCheckout(
   priceId: string,
   origin: string,
-  uid: Uid
+  uid: Uid,
+  trial: boolean
 ) {
   if (!STRIPE_SECRET_KEY) throw Error();
 
@@ -47,7 +48,7 @@ export async function createCheckout(
       success_url: `${origin}/payment/success`,
       cancel_url: `${origin}/payment/failure`,
       subscription_data: {
-        trial_period_days: 7,
+        trial_period_days: trial ? 7 : undefined,
         metadata: { client_reference_id: uid },
       },
     });

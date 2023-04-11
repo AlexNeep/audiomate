@@ -1,3 +1,4 @@
+import { createClerkClient } from "@clerk/remix/api.server";
 import { getAuth } from "@clerk/remix/ssr.server";
 import { LoaderFunction, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
@@ -8,6 +9,10 @@ export const loader: LoaderFunction = async (args) => {
   if (!userId) {
     return redirect("/login");
   }
+
+  // const user = await createClerkClient({
+  //   secretKey: process.env.CLERK_SECRET_KEY,
+  // }).users.getUser(userId);
 
   return json({});
 };

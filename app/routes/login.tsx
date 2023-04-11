@@ -135,7 +135,7 @@ const Login = () => {
     <div className="mx-auto flex flex-col gap-6 ">
       <Header />
       <div className="mx-auto flex flex-col items-center justify-center gap-4 lg:w-1/2">
-        <SignIn redirectUrl={"/app"} />
+        <SignIn afterSignInUrl={"/app"} afterSignUpUrl={"/pricing"} />
       </div>
     </div>
   );

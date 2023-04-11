@@ -4,6 +4,7 @@ import Button from "~/components/core/Buttons";
 import Header from "~/components/Header";
 import IconWrapper from "~/components/landing-page/IconWrapper";
 import BulletPoint from "~/components/landing-page/SubBulletPoint";
+import { plans, Prices } from "~/utils/payment";
 
 type Answer =
   | {
@@ -180,8 +181,11 @@ const Index = () => {
               using just your voice in seconds
             </h2>
 
-            <Link to="/app" className="mx-auto w-fit text-lg">
-              <Button>Start now for £4.99</Button>
+            <Link
+              to={`/pricing?plan=${plans[0].id}&login=true`}
+              className="mx-auto w-fit text-lg"
+            >
+              <Button>{`Start now for £${plans[0].price}`}</Button>
             </Link>
           </div>
 
