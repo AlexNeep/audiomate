@@ -1,4 +1,5 @@
 import { useUser } from "@clerk/remix";
+import { createClerkClient } from "@clerk/remix/api.server";
 import { getAuth } from "@clerk/remix/ssr.server";
 import { ActionFunction, json, MetaFunction, redirect } from "@remix-run/node";
 import { Form, useActionData, useFetcher, useLocation } from "@remix-run/react";
@@ -26,6 +27,14 @@ export const action: ActionFunction = async (args) => {
     if (!userId) {
       return redirect("/login");
     }
+
+    const user = await createClerkClient({
+      secretKey: process.env.CLERK_SECRET_KEY,
+    }).users.getUser(userId);
+    console.log(user.publicMetadata.plan);
+
+    if (user?.publicMetadata.plan) return redirect("/app");
+
     const formData = await request.formData();
     const plan = formData.get("plan") as Plan | null;
 

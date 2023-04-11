@@ -14,7 +14,7 @@ export const loader: LoaderFunction = async (args) => {
     secretKey: process.env.CLERK_SECRET_KEY,
   }).users.getUser(userId);
 
-  if (!user?.privateMetadata?.plan) return redirect("/pricing");
+  if (!user?.publicMetadata?.plan) return redirect("/pricing");
 
   return json({});
 };

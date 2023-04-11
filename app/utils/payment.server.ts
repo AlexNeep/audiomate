@@ -94,8 +94,10 @@ function addPlantoUser(uid: Uid, plan: Plan, customerNumber: string) {
       Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
     },
     body: JSON.stringify({
-      private_metadata: {
+      public_meetadata: {
         plan,
+      },
+      private_metadata: {
         customerNumber,
       },
     }),
