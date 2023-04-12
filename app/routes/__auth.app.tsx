@@ -21,9 +21,6 @@ const App = () => {
   const text = fetcher?.data?.text;
   const currentVersion = versions[currentVersionIndex ?? versions.length - 1];
 
-  const user = useUser();
-  console.log(user);
-
   useEffect(() => {
     if (text) {
       setVersions((curr) => [...curr, text]);
@@ -46,6 +43,8 @@ const App = () => {
     null
   );
   const [audioChunks, setAudioChunks] = useState<Blob[] | null>(null);
+
+  if (duration > 5) changeRecording();
 
   function changeRecording() {
     if (recording) {
