@@ -181,11 +181,14 @@ const Index = () => {
               using just your voice in seconds
             </h2>
 
-            <Link
+            {/* <Link
               to={`/pricing?plan=${plans[0].id}&login=true`}
               className="mx-auto w-fit text-lg"
             >
               <Button>{`Start now for £${plans[0].price}`}</Button>
+            </Link> */}
+            <Link to={`/app`} className="mx-auto w-fit text-lg">
+              <Button>{`Start now for free`}</Button>
             </Link>
           </div>
 
@@ -195,13 +198,29 @@ const Index = () => {
           />
         </section>
 
-        <Section
-          title="AudioMate"
-          paragrapgh="abc"
-          bullets={["1", "2", "3"]}
-          imageSource="https://storage.cloud.google.com/audiomate-public/demo.png"
-        />
-
+        <div className="mx-2 flex flex-col gap-12">
+          <Section
+            title="Easy to use interface"
+            paragrapgh="Write messages with your voice on the move"
+            bullets={["Edit on mobile without using the keyboard"]}
+            imageSource="/interface.png"
+          />
+          {/* <Section
+            title="Convert rambling speech into text"
+            paragrapgh="Understands whatever you are saying"
+            imageSource="/interface.png"
+            right
+          /> */}
+          <Section
+            title="Create edits without touching your keyboard"
+            paragrapgh="Use natural language as your interface"
+            imageSource="/edits.png"
+            right
+          />
+          <Link to={`/app`} className="mx-auto w-fit text-lg">
+            <Button>{`Start now for free`}</Button>
+          </Link>
+        </div>
         {/* <Hero trial={trial} />
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">
@@ -369,7 +388,7 @@ const Section = ({
   bullets,
 }: SectionProps) => {
   return (
-    <section className="flex flex-col items-center justify-center gap-10 lg:grid lg:grid-cols-2">
+    <section className="flex flex-col items-center justify-center gap-2 lg:grid lg:grid-cols-2">
       <div className="flex w-full flex-col gap-4 text-left">
         {Icon && <IconWrapper Icon={() => <Icon />} />}
         <h1 className="text-xl font-bold text-blue-800">{title}</h1>
