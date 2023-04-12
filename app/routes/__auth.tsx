@@ -6,6 +6,7 @@ import { json } from "react-router";
 
 export const loader: LoaderFunction = async (args) => {
   const { userId } = await getAuth(args);
+
   if (!userId) {
     return redirect("/login");
   }

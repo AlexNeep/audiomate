@@ -1,5 +1,4 @@
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -11,10 +10,9 @@ import {
 import { LoaderFunction, MetaFunction } from "@vercel/remix";
 import { useEffect } from "react";
 
-import { rootAuthLoader } from "@clerk/remix/ssr.server";
 import { ClerkApp } from "@clerk/remix";
+import { rootAuthLoader } from "@clerk/remix/ssr.server";
 import styles from "~/index.css";
-import Button from "./components/core/Buttons";
 import Header from "./components/Header";
 import GoogleTagManager from "./utils/analytics/googleTagManger";
 import { setupHotjar } from "./utils/analytics/hotjar";
@@ -68,18 +66,18 @@ function App() {
     if (env === "production") addTrackers();
   }, []);
 
-  // useEffect(() => {
-  //   if (env === "development") return;
-  //   navigator.serviceWorker
-  //     .register("/sw.js")
-  //     .then(() => {
-  //       console.log("Service worker registered!");
-  //     })
-  //     .catch((error) => {
-  //       console.warn("Error registering service worker:");
-  //       console.warn(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    if (env === "development") return;
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then(() => {
+        console.log("Service worker registered!");
+      })
+      .catch((error) => {
+        console.warn("Error registering service worker:");
+        console.warn(error);
+      });
+  }, []);
 
   return (
     <html lang="en">
@@ -155,6 +153,5 @@ export function ErrorBoundary() {
 }
 
 import { ClerkCatchBoundary } from "@clerk/remix";
-import { getUserProfile } from "./utils/db.server";
 
 export const CatchBoundary = ClerkCatchBoundary();

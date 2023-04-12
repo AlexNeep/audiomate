@@ -101,35 +101,6 @@ export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({ user, redirect: redirectTo });
 };
 
-export async function createAccount({
-  userCredentials,
-  fetcher,
-  marketingEmails,
-  referrer,
-  redirect = "",
-}: {
-  userCredentials: UserCredential;
-  fetcher: FetcherWithComponents<any>;
-  marketingEmails: boolean;
-  referrer: string;
-  redirect?: string;
-}) {
-  const user = userCredentials.user;
-  const token = await user.getIdToken();
-
-  fetcher.submit(
-    {
-      email: user.email ?? "",
-      marketing_emails: `${marketingEmails}`,
-      uid: user.uid,
-      token,
-      redirect,
-      referrer,
-    },
-    { action: "/login", method: "post" }
-  );
-}
-
 const Login = () => {
   return (
     <div className="mx-auto flex flex-col gap-6 ">

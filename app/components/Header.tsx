@@ -234,7 +234,8 @@ const GetStartedLink = ({
   return (
     <Link
       key="header"
-      to={trial ? "/pricing?trial=true" : "/pricing"}
+      // to={trial ? "/pricing?trial=true" : "/pricing"}
+      to={"/login"}
       onClick={() => setMenuOpen(false)}
       className="transition-all duration-200 ease-in-out hover:scale-105"
     >

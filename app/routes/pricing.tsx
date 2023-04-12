@@ -31,7 +31,6 @@ export const action: ActionFunction = async (args) => {
     const user = await createClerkClient({
       secretKey: process.env.CLERK_SECRET_KEY,
     }).users.getUser(userId);
-    console.log(user.publicMetadata.plan);
 
     if (user?.publicMetadata.plan) return redirect("/app");
 

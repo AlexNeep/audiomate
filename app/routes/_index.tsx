@@ -195,6 +195,13 @@ const Index = () => {
           />
         </section>
 
+        <Section
+          title="AudioMate"
+          paragrapgh="abc"
+          bullets={["1", "2", "3"]}
+          imageSource="https://storage.cloud.google.com/audiomate-public/demo.png"
+        />
+
         {/* <Hero trial={trial} />
       <div className="flex flex-col gap-16 py-10 lg:gap-40" id="features">
         <div className="m-auto flex max-w-xl flex-col gap-8 text-center">
