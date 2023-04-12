@@ -98,7 +98,7 @@ const Payment = () => {
 
       <div className="mb-10 ">
         <h1 className="mb-10 text-center text-3xl font-bold text-blue-800">
-          Start becoming fluent today
+          {/* Start becoming fluent today */}
         </h1>
 
         {actionData?.error && <ErrorMessage error={actionData?.error} />}
@@ -117,6 +117,7 @@ const Payment = () => {
                 features={plan.features}
                 notFeatures={plan.not_features}
                 // mostPopular={plan.most_popular}
+                comingSoon={plan.coming_soon}
               />
             ))}
           </div>
@@ -153,6 +154,7 @@ const HeroPaymentSection = ({
   features,
   notFeatures,
   mostPopular,
+  comingSoon,
 }: {
   title: string;
   id: string;
@@ -160,6 +162,7 @@ const HeroPaymentSection = ({
   features: string[];
   mostPopular?: boolean;
   notFeatures?: string[];
+  comingSoon?: boolean;
 }) => {
   return (
     <div className="relative flex flex-col items-center justify-center gap-16 rounded-md bg-slate-100 p-6 shadow-lg">
@@ -172,6 +175,11 @@ const HeroPaymentSection = ({
               <span className="font-semibold text-purple-600">
                 (most popular)
               </span>
+            ) : (
+              ""
+            )}
+            {comingSoon ? (
+              <span className="font-semibold text-gray-600">(Coming soon)</span>
             ) : (
               ""
             )}

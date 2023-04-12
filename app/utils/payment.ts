@@ -54,6 +54,7 @@ export const plans = [
       "Max voice inputs length 30 seconds",
       "Version history",
     ],
+    coming_soon: true,
   },
   {
     id: "ultimate",
@@ -64,6 +65,7 @@ export const plans = [
       "Max voice inputs length 60 seconds",
       "Version history",
     ],
+    coming_soon: true,
   },
 ];
 
