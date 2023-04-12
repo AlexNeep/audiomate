@@ -17,24 +17,23 @@ import Header from "./components/Header";
 import GoogleTagManager from "./utils/analytics/googleTagManger";
 import { setupHotjar } from "./utils/analytics/hotjar";
 
+const description =
+  "Effortlessly create and edit text using just your voice in seconds";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "AudioMate",
-  // description:
-  //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
+  description,
   viewport: "width=device-width,initial-scale=1",
-  // "og:title": "LanguageMate",
-  // "og:description":
-  //   "Speak to the world's best language-learning chatbot and confidently master foreign languages through conversation",
-  // "og:type": "website",
-  // "og:url": "https://languagemate.io",
-  // "og:image":
-  //   "https://storage.googleapis.com/languagemate-public/Facebook%20og%20image.png",
-  // "twitter:title": "LanguageMate",
-  // "twitter:description": "Master foreign languages through conversation",
-  // "twitter:image":
-  //   "https://storage.googleapis.com/languagemate-public/Twitter%20card.png",
-  // "twitter:card": "summary_large_image",
+  "og:title": "AudioMate",
+  "og:description": description,
+  "og:type": "website",
+  "og:url": "https://audiomate.me",
+  "og:image": "https://audiomate.me/interface.png",
+  "twitter:title": "AudioMate",
+  "twitter:description": description,
+  "twitter:image": "https://audiomate.me/interface.png",
+  "twitter:card": "summary_large_image",
 });
 
 export function links() {
