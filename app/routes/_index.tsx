@@ -169,16 +169,11 @@ const Index = () => {
         <section className="mx-auto flex max-w-2xl flex-col items-center justify-center gap-8 px-4 lg:flex-row">
           <div className="flex grow flex-col gap-4 lg:gap-12">
             <h1 className="shrink-0 text-center text-3xl font-bold text-orange-500">
-              Say it, Edit it, Perfect it
+              Turn your rambling thoughts into journal entries
             </h1>
             <h2 className="text-center text-xl font-semibold text-slate-800">
-              Effortlessly create and edit{" "}
-              <span
-              //className="w-20 underline decoration-orange-500 underline-offset-2"
-              >
-                {options[optionIndex]}
-              </span>{" "}
-              using just your voice in seconds
+              Effortlessly create and edit journal entries using your voice &
+              discover your own mind
             </h2>
 
             {/* <Link
