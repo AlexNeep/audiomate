@@ -66,7 +66,7 @@ export async function generateTextFromInput(
     {
       role: "system",
       content:
-        "Process the instructions and respond. The instructions may refer to or request edits to the next message. Follow the instructions exactly.",
+        "Process the instructions and respond. The instructions may refer to or request edits to the next message. Follow the instructions exactly. If there are no instructions, summarise the message",
     },
     {
       role: "user",
