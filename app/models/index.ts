@@ -66,7 +66,10 @@ export async function generateTextFromInput(
     {
       role: "system",
       content:
-        "Process the instructions and respond. The instructions may refer to or request edits to the next message. Follow the instructions exactly. If there are no instructions, summarise the message",
+        // "Process the instructions and respond. The instructions may refer to or request edits to the next message. Follow the instructions exactly. If there are no instructions, summarise the message",
+        pastText === ""
+          ? "The user has recorded audio and we have transcribed it to text. Summarize and rewrite the provided text into a well written journal entry."
+          : "The user has recorded audio and we have transcribed it to text. There is also past content from a previous recording. Merge the past recording and the new entry into one message. Keep important details from both. Follow specific instructions within the transcript if they exist.",
     },
     {
       role: "user",
@@ -74,7 +77,7 @@ export async function generateTextFromInput(
     },
     {
       role: "user",
-      content: `Instructions: ${newUserInput}`,
+      content: `Audio transcript : ${newUserInput}`,
     },
   ];
   try {
