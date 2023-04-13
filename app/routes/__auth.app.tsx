@@ -45,7 +45,7 @@ const App = () => {
   const [audioChunks, setAudioChunks] = useState<Blob[] | null>(null);
 
   useEffect(() => {
-    if (recording && duration > 30) changeRecording();
+    if (recording && duration > 120) changeRecording();
   }, [duration]);
 
   function changeRecording() {
